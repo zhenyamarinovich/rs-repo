@@ -1,0 +1,140 @@
+body {
+  box-sizing: border-box;
+  width: 1920px;
+  margin: 0 auto;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+}
+section {
+  display: flex;
+  justify-content: center;
+}
+header {
+  background: url(../assets/start-screen-gradient-background.png),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  width: 1200px;
+}
+.content-header {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.header-ul {
+  display: flex;
+}
+.header-ul > li a {
+  margin-left: 35px;
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 160%;
+  color: #cdcdcd;
+  text-decoration: none;
+}
+.header-ul > li:first-child a {
+  color: #fafafa;
+  border-bottom: 3px solid #f1cdb3;
+}
+.title-header {
+  font-family: Georgia;
+  margin-bottom: 10px;
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #f1cdb3;
+}
+.title-p {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+}
+
+/*?block start-screen*/
+.start-screen-section {
+  background: url(../assets/start-screen-gradient-background.png),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+}
+.start-screen {
+  display: flex;
+}
+.start-intro-block {
+  margin-top: 223px;
+}
+.start-screen-img {
+  margin-top: 60px;
+  margin-left: 42px;
+}
+h2 {
+  font-family: Georgia;
+  font-size: 44px;
+  line-height: 130%;
+  width: 310px;
+  color: #ffffff;
+  margin-bottom: 42px;
+}
+.start-screen-p {
+  font-size: 15px;
+  line-height: 160%;
+  color: #cdcdcd;
+  margin-bottom: 41px;
+}
+.start-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 207px;
+  height: 52px;
+  background: #f1cdb3;
+  border-radius: 100px;
+  font-family: Georgia;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+}
+/*? END block start-screen*/
+
+/*? block About*/
+.about {
+  display: flex;
+  justify-content: center;
+}
+.about > img {
+  margin: 80px 120px 100px 0;
+}
+.about-info {
+  margin-top: 94px;
+}
+h3 {
+  font-family: Georgia;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+.about-info > h3 {
+  width: 370px;
+  margin-bottom: 25px;
+}
+.about-info > p {
+  width: 430px;
+  font-size: 15px;
+  line-height: 160%;
+  color: #4c4c4c;
+}
+.about-info p {
+  margin-bottom: 25px;
+}
+/*?END block About*/
+
+/*?block Pets*/
+.pet-cards {
+  display: flexbox;
+  justify-content: center;
+}
+/*?END block Pets*/
