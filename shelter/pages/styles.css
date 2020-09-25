@@ -1,6 +1,6 @@
 body {
   box-sizing: border-box;
-  width: 1920px;
+  max-width: 1920px;
   margin: 0 auto;
   font-family: Arial;
   font-style: normal;
@@ -96,6 +96,7 @@ h2 {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #292929;
+  text-decoration: none;
 }
 /*? END block start-screen*/
 
@@ -143,26 +144,93 @@ h3 {
 .pet-cards {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
 }
-.pet-cards > a {
-  margin-right: 53px;
+.card {
+  height: 435px;
+  margin-right: 90px;
+  background: #ffffff;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
-.pet-cards > a:last-child {
-  margin-left: 53px;
+.last-card {
   margin-right: 0px;
 }
-.card,
-a {
+.pets-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+h4 {
+  display: flex;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+.learn-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 187px;
+  height: 52px;
+  border: 2px solid #f1cdb3;
+  border-radius: 100px;
+  font-family: Georgia;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+  text-decoration: none;
+}
+
+.arrow {
+  text-decoration: none;
+}
+.arrow-container {
+  border: 2px solid #f1cdb3;
+  border-radius: 100px;
+  margin-right: 53px;
+  width: 52px;
+  height: 52px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.card {
-  margin-right: 90px;
-}
-.card {
+.pet-cards > .arrow-container:last-child {
+  margin-left: 53px;
   margin-right: 0px;
 }
-
 /*?END block Pets*/
+
+/*?block Help*/
+.help-title {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+.offers-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.offer {
+  text-align: center;
+  margin: 0 3vw 3vw 3vw;
+}
+
+/*? END block Help*/
+
+/*? block Dotation */
+/*? END block Dotation */
