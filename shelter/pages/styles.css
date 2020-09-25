@@ -140,6 +140,7 @@ h3 {
 .pets-title {
   margin: 80px auto 60px;
   width: 400px;
+  text-align: center;
 }
 .pet-cards {
   display: flex;
