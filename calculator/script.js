@@ -19,7 +19,12 @@ class Calculator {
   appendNumber(number) {
     if (number === "." && String(this.currentOperand).includes(".")) return;
     if (this.negative === false) {
-      this.currentOperand = this.currentOperand.toString() + number.toString();
+      if(this.currentOperand === -0){
+        this.currentOperand = "-0" + number.toString();
+      } else{
+        this.currentOperand = this.currentOperand.toString() + number.toString();
+      }
+     
     } else {
       this.currentOperand = this.currentOperand.toString() + number.toString();
       this.currentOperand = -this.currentOperand;
@@ -32,16 +37,6 @@ class Calculator {
     let prevNumber = undefined;
     if (this.currentOperand === "" && operation !== "-") return;
 
-    //minus at the beginning of the line
-    /*if (
-      operation === "-" &&
-      this.previousOperand === "" &&
-      this.currentOperand === ""
-    ) {
-      this.currentOperand = 0;
-    }*/
-
-    //root at the beginning of the line
     if (operation === "√") {
       prevOperation = this.operation;
       prevNumber = this.previousOperand;
@@ -51,7 +46,8 @@ class Calculator {
       /*this.previousOperand = "";*/
     }
 
-    if (operation === "-" && this.operation !== undefined) {
+    if (operation === "-" && this.operation !== undefined &&
+    this.currentOperand === "") {
       this.negative = true;
     } else if (
       operation === "-" &&
@@ -109,14 +105,35 @@ class Calculator {
           return;
       }
     }
-
-    this.currentOperand = computation;
+    if(!this.isInteger(computation)){
+    let fixComputation = computation.toFixed(5);
+    let i=fixComputation.length -1;
+    let countZero = 0;
+    while(fixComputation[i] == 0){
+      countZero++;
+      i--;
+    }
+    this.currentOperand = fixComputation.slice(0,fixComputation.length - countZero);
+    } else{
+      this.currentOperand = computation;
+    }
     this.operation = undefined;
     this.previousOperand = "";
   }
 
+  isInteger(num) {
+    return (num ^ 0) === num;
+  }
+
   getDisplayNumber(number) {
-    const stringNumber = number.toString();
+    let stringNumber = "";
+    if(number === "-0" || number === -0){
+      stringNumber = "-0";
+    } else if(number === "-0."){
+      stringNumber = "-0.";
+    }else{
+      stringNumber = number.toString();
+    }
     const integerDigits = parseFloat(stringNumber.split(".")[0]);
     const decimalDigits = stringNumber.split(".")[1];
     let integerDisplay;
@@ -192,6 +209,7 @@ operationButtons.forEach((button) => {
 equalsButton.addEventListener("click", (button) => {
   calculator.compute();
   calculator.updateDisplay();
+  calculator.clear();
 });
 
 allClearButton.addEventListener("click", (button) => {
