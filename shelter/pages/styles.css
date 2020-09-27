@@ -24,16 +24,21 @@ header {
   display: flex;
   justify-content: space-between;
 }
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
 .header-ul {
   display: flex;
 }
 .header-ul > li a {
   margin-left: 35px;
   margin-top: 16px;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 160%;
-  color: #cdcdcd;
+  color: #CDCDCD;
   text-decoration: none;
+  margin-bottom: 4px;
 }
 .header-ul > li:first-child a {
   color: #fafafa;
@@ -50,7 +55,7 @@ header {
 .title-p {
   font-size: 13px;
   line-height: 15px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.13em;
   color: #ffffff;
 }
 
@@ -139,7 +144,6 @@ h3 {
 }
 .pets-title {
   margin: 80px auto 60px;
-  width: 400px;
   text-align: center;
 }
 .pet-cards {
@@ -150,12 +154,13 @@ h3 {
 }
 .card {
   height: 435px;
+  width: 270px;
   margin-right: 90px;
   background: #ffffff;
   border-radius: 9px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 .last-card {
@@ -195,6 +200,7 @@ h4 {
 
 .arrow {
   text-decoration: none;
+  color: #292929;
 }
 .arrow-container {
   border: 2px solid #f1cdb3;
@@ -211,9 +217,14 @@ h4 {
   margin-left: 53px;
   margin-right: 0px;
 }
+.rest-button {
+  width: 261px;
+  height: 54px;
+}
 /*?END block Pets*/
 
 /*?block Help*/
+
 .help-title {
   text-align: center;
   margin-top: 80px;
@@ -224,12 +235,18 @@ h4 {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 42px;
 }
 .offer {
   text-align: center;
-  margin: 0 3vw 3vw 3vw;
+  margin: 0 3.75rem 3.5rem 3.75rem;
+  height: 113px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
+
 
 /*? END block Help*/
 
@@ -242,6 +259,9 @@ h4 {
   justify-content: center;
   align-items: center;
   height: 464px;
+}
+.dotation-dog {
+  margin-bottom: 20px;
 }
 
 .dotation-info > h3 {
@@ -269,8 +289,7 @@ h5 {
 }
 .dotation-info {
   margin-left: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom:20px;
 }
 .dotation-info > p {
   font-style: italic;
@@ -293,7 +312,7 @@ footer {
   justify-content: space-between;
 }
 .footer-container > img {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 .footer-text-block {
   display: flex;
@@ -302,12 +321,22 @@ footer {
 }
 .footer-text-block > h3 {
   color: #ffffff;
-  margin-bottom: 43px;
+  margin-bottom: 33px;
 }
+#footer-question{
+  margin-bottom: 38px;
+}
+
 .contacts {
   display: flex;
-  margin-bottom: 43px;
+  align-items: center;
+  margin-bottom: 33px;
 }
+
+.contacts:last-child {
+  margin-bottom: 0;
+}
+
 .contacts > img {
   margin-right: 20px;
 }
