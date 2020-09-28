@@ -176,6 +176,7 @@ h3 {
 .card:hover {
   background: #ffffff;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  cursor: pointer;
 }
 .last-card {
   margin-right: 0px;
