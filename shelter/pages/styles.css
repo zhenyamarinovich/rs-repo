@@ -11,13 +11,13 @@ section {
   justify-content: center;
 }
 header {
-  background: url(../assets/start-screen-gradient-background.png),
-    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  /*background: url(../assets/start-screen-gradient-background.png),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;*/
   display: flex;
   justify-content: center;
 }
 .wrapper {
-  width: 1200px;
+  width: 62.5%;
 }
 .content-header {
   margin-top: 60px;
@@ -36,10 +36,17 @@ header {
   margin-top: 16px;
   font-size: 15px;
   line-height: 160%;
-  color: #CDCDCD;
+  color: #cdcdcd;
   text-decoration: none;
   margin-bottom: 4px;
 }
+.header-ul > li a:hover {
+  color: #fafafa;
+}
+/*.header-ul > li a:active {
+  color: #fafafa;
+  border-bottom: 3px solid #f1cdb3;
+}*/
 .header-ul > li:first-child a {
   color: #fafafa;
   border-bottom: 3px solid #f1cdb3;
@@ -60,7 +67,7 @@ header {
 }
 
 /*?block start-screen*/
-.start-screen-section {
+.bg-container {
   background: url(../assets/start-screen-gradient-background.png),
     radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
@@ -102,6 +109,9 @@ h2 {
   letter-spacing: 0.06em;
   color: #292929;
   text-decoration: none;
+}
+.start-button:hover {
+  background: #fddcc4;
 }
 /*? END block start-screen*/
 
@@ -156,12 +166,15 @@ h3 {
   height: 435px;
   width: 270px;
   margin-right: 90px;
-  background: #ffffff;
+  background: #fafafa;
   border-radius: 9px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+.card:hover {
+  background: #ffffff;
 }
 .last-card {
   margin-right: 0px;
@@ -197,6 +210,9 @@ h4 {
   color: #292929;
   text-decoration: none;
 }
+.learn-button:hover {
+  background: #fddcc4;
+}
 
 .arrow {
   text-decoration: none;
@@ -212,6 +228,9 @@ h4 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+.arrow-container:hover {
+  background: #fddcc4;
 }
 .pet-cards > .arrow-container:last-child {
   margin-left: 53px;
@@ -246,7 +265,6 @@ h4 {
   justify-content: space-between;
   align-items: center;
 }
-
 
 /*? END block Help*/
 
@@ -287,9 +305,12 @@ h5 {
   align-items: center;
   margin-bottom: 20px;
 }
+.credit-card:hover {
+  background: #fddcc4;
+}
 .dotation-info {
   margin-left: 30px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 .dotation-info > p {
   font-style: italic;
@@ -323,7 +344,17 @@ footer {
   color: #ffffff;
   margin-bottom: 33px;
 }
-#footer-question{
+h4 > a {
+  text-decoration: none;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #f1cdb3;
+}
+#footer-question {
   margin-bottom: 38px;
 }
 
@@ -337,7 +368,7 @@ footer {
   margin-bottom: 0;
 }
 
-.contacts > img {
+.contacts > a > img {
   margin-right: 20px;
 }
 .contacts > h4 {
