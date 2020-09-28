@@ -1,6 +1,6 @@
 body {
   box-sizing: border-box;
-  max-width: 1920px;
+  width: 1920px;
   margin: 0 auto;
   font-family: Arial;
   font-style: normal;
@@ -212,6 +212,7 @@ h4 {
 }
 .learn-button:hover {
   background: #fddcc4;
+  border: none;
 }
 
 .arrow {
@@ -231,6 +232,7 @@ h4 {
 }
 .arrow-container:hover {
   background: #fddcc4;
+  border: none;
 }
 .pet-cards > .arrow-container:last-child {
   margin-left: 53px;
