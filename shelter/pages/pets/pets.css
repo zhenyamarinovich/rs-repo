@@ -28,6 +28,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+.title-header a {
+  text-decoration: none;
+  color: #545454;
+}
 .menu {
   display: flex;
   align-items: center;
@@ -57,7 +61,6 @@ h1 {
   font-size: 32px;
   line-height: 35px;
   letter-spacing: 0.06em;
-  color: #545454;
 }
 .title-p {
   font-size: 13px;
