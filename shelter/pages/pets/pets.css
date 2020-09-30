@@ -99,7 +99,7 @@ h2 {
   text-align: center;
   grid-template-columns: repeat(4, 270px);
   grid-column-gap: 40px;
-  grid-row-gap: 30px;
+  grid-row-gap: 25px;
   padding-bottom: 60px;
 }
 h4 {
