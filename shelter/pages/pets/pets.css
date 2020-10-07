@@ -27,6 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
 }
 .title-header a {
   text-decoration: none;
@@ -65,8 +66,9 @@ h1 {
 .title-p {
   font-size: 13px;
   line-height: 15px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.13em;
   color: #292929;
+ 
 }
 /*End Header*/
 
@@ -95,12 +97,14 @@ h2 {
   color: #545454;
 }
 .pet-cards {
+  width: 100%;
   display: grid;
   text-align: center;
   grid-template-columns: repeat(4, 270px);
   grid-column-gap: 40px;
   grid-row-gap: 25px;
   padding-bottom: 60px;
+  justify-content: center;
 }
 h4 {
   font-family: Georgia;
@@ -223,9 +227,32 @@ a > img:hover {
   padding: 0;
 }
 .icon-email {
-  padding: 43px 0;
+  padding: 38px 0;
 }
 .icon-marker {
-  padding: 40px 0;
+  padding: 38px 0;
 }
 /*? END footer */
+@media screen and (max-width: 1200px) {
+  .content-header {
+    justify-content: space-around;
+  }
+  .pet-cards {
+    grid-template-columns: repeat(3, 270px);
+  }
+  .footer-container {
+    justify-content: space-evenly;
+  }
+  .last-card {
+    display: none;
+  }
+@media screen and (max-width: 910px) {
+  .pet-cards {
+    grid-template-columns: repeat(2, 270px);
+  }
+}
+@media screen and (max-width: 680px) {
+  .pet-cards {
+    grid-template-columns: repeat(2, 270px);
+  }
+}
