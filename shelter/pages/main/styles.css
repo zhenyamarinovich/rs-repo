@@ -530,8 +530,12 @@ h4 > a {
 /*? END footer */
 
 @media screen and (max-width: 1279px) {
+  .wrapper{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
   .content-header {
-    margin: 30px 53px 0 10px;
+    margin-top: 30px;
   }
   .start-intro-block {
     margin: 0 auto;
@@ -547,7 +551,7 @@ h4 > a {
   }
   .start-screen-img {
     margin-top: 100px;
-    margin-left: 169px;
+    margin-left: 139px;
     width: 569px;
     height: 593px;
   }
@@ -578,6 +582,9 @@ h4 > a {
     margin-right: 0;
     margin-left: 0;
   }
+  .pet-cards > .arrow-container:last-child {
+    margin-left:0 ;
+  }
   .card {
     margin-right: 0;
   }
@@ -603,6 +610,7 @@ h4 > a {
     margin-right: 0;
   }
 }
+
 @media screen and (max-width: 767px) {
   .header_burger {
     display: block;
@@ -663,9 +671,9 @@ h4 > a {
     text-align: center;
   }
   .start-screen-img {
-    width: 270px;
+    width: 260px;
     height: 271px;
-    margin-left: 50px;
+    margin-left: 40px;
   }
   .start-intro-block {
     margin-top: 60px;
@@ -680,19 +688,119 @@ h4 > a {
     text-align: center;
     line-height: 52px;
   }
-
-  .about-info > p {
-    width: 270px;
-    margin: 0 auto;
-  }
   h3 {
     font-size: 25px;
     line-height: 130%;
     letter-spacing: 0.06em;
     text-align: center;
   }
+  .start-screen-section {
+    padding-top: 90px;
+  }
+  .about-info{
+    margin-bottom: 42px;
+  }
+  .about-info >h3 {
+    width: 250px;
+  }
+  .about-info > p {
+    width: 270px;
+    margin: 0 auto;
+  }
+  .about-info-p {
+    padding-bottom: 22px;
+  }
   .about > img {
     width: 260px;
     height: 353.6px;
+    margin-bottom: 42.5px;
+  }
+  .pets-title{
+    padding: 42px 0;
+  }
+  .second-card{
+    display: none;
+  }
+  .card{
+    order: 0;
+    margin-bottom: 20px;
+  }
+  .pet-cards{
+    justify-content: center;
+    margin-bottom: 42px;
+  }
+  .arrow-container {
+    order: 1;
+  }
+  .arrow-container:last-child{
+    margin-left: 80px;
+  }
+  .pets-button {
+    padding-bottom: 42px;
+  }
+
+  .help-title{
+    margin-top: 42px;
+    margin-bottom: 42px;
+  }
+  .offer{
+    width: 130px;
+    margin: 0 0 30px 0;
+  }
+  h4{
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 110%;
+    color: #545454;
+  }
+  .offer:last-child{
+    margin-bottom: 0;
+  }
+  .offers-container{
+    justify-content: space-between;
+  }
+
+  .dotation-dog{
+    width: 260px;
+    height: 135.2px;
+    padding-bottom: 42px;
+  }
+  .credit-card{
+    width: 281px;
+    height: 43px;
+    margin: 0 auto 20px;
+  }
+  .credit-card-img{
+    width: 251px;
+    height: 23px;
+  }
+  .dotation-info > h3 {
+    margin-top: 42px;
+  }
+  .dotation-info > p {
+    width: 280px;
+    margin-bottom: 42px;
+  }
+  h5{
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+  }
+
+  .footer-title{
+font-size: 25px;
+line-height: 130%;
+  }
+  .footer-text-block{
+    margin-right: 0;
+  }
+  .footer-image{
+    width: 260px;
+height: 269px;
   }
 }
