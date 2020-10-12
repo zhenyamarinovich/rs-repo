@@ -724,10 +724,19 @@ h4 > a {
   .card{
     order: 0;
     margin-bottom: 20px;
+    width: 100%;
   }
   .pet-cards{
-    justify-content: center;
+    justify-content: space-evenly;
     margin-bottom: 42px;
+  }
+  .card-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .card{
+    width: 270px;
   }
   .arrow-container {
     order: 1;
