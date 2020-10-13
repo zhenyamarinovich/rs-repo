@@ -27,6 +27,7 @@ body {
   width: 30px;
   height: 20px;
   margin-top: 22px;
+  margin-right: 43px;
   position: relative;
   display: none;
 }
@@ -39,14 +40,14 @@ body {
   left: 0;
 }
 .burger_line__first {
-  top: 0;
+  top: -3px;
 }
 .burger_line__second {
-  top: 50%;
+  top: 41%;
   transform: translateY(-50%);
 }
 .burger_line__third {
-  bottom: 0;
+  bottom: 1px;
 }
 .logo {
   display: flex;
@@ -129,7 +130,7 @@ h2 {
   text-align: center;
   grid-template-columns: repeat(4, 270px);
   grid-column-gap: 40px;
-  grid-row-gap: 25px;
+  grid-row-gap: 30px;
   padding-bottom: 60px;
   justify-content: center;
 }
@@ -139,7 +140,8 @@ h4 {
   line-height: 23px;
   letter-spacing: 0.06em;
   color: #545454;
-  padding: 30px 0;
+  padding-top: 27px;
+  padding-bottom:30px ;
 }
 button {
   width: 187px;
@@ -222,6 +224,7 @@ footer {
 }
 .footer-image {
   padding-top: 40px;
+  height: 310px;
 }
 .footer-title {
   padding-top: 56px;
@@ -230,6 +233,10 @@ footer {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #ffffff;
+  width: 279px;
+}
+.footer-text{
+  padding-right:10px;
 }
 .contacts {
   display: flex;
@@ -265,11 +272,25 @@ a > img:hover {
   header{
     padding: 0 30px;
   }
+  .pets-title{
+    padding-top: 82px;
+    padding-bottom: 29px;
+  }
   .pet-cards {
     grid-template-columns: repeat(3, 270px);
+    padding-bottom: 41px;
   }
   .footer-container {
     justify-content: space-evenly;
+  }
+  .navigation-cards{
+    padding-bottom: 75px;
+  }
+  .footer-image{
+    padding-top: 60px;
+  }
+  .footer-title {
+    padding-top: 30px;
   }
   .last-card {
     display: none;
@@ -282,6 +303,9 @@ a > img:hover {
 @media screen and (max-width: 767px) {
   .pet-cards {
     grid-template-columns: repeat(1, 270px);
+  }
+  header{
+    padding: 0 10px;
   }
   .header_burger {
     display: block;
@@ -365,15 +389,40 @@ a > img:hover {
 font-size: 25px;
 line-height: 130%;
 text-align: center;
+width: 278px;
   }
   .footer-title{
     padding-top: 30px;
+    padding-left: 10px;
   }
   .footer-text-block{
     margin-right: 0;
+    text-align: center
+  }
+  .footer-text{
+    padding-right: 0;
+  }
+  .contact-mail, .contact-tel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
   }
   .footer-image{
     width: 260px;
-height: 269px;
+    height: 269px;
+    padding-top: 33px;
   }
+  .footer-text-block:first-child{
+    padding-bottom:10px ;
+  }
+  .contact-address{
+    height: 46px;
+    padding-top: 40px;
+    text-align: left;
+  }
+  .contact-address:last-child{
+    padding-top: 30px;
+  }
+
 }
