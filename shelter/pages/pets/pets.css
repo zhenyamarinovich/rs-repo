@@ -194,6 +194,7 @@ button:hover {
 }
 .inactive_page-card {
   border: 2px solid #cdcdcd;
+  pointer-events: none;
 }
 .inactive_page-card a {
   color: #cdcdcd;
