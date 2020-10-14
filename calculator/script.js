@@ -2,14 +2,15 @@ class Calculator {
   constructor(previousOperandTextElement, currentOperandTextElement) {
     this.currentOperandTextElement = currentOperandTextElement;
     this.previousOperandTextElement = previousOperandTextElement;
+    this.readyToReset = false;
     this.clear();
   }
   clear() {
     this.currentOperand = "";
     this.previousOperand = "";
     this.operation = undefined;
-
     this.negative = false;
+    this.readyToReset = false;
   }
 
   delete() {
@@ -119,6 +120,11 @@ class Calculator {
     }
     this.operation = undefined;
     this.previousOperand = "";
+    this.readyToReset = true;
+  }
+
+  isInteger(num) {
+    return (num ^ 0) === num;
   }
 
   isInteger(num) {
@@ -127,7 +133,11 @@ class Calculator {
 
   getDisplayNumber(number) {
     let stringNumber = "";
+<<<<<<< HEAD
+    if(number === "-0" /*|| number === -0*/){
+=======
     if(number === "-0" || number === -0){
+>>>>>>> b1197454a3035bd82591a7a5c821008af2380d52
       stringNumber = "-0";
     } else if(number === "-0."){
       stringNumber = "-0.";
@@ -192,12 +202,18 @@ const calculator = new Calculator(
   currentOperandTextElement
 );
 
-numberButtons.forEach((button) => {
+numberButtons.forEach(button => {
   button.addEventListener("click", () => {
-    calculator.appendNumber(button.innerText);
-    calculator.updateDisplay();
-  });
-});
+      if(calculator.previousOperand === "" 
+        && calculator.currentOperand !== "" 
+        && calculator.readyToReset) {
+        calculator.currentOperand = "";
+        calculator.readyToReset = false;
+      }
+      calculator.appendNumber(button.innerText);
+      calculator.updateDisplay();
+  })
+})
 //console.log(numberButtons);
 operationButtons.forEach((button) => {
   button.addEventListener("click", () => {
