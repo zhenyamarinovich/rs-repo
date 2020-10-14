@@ -127,9 +127,17 @@ class Calculator {
     return (num ^ 0) === num;
   }
 
+  isInteger(num) {
+    return (num ^ 0) === num;
+  }
+
   getDisplayNumber(number) {
     let stringNumber = "";
+<<<<<<< HEAD
     if(number === "-0" /*|| number === -0*/){
+=======
+    if(number === "-0" || number === -0){
+>>>>>>> b1197454a3035bd82591a7a5c821008af2380d52
       stringNumber = "-0";
     } else if(number === "-0."){
       stringNumber = "-0.";
@@ -217,6 +225,7 @@ operationButtons.forEach((button) => {
 equalsButton.addEventListener("click", (button) => {
   calculator.compute();
   calculator.updateDisplay();
+  calculator.clear();
 });
 
 allClearButton.addEventListener("click", (button) => {
