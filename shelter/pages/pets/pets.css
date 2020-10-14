@@ -23,10 +23,37 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.header_burger {
+  width: 30px;
+  height: 20px;
+  margin-top: 22px;
+  margin-right: 43px;
+  position: relative;
+  display: none;
+}
+.burger_line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+}
+.burger_line__first {
+  top: -3px;
+}
+.burger_line__second {
+  top: 41%;
+  transform: translateY(-50%);
+}
+.burger_line__third {
+  bottom: 1px;
+}
 .logo {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
 }
 .title-header a {
   text-decoration: none;
@@ -66,7 +93,9 @@ h1 {
   font-size: 13px;
   line-height: 15px;
   letter-spacing: 0.1em;
+  text-align: right;
   color: #292929;
+ 
 }
 /*End Header*/
 
@@ -74,7 +103,9 @@ h1 {
 .pets {
   background: #f6f6f6;
 }
-
+.card {
+  background: #FAFAFA;
+}
 .card > img {
   height: 270px;
 }
@@ -95,12 +126,14 @@ h2 {
   color: #545454;
 }
 .pet-cards {
+  width: 100%;
   display: grid;
   text-align: center;
   grid-template-columns: repeat(4, 270px);
   grid-column-gap: 40px;
   grid-row-gap: 30px;
   padding-bottom: 60px;
+  justify-content: center;
 }
 h4 {
   font-family: Georgia;
@@ -108,7 +141,8 @@ h4 {
   line-height: 23px;
   letter-spacing: 0.06em;
   color: #545454;
-  padding: 30px 0;
+  padding-top: 27px;
+  padding-bottom:30px ;
 }
 button {
   width: 187px;
@@ -116,6 +150,7 @@ button {
   border: 2px solid #f1cdb3;
   border-radius: 100px;
   margin-bottom: 30px;
+  background: #FAFAFA;
 }
 .learn-button {
   font-family: Georgia;
@@ -160,6 +195,7 @@ button:hover {
 }
 .inactive_page-card {
   border: 2px solid #cdcdcd;
+  pointer-events: none;
 }
 .inactive_page-card a {
   color: #cdcdcd;
@@ -190,6 +226,7 @@ footer {
 }
 .footer-image {
   padding-top: 40px;
+  height: 310px;
 }
 .footer-title {
   padding-top: 56px;
@@ -198,6 +235,10 @@ footer {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #ffffff;
+  width: 279px;
+}
+.footer-text{
+  padding-right:10px;
 }
 .contacts {
   display: flex;
@@ -223,9 +264,167 @@ a > img:hover {
   padding: 0;
 }
 .icon-email {
-  padding: 43px 0;
+  padding: 38px 0;
 }
 .icon-marker {
-  padding: 40px 0;
+  padding: 38px 0;
 }
 /*? END footer */
+@media screen and (max-width: 1279px) {
+  header{
+    padding: 0 30px;
+  }
+  .pets-title{
+    padding-top: 82px;
+    padding-bottom: 29px;
+  }
+  .pet-cards {
+    grid-template-columns: repeat(3, 270px);
+    padding-bottom: 41px;
+  }
+  .footer-container {
+    justify-content: space-evenly;
+  }
+  .navigation-cards{
+    padding-bottom: 75px;
+  }
+  .footer-image{
+    padding-top: 60px;
+  }
+  .footer-title {
+    padding-top: 30px;
+  }
+  .last-card {
+    display: none;
+  }
+@media screen and (max-width: 910px) {
+  .pet-cards {
+    grid-template-columns: repeat(2, 270px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .pet-cards {
+    grid-template-columns: repeat(1, 270px);
+  }
+  header{
+    padding: 0 10px;
+  }
+  .header_burger {
+    display: block;
+  }
+  .menu {
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: black;
+    z-index: 10;
+    align-items: flex-start;
+    transform: translateX(150%);
+    transition: 0.2s all linear;
+  }
+  .nav-menu_active {
+    transform: translateX(0);
+  }
+  .menu-list > li {
+    width: 100%;
+    padding-top: 40px;
+    padding-left: 40px;
+  }
+  .menu-list > li > a {
+    font-size: 42px;
+    line-height: 48px;
+  }
+  .header__nav-close {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 11;
+  }
+  .header__nav-close-line {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+  }
+  .header__nav-close-line:first-child {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .header__nav-close-line:last-child {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  h2 {
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .last-card-320{
+    display: none;
+  }
+  .pets-title{
+    padding: 42px 0;
+  }
+  .pet-cards{
+    padding-bottom: 42px;
+  }
+  .switch {
+    margin-right: 10px;
+  }
+  .navigation-cards {
+    padding-bottom: 42px;
+  }
+  h5{
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .footer-title{
+font-size: 25px;
+line-height: 130%;
+text-align: center;
+width: 278px;
+  }
+  .footer-title{
+    padding-top: 30px;
+    padding-left: 10px;
+  }
+  .footer-text-block{
+    margin-right: 0;
+    text-align: center
+  }
+  .footer-text{
+    padding-right: 0;
+  }
+  .contact-mail, .contact-tel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+  }
+  .footer-image{
+    width: 260px;
+    height: 269px;
+    padding-top: 33px;
+  }
+  .footer-text-block:first-child{
+    padding-bottom:10px ;
+  }
+  .contact-address{
+    height: 46px;
+    padding-top: 40px;
+    text-align: left;
+  }
+  .contact-address:last-child{
+    padding-top: 30px;
+  }
+
+}

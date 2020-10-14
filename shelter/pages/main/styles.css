@@ -27,8 +27,10 @@ header {
   /*адаптив*/
 }
 .header_burger {
-  width: 40px;
-  height: 28px;
+  width: 30px;
+  height: 20px;
+  margin-top: 20px;
+  margin-right: 43px;
   position: relative;
   display: none;
 }
@@ -36,7 +38,7 @@ header {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #fff;
+  background-color: #f1cdb3;
   position: absolute;
   left: 0;
 }
@@ -44,13 +46,11 @@ header {
   top: 0;
 }
 .burger_line__second {
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
+  top: 53%;
   transform: translateY(-50%);
 }
 .burger_line__third {
-  bottom: 0;
+  bottom: -2px;
 }
 
 .wrapper {
@@ -59,7 +59,6 @@ header {
 }
 .content-header {
   margin-top: 60px;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -118,8 +117,9 @@ header {
 .title-p {
   font-size: 13px;
   line-height: 15px;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.1em;
   color: #ffffff;
+  text-align:right;
 }
 
 /*?block start-screen*/
@@ -201,10 +201,11 @@ h2 {
 }
 .about > img {
   margin: 80px 120px 100px 0;
+  height: 408px;
 }
 .about-info {
   margin-top: 94px;
-  margin-bottom: 114px;
+  margin-bottom: 89px;
 }
 h3 {
   font-family: Georgia;
@@ -264,11 +265,6 @@ h3 {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 .card:hover {
@@ -277,6 +273,7 @@ h3 {
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   cursor: pointer;
 }
+
 .last-card {
   margin-right: 0px;
 }
@@ -291,6 +288,9 @@ h3 {
   -ms-flex-align: center;
   align-items: center;
   padding-bottom: 100px;
+}
+.card > h4 {
+  padding: 30px 0;
 }
 h4 {
   display: -webkit-box;
@@ -314,8 +314,8 @@ h4 {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 187px;
-  height: 52px;
+  width: 184px;
+  height: 48px;
   border: 2px solid #f1cdb3;
   border-radius: 100px;
   font-family: Georgia;
@@ -363,8 +363,8 @@ h4 {
   margin-right: 0px;
 }
 .rest-button {
-  width: 261px;
-  height: 54px;
+  width: 262px;
+  height: 52px;
 }
 /*?END block Pets*/
 
@@ -372,8 +372,8 @@ h4 {
 
 .help-title {
   text-align: center;
-  margin-top: 80px;
-  margin-bottom: 60px;
+  margin-top: 82px;
+  margin-bottom: 58px;
 }
 .offers-container {
   display: -webkit-box;
@@ -388,11 +388,11 @@ h4 {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 42px;
+  margin-bottom: 45px;
 }
 .offer {
   text-align: center;
-  margin: 0 3.75rem 3.5rem 3.75rem;
+  margin: 0 60px 55px;
   height: 113px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -429,8 +429,8 @@ h4 {
   align-items: center;
 }
 .dotation-dog {
-  padding-bottom: 111px;
-  padding-top: 91px;
+  padding-bottom: 110px;
+  padding-top: 90px;
 }
 
 .dotation-info > h3 {
@@ -479,7 +479,7 @@ h5 {
   width: 380px;
   line-height: 150%;
   color: #b2b2b2;
-  margin-bottom: 101px;
+  margin-bottom: 100px;
 }
 /*? END block Dotation */
 
@@ -497,6 +497,7 @@ footer {
 }
 .footer-image {
   padding-top: 40px;
+  height: 310px;
 }
 .footer-title {
   padding-top: 56px;
@@ -505,6 +506,10 @@ footer {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #ffffff;
+  width: 279px;
+}
+.footer-text{
+  padding-right:10px;
 }
 .contacts {
   display: flex;
@@ -518,19 +523,120 @@ h4 > a {
   letter-spacing: 0.06em;
   color: #f1cdb3;
 }
+h4 > a:hover {
+  opacity: 0.5;
+}
+a > img:hover {
+  opacity: 0.5;
+}
+
 .contacts > h4 {
   margin-left: 20px;
   padding: 0;
 }
 .icon-email {
-  padding: 43px 0;
+  padding: 38px 0;
 }
 .icon-marker {
-  padding: 40px 0;
+  padding: 38px 0;
 }
 /*? END footer */
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 1279px) {
+  .wrapper{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .content-header {
+    margin-top: 30px;
+  }
+  .start-intro-block {
+    margin: 0 auto;
+  }
+  .start-button {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 52px;
+  }
+  .start-screen-section {
+    padding-top: 150px;
+  }
+  .start-screen-img {
+    margin-top: 100px;
+    margin-left: 139px;
+    width: 569px;
+    height: 594px;
+  }
+  .start-screen {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .about-info {
+    margin-top: 80px;
+    margin-bottom: 57px;
+  }
+  .about > img {
+    margin: 0 0 100px 0;
+  }
+  .pet-cards {
+    justify-content: space-between;
+  }
+  .last-card {
+    display: none;
+  }
+  .second-card {
+    margin: 0;
+  }
+  .arrow-container {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .pet-cards > .arrow-container:last-child {
+    margin-left:0 ;
+  }
+  .card {
+    margin-right: 18px;
+  }
+  .second-card{
+    margin-right: 0;
+  }
+  .offer{
+    width: 170px;
+    margin: 0 30px 55px 30px;
+  }
+  .dotation-container {
+    flex-direction: column-reverse;
+  }
+  .dotation-info {
+    padding: 0;
+  }
+  .dotation-info > p {
+    margin-bottom: 58px;
+  }
+  .dotation-dog {
+    padding-top: 0;
+    padding-bottom: 100px;
+  }
+  .footer-image{
+    padding-top: 60px;
+  }
+  .footer-title {
+    padding-top: 30px;
+  }
+  .last-card {
+    display: none;
+  }
+  .footer-container {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .header_burger {
     display: block;
   }
@@ -542,19 +648,11 @@ h4 > a {
     left: 0;
     background: black;
     z-index: 10;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
     align-items: flex-start;
-    -webkit-transform: translateX(150%);
-    -ms-transform: translateX(150%);
     transform: translateX(150%);
-    -webkit-transition: 0.2s all linear;
-    -o-transition: 0.2s all linear;
     transition: 0.2s all linear;
   }
   .nav-menu_active {
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
     transform: translateX(0);
   }
   .header-ul > li {
@@ -567,8 +665,8 @@ h4 > a {
     line-height: 48px;
   }
   .header__nav-close {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 20px;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -583,52 +681,219 @@ h4 > a {
     top: 50%;
   }
   .header__nav-close-line:first-child {
-    -webkit-transform: translateY(-50%) rotate(45deg);
-    -ms-transform: translateY(-50%) rotate(45deg);
     transform: translateY(-50%) rotate(45deg);
   }
   .header__nav-close-line:last-child {
-    -webkit-transform: translateY(-50%) rotate(-45deg);
-    -ms-transform: translateY(-50%) rotate(-45deg);
     transform: translateY(-50%) rotate(-45deg);
   }
-}
-
-@media screen and (max-width: 1199px) {
   .wrapper {
-    margin: 0 15px;
+    padding: 0 10px;
   }
-  .start-intro-block {
-    margin-top: 100px;
+  .start-title {
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    width: 200px;
+    margin: 0 auto 42px;
+    text-align: center;
   }
   .start-screen-img {
-    width: 400px;
+    width: 260px;
+    height: 272px;
+    margin-left: 40px;
+    margin-top: 106px;
   }
-  .last-card {
+  .start-intro-block {
+    margin-top: 60px;
+  }
+  .start-screen-p {
+    width: 300px;
+    text-align: center;
+  }
+  .start-button {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 52px;
+  }
+  h3 {
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .start-screen-section {
+    padding-top: 90px;
+  }
+  .about-info{
+    margin: 42px 0;.
+  }
+  .about-info >h3 {
+    width: 250px;
+    margin: 0 auto 25px;
+  }
+  .about-info > p {
+    width: 270px;
+    margin: 0 auto;
+    text-align: justify;
+  }
+  .about-info-p {
+    padding-bottom: 22px;
+  }
+  .about > img {
+    width: 260px;
+    height: 353.6px;
+    margin-bottom: 42.5px;
+  }
+  .pets-title{
+    padding: 42px 0;
+  }
+  .second-card{
     display: none;
   }
-  .second-card {
-    margin: 0;
+  .card{
+    order: 0;
+    margin: 0 auto;
+    width: 100%;
   }
-  .pet-cards > .arrow-container:last-child {
-    margin-left: 23px;
-    margin-right: 0px;
+  .card > h4 {
+    font-family: Georgia;
+font-size: 20px;
+line-height: 23px;
+letter-spacing: 0.06em;
+color: #545454;
   }
+  .pet-cards{
+    justify-content: center;
+    margin-bottom: 42px;
+  }
+  .card-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .card{
+    width: 270px;
+    margin-bottom: 20px;
+  }
+
   .arrow-container {
-    margin-right: 23px;
+    order: 1;
+    margin-right: 80px;
   }
-  .card {
-    margin-right: 45px;
+
+  .pets-button {
+    padding-bottom: 42px;
   }
-  .footer-container {
-    -webkit-box-pack: space-evenly;
-    -ms-flex-pack: space-evenly;
-    justify-content: space-evenly;
+
+  .help-title{
+    margin-top: 42px;
+    margin-bottom: 42px;
   }
-  .footer-text-block {
-    margin-right: 50px;
+  .offer{
+    width: 130px;
+    height: 87px;
+    margin: 0 0 30px 0;
   }
-  .footer_last_text_block {
-    margin-right: 0;
+  .offer:nth-child(even){
+    padding-right: 5px;
   }
+  .offer:nth-child(odd){
+    padding-left: 5px;
+  }
+  .offer > img {
+    height: 50px;
+  }
+  h4{
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 110%;
+    color: #545454;
+  }
+  .offer:last-child{
+    margin-bottom: 0;
+  }
+  .offers-container{
+    justify-content: space-between;
+    margin-bottom: 41px;
+  }
+
+  .dotation-dog{
+    width: 260px;
+    height: 135.2px;
+    padding-bottom: 42px;
+  }
+  .credit-card{
+    width: 281px;
+    height: 43px;
+    margin: 0 auto 20px;
+  }
+  .credit-card-img{
+    width: 251px;
+    height: 23px;
+  }
+  .dotation-info > h3 {
+    margin-top: 42px;
+  }
+  .dotation-info > p {
+    width: 280px;
+    margin-bottom: 42px;
+    text-align: justify;
+  }
+  .credit-card-img{
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(../../assets/images/credit-card-content320.png) no-repeat; 
+    padding-left: 251px;
+  }
+  h5{
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+  }
+  .footer-title{
+    font-size: 25px;
+    line-height: 130%;
+    text-align: center;
+    width: 278px;
+      }
+      .footer-title{
+        padding-top: 30px;
+        padding-left: 10px;
+      }
+      .footer-text-block{
+        margin-right: 0;
+        text-align: center
+      }
+      .footer-text{
+        padding-right: 0;
+      }
+      .contact-mail, .contact-tel{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+      }
+      .footer-image{
+        width: 260px;
+        height: 269px;
+        padding-top: 33px;
+      }
+      .footer-text-block:first-child{
+        padding-bottom:10px ;
+      }
+      .contact-address{
+        height: 46px;
+        padding-top: 40px;
+        text-align: left;
+      }
+      .contact-address:last-child{
+        padding-top: 30px;
+      }
 }

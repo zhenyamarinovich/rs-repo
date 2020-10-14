@@ -11,7 +11,7 @@
     menu.classList.remove("nav-menu_active");
   });
 
-  if (window.innerWidth <= 760) {
+  if (window.innerWidth <= 767) {
     for (let i = 0; i < menuLinks.length; i++) {
       menuLinks[i].addEventListener("click", () => {
         menu.classList.remove("nav-menu_active");
