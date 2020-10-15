@@ -12,22 +12,31 @@
     <header>
       <div class="wrapper">
         <div class="content-header">
-          <div class="logo">
-            <h1 class="title-header">Cozy House</h1>
+          <div class="logo" id="logo">
+            <h1 class="title-header disabled"><a href="#">Cozy House</a></h1>
             <p class="title-p">Shelter for pets in Boston</p>
           </div>
           <nav class="nav-menu">
             <ul class="header-ul">
-              <li><a href="#about" class="js-scroll">About the shelter</a></li>
+              <li><a href="index.html">About the shelter</a></li>
               <li>
-                <a href="../pets/pets.html" class="js-scroll">Our pets</a>
+                <a href="../pets/pets.html">Our pets</a>
               </li>
-              <li><a href="#help" class="js-scroll">Help the shelter</a></li>
-              <li><a href="#contacts" class="js-scroll">Contacts</a></li>
+              <li><a href="#" class="disabled">Help the shelter</a></li>
+              <li><a href="#" class="disabled">Contacts</a></li>
             </ul>
+            <div class="content-header" id="header-logo-nav">
+              <h1 class="title-header disabled"><a href="#">Cozy House</a></h1>
+              <p class="title-p">Shelter for pets in Boston</p>
+            </div>
+            <!--<div class="header__nav-close">
+              <span class="header__nav-close-line"></span>
+              <span class="header__nav-close-line"></span>
+            </div>-->
             <div class="header__nav-close">
-              <span class="header__nav-close-line"></span>
-              <span class="header__nav-close-line"></span>
+              <span class="burger_line burger_line__first"></span>
+              <span class="burger_line burger_line__second"></span>
+              <span class="burger_line burger_line__third"></span>
             </div>
           </nav>
           <div class="header_burger burger">
@@ -36,6 +45,8 @@
             <span class="burger_line burger_line__third"></span>
           </div>
         </div>
+      
+        <div class ="dark-background"></div>
       </div>
     </header>
     <section class="start-screen-section">
@@ -48,7 +59,7 @@
               extremely wide and open heart. He or she will love you more than
               anybody else in the world, you will see!
             </p>
-            <a href="#" class="start-button">Make a friend</a>
+            <a href="../pets/pets.html" class="start-button">Make a friend</a>
           </div>
           <img
             class="start-screen-img"
@@ -128,7 +139,7 @@
             </div>
           </div>
           <div class="pets-button">
-            <a href="#" class="start-button rest-button"
+            <a href="../pets/pets.html" class="start-button rest-button"
               >Get to know the rest</a
             >
           </div>
