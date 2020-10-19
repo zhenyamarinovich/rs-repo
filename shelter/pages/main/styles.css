@@ -17,14 +17,17 @@ body {
 }
 
 header {
-  /*background: url(../assets/start-screen-gradient-background.png),
-    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;*/
-  /*адаптив*/
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   /*адаптив*/
+}
+#header-logo-nav{
+  display: none;
+}
+.header__nav-close{
+  display: none;
 }
 .header_burger {
   width: 30px;
@@ -112,7 +115,15 @@ header {
   font-size: 32px;
   line-height: 110%;
   letter-spacing: 0.06em;
+ 
+}
+.title-header > a {
+  text-decoration: none;
   color: #f1cdb3;
+}
+.disabled{
+  pointer-events: none; 
+  cursor: default;
 }
 .title-p {
   font-size: 13px;
@@ -356,6 +367,8 @@ h4 {
 }
 .arrow-container:hover {
   background: #fddcc4;
+  width: 52px;
+  height: 52px;
   border: none;
 }
 .pet-cards > .arrow-container:last-child {
@@ -640,39 +653,64 @@ a > img:hover {
   .header_burger {
     display: block;
   }
-  .nav-menu {
+   .nav-menu {
     position: fixed;
-    width: 100vw;
+    width: 320px;
     height: 100%;
     top: 0;
-    left: 0;
-    background: black;
+    right: 0;
+    background: #292929;
     z-index: 10;
-    align-items: flex-start;
     transform: translateX(150%);
-    transition: 0.2s all linear;
+    transition: 0.5s all linear;
+  }
+  .dark-background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(41, 41, 41, 0.6);
+    z-index: 7;
+    top:0;
+    left: 0;
+    transform: translateX(100%);
+    transition: 0.1s all linear;
   }
   .nav-menu_active {
     transform: translateX(0);
   }
+  .dark-background_active{
+    transform: translateX(0);
+  }
   .header-ul > li {
     width: 100%;
-    padding-top: 40px;
-    padding-left: 40px;
+    padding-bottom: 40px;
+    text-align: center;
   }
   .header-ul > li > a {
-    font-size: 42px;
-    line-height: 48px;
+font-size: 32px;
+line-height: 160%;
+color: #CDCDCD;
+  }
+  #header-logo-nav{
+    display: block;
+    position: absolute;
+    top: -15px;
+    left: 20px;
   }
   .header__nav-close {
+    display: block;
     width: 30px;
     height: 20px;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 30px;
+    right: 10px;
     z-index: 11;
   }
-  .header__nav-close-line {
+  .header__nav-animation{
+    transform: rotate(90deg);
+    transition: 0.75s all linear;
+  }
+  /*.header__nav-close-line {
     display: block;
     height: 2px;
     width: 100%;
@@ -685,7 +723,7 @@ a > img:hover {
   }
   .header__nav-close-line:last-child {
     transform: translateY(-50%) rotate(-45deg);
-  }
+  }*/
   .wrapper {
     padding: 0 10px;
   }
@@ -896,4 +934,4 @@ color: #545454;
       .contact-address:last-child{
         padding-top: 30px;
       }
-}
+    }

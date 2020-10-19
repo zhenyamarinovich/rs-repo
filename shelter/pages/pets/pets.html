@@ -11,22 +11,31 @@
     <header>
       <div class="wrapper">
         <div class="content-header">
-          <div class="logo">
-            <h1 class="title-header">
-              <a href="../main/index.html">Cozy House</a>
-            </h1>
+          <div class="logo" id="logo">
+            <h1 class="title-header"><a href="../main/index.html">Cozy House</a></h1>
             <p class="title-p">Shelter for pets in Boston</p>
           </div>
-          <nav class="menu">
-            <ul class="menu-list">
-              <li><a href="#" class="list-li-a js-scroll">About the shelter</a></li>
-              <li><a href="#" class="list-li-a active-link js-scroll">Our pets</a></li>
-              <li><a href="#" class="list-li-a js-scroll">Help the shelter</a></li>
-              <li><a href="#" class="list-li-a menu-list-last js-scroll">Contacts</a></li>
+          <nav class="nav-menu">
+            <ul class="header-ul">
+              <li><a href="index.html">About the shelter</a></li>
+              <li>
+                <a href="../pets/pets.html">Our pets</a>
+              </li>
+              <li><a href="#" class="disabled">Help the shelter</a></li>
+              <li><a href="#" class="disabled">Contacts</a></li>
             </ul>
+            <div class="content-header" id="header-logo-nav">
+              <h1 class="title-header disabled"><a href="#">Cozy House</a></h1>
+              <p class="title-p">Shelter for pets in Boston</p>
+            </div>
+            <!--<div class="header__nav-close">
+              <span class="header__nav-close-line"></span>
+              <span class="header__nav-close-line"></span>
+            </div>-->
             <div class="header__nav-close">
-              <span class="header__nav-close-line"></span>
-              <span class="header__nav-close-line"></span>
+              <span class="burger_line burger_line__first"></span>
+              <span class="burger_line burger_line__second"></span>
+              <span class="burger_line burger_line__third"></span>
             </div>
           </nav>
           <div class="header_burger burger">
@@ -35,6 +44,8 @@
             <span class="burger_line burger_line__third"></span>
           </div>
         </div>
+      
+        <div class ="dark-background"></div>
       </div>
     </header>
     <main>
@@ -197,5 +208,6 @@
         </div>
       </div>
     </footer>
+    <script src="pets.js"></script>
   </body>
 </html>
