@@ -7,10 +7,16 @@ const time = document.querySelector('.time'),
   fullDate = document.querySelector('.full-date'),
   resetButton  = document.querySelector(".resetImg");
 
+  //погода
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
+const city = document.querySelector('.city');
+
 
   let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
   let months=['Января',' Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября','Октября', 'Ноября', 'Декабря'];
-  let numberPicture = [[11,10,9,8,7,6],[17,16,15,14,13,12],[23,22,21,20,19,18],[1,2,3,4,5,24]];
+  let numberPicture = [[0,1,2,3,4,5],[6,7,8,9,10,11],[12,13,14,15,16,17],[18,19,20,21,22,23]];
   for(let i =0; i<numberPicture.length; i++){
     shuffle(numberPicture[i]);
   }
@@ -65,28 +71,32 @@ function addZero(n) {
 
 // Set Background and Greeting
 function setBgGreet() {
-    document.body.style.backgroundImage = "url(assets/images/dayImages/"+ picture[number] +".jpg)";
     let hour = today.getHours();
   if (hour < 12 && hour > 6) {
     // Morning
-    
     greeting.textContent = 'Доброе утро, ';
   } else if (hour < 18 && hour > 12) {
     // Afternoon
+
     greeting.textContent = 'Добрый день, ';
   } else if(hour > 18 && hour < 24) {
     // Evening
-    greeting.textContent = 'Добрый вечер, ';
-    document.body.style.color = 'white';
+    greeting.textContent = 'Добрый Вечер, ';
+    //document.body.style.color = 'white';
   } else {
     greeting.textContent = 'Доброй Ночи, ';
-    document.body.style.color = 'white';
+   // document.body.style.color = 'white';
+  }
+  if(number<6){
+    document.body.style.backgroundImage = "url(assets/images/dayImages/"+ pictures[number+18] +".jpg)";
+  } else {
+    document.body.style.backgroundImage = "url(assets/images/dayImages/"+ pictures[number-6] +".jpg)";
   }
 }
 // Get Name
 function getName() {
   if (localStorage.getItem('name') === null) {
-    name.textContent = '[Enter Name]';
+    name.textContent = '[Ввести имя]';
   } else {
     name.textContent = localStorage.getItem('name');
   }
@@ -111,7 +121,7 @@ function setName(e) {
 // Get Focus
 function getFocus() {
   if (localStorage.getItem('focus') === null) {
-    focus.textContent = '[Enter Focus]';
+    focus.textContent = '[Ввести цель]';
   } else {
     focus.textContent = localStorage.getItem('focus');
   }
@@ -135,7 +145,7 @@ function setFocus(e) {
 
 button.onclick = function(e) {
   if(number === 24){
-    number = 1;
+    number = 0;
   } else {
     number++;
   }
@@ -160,9 +170,29 @@ name.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
+function setCity(event) {
+  if (event.code === 'Enter') {
+    getWeather();
+    city.blur();
+  }
+}
+
+async function getWeather() {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=4ef3e71e8efa4e55502e87818da3fa2e&units=metric`;
+  const res = await fetch(url);
+  const data = await res.json();
+  weatherIcon.className = 'weather-icon owf';
+  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  temperature.textContent = `${data.main.temp}°C`;
+  weatherDescription.textContent = `${data.weather[0].description} скорость ветра: ${data.wind.speed} м/с влажность ${data.main.humidity} %`;
+}
+document.addEventListener('DOMContentLoaded', getWeather);
+city.addEventListener('keypress', setCity);
 // Run
 showTime();
 showDate();
 setBgGreet();
 getName();
 getFocus();
+getWeather()
+
