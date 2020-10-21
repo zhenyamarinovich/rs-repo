@@ -31,7 +31,7 @@ const city = document.querySelector('.city');
     date = today.getDate(),
     month = today.getMonth();
 
-    fullDate.innerHTML = `${days[day]}<span>, <span> ${date} ${months[month]}`;
+    fullDate.innerHTML = `${days[day]}<br>${date} ${months[month]}`;
     setTimeout(showDate, 1000);
     
   }
@@ -97,7 +97,7 @@ function setBgGreet() {
     document.body.style.backgroundImage = "url(assets/images/dayImages/"+ pictures[number-6] +".jpg)";
   }
   button.disabled = true;
-  setTimeout(function() { button.disabled = false }, 1000);
+  setTimeout(function() { button.disabled = false }, 1200);
 }
 // Get Name
 function getName() {
@@ -195,6 +195,11 @@ async function getWeather() {
 }
 document.addEventListener('DOMContentLoaded', getWeather);
 city.addEventListener('keypress', setCity);
+
+
+
+
+
 // Run
 showTime();
 showDate();
