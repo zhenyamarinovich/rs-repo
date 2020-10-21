@@ -3,29 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="owfont-regular.css">
+  <link rel="stylesheet" href="style.css" />
   <title>momentum</title>
 </head>
 <body>
-  <time class="time"></time>
-  <time class="full-date"></time>
-  <h1>
-    <span class="greeting"></span>
-    <span class="name" contenteditable="true"></span>
-  </h1>
-  <h2>Какая у вас цель сегодня?</h2>
-  <h2 class="focus" contenteditable="true"></h2>
-  <div class="button-container">
-    <a class="backgroundImg">Поменять изображение</a>
-    <a class="resetImg">Сбросить фон</a>
-  </div>
+  <div class="main-text">
+    <time class="full-date"></time><br>
+    <time class="time"></time>
 
-  <div class="city" contenteditable="true">Жлобин</div>
-  <i class="weather-icon owf"></i>
-<div class="temperature"></div>
-<div class="weather-description"></div>
+    <h1>
+      <span class="greeting"></span>
+      <span class="name" contenteditable="true"></span>
+    </h1>
+    <h2>Какая у вас цель сегодня? </h2>
+    <h2 class="focus" contenteditable="true"></h2>
+  </div>
+  
+ 
+  <div class="button-container">
+    <h2>Хотите посмотреть все изображения?</h2>
+    <button class="backgroundImg">Следующее</button>
+    <button class="resetImg">Начальное</button>
+  </div>
+  <div class="weather">
+    <div class="city" contenteditable="true">Жлобин</div>
+     <i class="weather-icon owf"></i>
+    <div class="temperature"></div>
+    <div class="weather-description"></div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

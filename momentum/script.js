@@ -6,6 +6,7 @@ const time = document.querySelector('.time'),
   button = document.querySelector(".backgroundImg"),
   fullDate = document.querySelector('.full-date'),
   resetButton  = document.querySelector(".resetImg");
+  mainText = document.querySelector(".main-text");
 
   //погода
 const weatherIcon = document.querySelector('.weather-icon');
@@ -25,14 +26,16 @@ const city = document.querySelector('.city');
   let number = today.getHours();
 
   function showDate() {
+    let today = new Date();
     let day = today.getDay(),
-    number = today.getDate(),
+    date = today.getDate(),
     month = today.getMonth();
-  
-    fullDate.innerHTML = `${days[day]}<span>, <span> ${number} ${months[month]}`;
+
+    fullDate.innerHTML = `${days[day]}<span>, <span> ${date} ${months[month]}`;
     setTimeout(showDate, 1000);
+    
   }
-  
+
 // Options
 //const showAmPm = true;
 //рандомная сортировка
@@ -48,6 +51,7 @@ function shuffle(arr){
 }
 // Show Time
 function showTime() {
+  let today = new Date();
   let hour = today.getHours(),
     min = today.getMinutes(),
     sec = today.getSeconds();
@@ -92,11 +96,13 @@ function setBgGreet() {
   } else {
     document.body.style.backgroundImage = "url(assets/images/dayImages/"+ pictures[number-6] +".jpg)";
   }
+  button.disabled = true;
+  setTimeout(function() { button.disabled = false }, 1000);
 }
 // Get Name
 function getName() {
   if (localStorage.getItem('name') === null) {
-    name.textContent = '[Ввести имя]';
+    name.textContent = ' [Ввести имя]';
   } else {
     name.textContent = localStorage.getItem('name');
   }
@@ -121,7 +127,7 @@ function setName(e) {
 // Get Focus
 function getFocus() {
   if (localStorage.getItem('focus') === null) {
-    focus.textContent = '[Ввести цель]';
+    focus.textContent = ' [Ввести цель]';
   } else {
     focus.textContent = localStorage.getItem('focus');
   }
@@ -144,17 +150,18 @@ function setFocus(e) {
 }
 
 button.onclick = function(e) {
+  //button.disabled = true;
   if(number === 24){
     number = 0;
   } else {
     number++;
   }
- 
+
   setBgGreet();
 }
 
 resetButton.onclick = function(e) {
-  number = today.getHours(); 
+  number = today.getHours();
   setBgGreet();
 }
 
@@ -184,7 +191,7 @@ async function getWeather() {
   weatherIcon.className = 'weather-icon owf';
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   temperature.textContent = `${data.main.temp}°C`;
-  weatherDescription.textContent = `${data.weather[0].description} скорость ветра: ${data.wind.speed} м/с влажность ${data.main.humidity} %`;
+  weatherDescription.textContent = `${data.weather[0].description},скорость ветра: ${data.wind.speed} м/с, влажность ${data.main.humidity} %`;
 }
 document.addEventListener('DOMContentLoaded', getWeather);
 city.addEventListener('keypress', setCity);
