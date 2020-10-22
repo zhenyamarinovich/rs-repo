@@ -14,10 +14,11 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  text-shadow: black 2px 2px 4px;
+  text-shadow: black -1px 1px 2px;
   letter-spacing: 2px;
   transition: background-image 1s ease-in-out;
   width: 100vw;
+  height: 100vh;
   
 }
 
@@ -110,7 +111,8 @@ button:hover {
 }
 
 .text{
-  padding-bottom: 10px;
+  padding-top: 10px;
+  
 }
 .next-img{
   width: 50px;
@@ -124,18 +126,25 @@ p{
 }
 .post-container{
   /*margin: 0  auto;*/
-  background: rgba(1, 217, 255, 0.4);
-  border: 2px solid rgba(0, 0, 0, 0.8);
+  /*background: rgba(1, 217, 255, 0.4);
+  border: 2px solid rgba(0, 0, 0, 0.8);*/
+  
+}
+.text{
+  height: 100px;
+  font-size: 14px;
 }
 .author{
   line-height: 20px;
 }
 .author-block{
   display: flex;
+
   justify-content: space-between;
 }
 .btn-changeText{
   width: 20px;
+  height: 20px;
   background: white;
   height: auto;
 }
@@ -176,6 +185,7 @@ p{
   
   .button-container{
     padding-top: 10px;
+    padding-bottom: 10px;
   }
   button {
     margin: 2px;
@@ -212,5 +222,8 @@ p{
   }
   p{
     width: 260px;
+  }
+  .footer-container{
+    padding: 0 10px;
   }
 }
