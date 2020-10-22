@@ -97,6 +97,7 @@ function setBgGreet() {
   
   if(!check){
     hour=today.getHours();
+    number=today.getHours();
   } else{
     hour = number;
   }
