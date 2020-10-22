@@ -96,8 +96,7 @@ button:hover {
 }
 
 .text{
-  padding-top: 10px;
-  
+  padding-top: 10px; 
 }
 .next-img{
   width: 50px;
@@ -145,70 +144,3 @@ p{
 
 
 
-/*@media (max-width: 830px) {
-  body{
-    font-size: 14px;
-  }
-  .time {
-    font-size: 50px;
-  }
-  .full-date{
-    font-size: 18px;
-  }
-  h1 {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  h2 {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  h3{
-    font-size: 10px;
-  }
-  
-  .button-container{
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  button {
-    margin: 2px;
-  }
-  .temperature {    
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  .weather-description {
-    font-size: 12px;
-
-  }
-  .weather-icon {
-    font-size: 50px;
-  }
-  .weather{
-    margin: 20px 10px 10px auto;
-  }
-}
-
-@media (max-width: 720px) {
-  .footer-container{
-    justify-content: center;
-  }
-}
-@media (max-width: 500px) {
-  .weather{
-    margin: 20px auto 10px;
-  }
-}
-@media (max-width: 410px) {
-  .button-container{
-    padding-bottom: 10px;
-  }
-  p{
-    width: 260px;
-  }
-  .footer-container{
-    padding: 0 10px;
-  }
-}/*
