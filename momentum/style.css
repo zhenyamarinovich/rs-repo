@@ -6,20 +6,18 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  display: flex;
-  flex-direction: column;
-  /*align-items: center;*/
   font-size: 16px;
-  justify-content: center;
   text-align: center;
   background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
   color: white;
   text-shadow: black -1px 1px 2px;
   letter-spacing: 2px;
   transition: background-image 1s ease-in-out;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
 }
 
 .time {
@@ -42,7 +40,6 @@ h2 {
 
 button {
   text-decoration: none;
-  outline: none;
   display: inline-block;
   padding: 8px 26px;
   margin: 10px 5px;
@@ -82,15 +79,18 @@ button:hover {
 .weather-icon {
   font-size: 80px;
   color: white;
+  
 }
 
 .weather {
-  margin: 20px 70px 20px auto;
+  margin: 30px 70px 30px auto;
   backdrop-filter: blur(2px);
+  width: 310px;
 }
 
 .button-container {
   backdrop-filter: blur(2px);  
+  margin-bottom: 20px;
   /*padding-top: 40px;*/
 }
 
@@ -108,6 +108,8 @@ p {
 }
 .post-container {
   backdrop-filter: blur(2px);
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 5px;
 }
 .text {
   height: 100px;
@@ -133,93 +135,71 @@ p {
   width: 100%;
   height: 180px;
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   padding: 0 70px;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 .main-text{
   margin-bottom:20px ;
 }
 
 
-@media (max-width: 870px) {
+@media (max-width: 905px) {
   .footer-container{
     justify-content: center;
     margin-top: 52px;
     margin-bottom: 50px;
   }
   .post-container{
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
   .button-container{
-    margin-left: 10px;
-    /*padding-bottom: 20px;*/
-  }
-}
-@media (max-width: 830px) {
-  .button-container{
-    /*padding-top: 10px;
-    padding-bottom: 10px;*/
-    
+    margin:0 20px;
   }
   button {
     margin: 2px;
   }
+}
+@media (max-width: 830px) {
   .temperature {    
     margin-bottom: 10px;
   }
   .weather{
-    margin: 20px 10px 10px auto;
-  }
-}
-
-
-@media (max-width: 500px) {
-  .weather{
-    margin: 20px auto 10px;
-  }
-  .button-container{
-    /*padding-bottom: 10px;*/
-  }
-  .main-text{
-    margin-bottom:40px;
-  }
-}
-@media (max-width: 410px) {
-  .main-text{
-    margin-bottom:20px;
-  }
-  p{
-    width: 260px;
+    margin: 30px auto 30px;
   }
   .footer-container{
-    padding: 0 10px;
-  }
-}
-@media (max-width: 380px) {
-   body{
-    font-size: 14px;
-  }
-  .time {
-    font-size: 70px;
-  }
-  .full-date{
-    font-size: 30px;
-  }
-  h1 {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  h2 {
-    font-size: 14px;
-    margin-bottom: 16px;
+    padding: 0;
   }
   h3{
     font-size: 14px;
   }
-  button {
-    font-size: 12px;
-  }
+}
+@media (max-width: 380px) {
+  body{
+   font-size: 14px;
+ }
+ .time {
+   font-size: 70px;
+ }
+ .full-date{
+   font-size: 30px;
+ }
+ h1 {
+   padding: 10px;
+   font-size: 16px;
+ }
+ 
+ h2 {
+   font-size: 14px;
+   margin-bottom: 16px;
+ }
+ h3{
+   font-size: 14px;
+ }
+ button {
+   font-size: 12px;
+ }
+
 }
