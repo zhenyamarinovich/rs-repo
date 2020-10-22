@@ -96,8 +96,7 @@ button:hover {
 }
 
 .text{
-  padding-top: 10px;
-  
+  padding-top: 10px; 
 }
 .next-img{
   width: 50px;
@@ -211,4 +210,4 @@ p{
   .footer-container{
     padding: 0 10px;
   }
-}/*
+}*/

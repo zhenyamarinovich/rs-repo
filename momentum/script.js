@@ -237,10 +237,16 @@ async function getWeather() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=4ef3e71e8efa4e55502e87818da3fa2e&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
+  if(data.cod === "404"){
+    weatherDescription.textContent = "Упс, информации о таком городе нету :(";
+    temperature.textContent="";
+    weatherIcon.className = '';
+  } else{
   weatherIcon.className = 'weather-icon owf';
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   temperature.textContent = `${data.main.temp}°C`;
   weatherDescription.textContent = `${data.weather[0].description},скорость ветра: ${data.wind.speed} м/с, влажность ${data.main.humidity} %`;
+  }
 }
 document.addEventListener('DOMContentLoaded', getWeather);
 
