@@ -85,7 +85,7 @@ button:hover {
 }
 
 .weather {
-  margin: 20px 70px 10px auto;
+  margin: 20px 70px 20px auto;
   backdrop-filter: blur(2px);
 }
 
@@ -100,7 +100,6 @@ button:hover {
 .next-img {
   width: 50px;
   height: 50px;
-  background-color: #ffffff;
 }
 
 p {
@@ -138,6 +137,9 @@ p {
   padding: 0 70px;
   justify-content: space-between;
   align-items: center;
+}
+.main-text{
+  margin-bottom:20px ;
 }
 
 
