@@ -40,24 +40,31 @@ h2 {
   margin-bottom: 10px;
 }
 
-
+.name{
+  min-width: 10px;
+}
 
 button {
   text-decoration: none;
   display: inline-block;
   padding: 8px 26px;
   margin: 10px 5px;
-  border-radius: 30px;
   font-size: 16px;
   border: 2px solid black;
   background: white;
   background-size: 200% 200%;
   color: black;
+  transition: 0.4s ease-in-out;
 }
 
 button:hover {
   background:darkgray;
+  transition: background-color 0.5s;
   cursor: pointer;
+}
+button:active {
+  background:rgb(111, 131, 126);
+  transition: background-color 0.5s;
 }
 
 .city {  
@@ -90,6 +97,7 @@ button:hover {
   margin: 30px 70px 30px auto;
   backdrop-filter: blur(2px);
   width: 310px;
+  height: 200px;
 }
 
 .button-container {
@@ -132,7 +140,13 @@ p {
 .btn-changeText {
   width: 20px;
   height: 20px;
-  background: white;
+  opacity: 1;
+  transition: 0.4s ease-in-out;
+}
+.btn-changeText:hover {
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.4s ease-in-out;
 }
 
 .footer-container {

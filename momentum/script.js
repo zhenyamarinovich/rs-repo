@@ -33,6 +33,7 @@ const btnChangeText = document.querySelector('.btn-changeText');
   night = shuffle(night).slice(0,6);
   morning = shuffle(morning).slice(0,6);
   let pictures = morning.concat(day).concat(evening).concat(night);
+  let check = false;
   /*let numberPicture = [[0,1,2,3,4,5],[6,7,8,9,10,11],[12,13,14,15,16,17],[18,19,20,21,22,23]];
   for(let i =0; i<numberPicture.length; i++){
     shuffle(numberPicture[i]);
@@ -91,32 +92,68 @@ function addZero(n) {
 
 // Set Background and Greeting
 function setBgGreet() {
-    let hour = number;
+  let today = new Date();
+  let hour;
+  
+  if(!check){
+    hour=today.getHours();
+  } else{
+    hour = number;
+  }
     
   if (hour < 12 && hour >= 6) {
     // Morning
-    document.body.style.backgroundImage = "url(assets/images/morning/"+ pictures[number-6] +".jpg)";
+    viewBgImage("assets/images/night/"+ pictures[number-6] +".jpg");
+    if(check) {
+      button.disabled = true;
+      setTimeout(function() { button.disabled = false }, 1000);
+    }
     greeting.textContent = 'Доброе утро, ';
   } else if (hour < 18 && hour >= 12) {
     // Afternoon
-    document.body.style.backgroundImage = "url(assets/images/day/"+ pictures[number-6] +".jpg)";
+    viewBgImage("assets/images/night/"+ pictures[number-6] +".jpg");
+    if(check) {
+      button.disabled = true;
+      setTimeout(function() { button.disabled = false }, 1000);
+    }
     greeting.textContent = 'Добрый день, ';
   } else if(hour >= 18 && hour < 24) {
     // Evening
-    document.body.style.backgroundImage = "url(assets/images/evening/"+ pictures[number-6] +".jpg)";
+    viewBgImage("assets/images/night/"+ pictures[number-6] +".jpg");
+    if(check) {
+      button.disabled = true;
+      setTimeout(function() { button.disabled = false }, 1000);
+    }
     greeting.textContent = 'Добрый Вечер, ';
     //document.body.style.color = 'white';
   } else {
-    document.body.style.backgroundImage = "url(assets/images/night/"+ pictures[number+18] +".jpg)";
+    viewBgImage("assets/images/night/"+ pictures[number+18] +".jpg");
+    if(check) {
+      button.disabled = true;
+      setTimeout(function() { button.disabled = false }, 1000);
+    }
     greeting.textContent = 'Доброй Ночи, ';
    // document.body.style.color = 'white';
   }
- /* if(number<6){
-    document.body.style.backgroundImage = "url(assets/images/dayImages/"+ pictures[number+18] +".jpg)";
-  } else {
-    document.body.style.backgroundImage = "url(assets/images/dayImages/"+ pictures[number-6] +".jpg)";
-  }*/
+  if(!check){
+    setTimeout(setBgGreet, 2000);
+  }  
 }
+
+
+
+function viewBgImage(data) {
+  const body = document.querySelector('body');
+  const src = data;
+  const img = document.createElement('img');
+  img.src = src;
+  img.onload = () => {      
+    body.style.backgroundImage = `url(${src})`;
+  }; 
+}
+
+
+
 // Get Name
 function getName() {
   if (localStorage.getItem('name') === null) {
@@ -131,7 +168,9 @@ function setName(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
+      if(e.target.innerText !== ""){
       localStorage.setItem('name', e.target.innerText);
+      }
       name.blur();
     }
   } else {
@@ -156,7 +195,9 @@ function setFocus(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
+      if(e.target.innerText !== ""){
       localStorage.setItem('focus', e.target.innerText);
+      }
       focus.blur();
     }
   } else {
@@ -169,15 +210,13 @@ function setFocus(e) {
 
 button.onclick = function(e) {
   //button.disabled = true;
+  check=true;
   if(number === 23){
     number = 0;
   } else {
     number++;
   }
-  button.disabled = true;
   setBgGreet();
-  setTimeout(function() { button.disabled = false }, 1000);
-  
 }
 
 resetButton.onclick = function(e) {
@@ -219,7 +258,9 @@ function setCity(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
+      if(e.target.innerText !== ""){
       localStorage.setItem('city', e.target.innerText);
+      }
       city.blur();
     }
   } else {
