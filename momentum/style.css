@@ -146,6 +146,7 @@ p {
   .footer-container{
     justify-content: center;
     margin-top: 52px;
+    margin-bottom: 50px;
   }
   .post-container{
     margin-top: 20px;
