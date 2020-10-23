@@ -681,6 +681,10 @@ a > img:hover {
   .dark-background_active{
     transform: translateX(0);
   }
+  .header-ul{
+    position: absolute;
+    top: 248px;
+  }
   .header-ul > li {
     width: 100%;
     padding-bottom: 40px;
@@ -690,20 +694,21 @@ a > img:hover {
 font-size: 32px;
 line-height: 160%;
 color: #CDCDCD;
+margin-left: 0;
   }
   #header-logo-nav{
     display: block;
     position: absolute;
-    top: -15px;
-    left: 20px;
+    top: 0;
+    left: 8px;
   }
   .header__nav-close {
     display: block;
     width: 30px;
     height: 20px;
     position: absolute;
-    top: 30px;
-    right: 10px;
+    top: 48px;
+    right: 54px;
     z-index: 11;
   }
   .header__nav-animation{
