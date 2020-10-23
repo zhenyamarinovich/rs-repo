@@ -104,36 +104,42 @@ function setBgGreet() {
     
   if (hour < 12 && hour >= 6) {
     // Morning
-    viewBgImage("assets/images/night/"+ pictures[number-6] +".jpg");
+    viewBgImage("assets/images/morning/"+ pictures[number-6] +".jpg");
     if(check) {
       button.disabled = true;
       setTimeout(function() { button.disabled = false }, 1000);
+    } else {
+      greeting.textContent = 'Доброе утро, ';
     }
-    greeting.textContent = 'Доброе утро, ';
   } else if (hour < 18 && hour >= 12) {
     // Afternoon
-    viewBgImage("assets/images/night/"+ pictures[number-6] +".jpg");
+    viewBgImage("assets/images/day/"+ pictures[number-6] +".jpg");
     if(check) {
       button.disabled = true;
       setTimeout(function() { button.disabled = false }, 1000);
-    }
-    greeting.textContent = 'Добрый день, ';
+    } else {
+      greeting.textContent = 'Добрый день, ';
+    } 
   } else if(hour >= 18 && hour < 24) {
     // Evening
-    viewBgImage("assets/images/night/"+ pictures[number-6] +".jpg");
+    viewBgImage("assets/images/evening/"+ pictures[number-6] +".jpg");
     if(check) {
       button.disabled = true;
       setTimeout(function() { button.disabled = false }, 1000);
+    } else{
+      greeting.textContent = 'Добрый Вечер, ';
     }
-    greeting.textContent = 'Добрый Вечер, ';
+    
     //document.body.style.color = 'white';
   } else {
     viewBgImage("assets/images/night/"+ pictures[number+18] +".jpg");
     if(check) {
       button.disabled = true;
       setTimeout(function() { button.disabled = false }, 1000);
+    } else {
+      greeting.textContent = 'Доброй Ночи, ';
     }
-    greeting.textContent = 'Доброй Ночи, ';
+   
    // document.body.style.color = 'white';
   }
   if(!check){
