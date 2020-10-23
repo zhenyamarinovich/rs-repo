@@ -284,6 +284,19 @@ h3 {
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   cursor: pointer;
 }
+/*.animationCard{
+  animation:change-card 4s ease infinite;
+}
+@keyframes change-card {
+0%{
+  background-color: black;
+  opacity: 0;
+}
+100%{
+  background-color:white;
+  opacity: 1;
+}
+}*/
 
 .last-card {
   margin-right: 0px;
@@ -819,6 +832,7 @@ color: #545454;
     width: 270px;
     margin-bottom: 20px;
   }
+
 
   .arrow-container {
     order: 1;
