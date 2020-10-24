@@ -5,6 +5,10 @@ const menuCloseItem = document.querySelector(".header__nav-close");
 const burgerItem = document.querySelector(".burger");
 const body =document.querySelector('body');
 const buttonsSlider = document.querySelectorAll('.arrow-container');
+const modal = document.getElementById("pet-model");
+const firstCard = document.querySelector(".first-card");
+const closeModal = document.querySelector(".close-model");
+
 const petsArray = [
   {
     "name": "Jennifer",
@@ -100,25 +104,29 @@ buttonsSlider[0].addEventListener("click", getNewCards);
 buttonsSlider[1].addEventListener("click", getNewCards);
 
 function getNewCards(){
-  let cardsArray = document.querySelectorAll('.card');
-  let newPets = [];
-  let nameArray = [];
-  cardsArray.forEach(element => {
-    nameArray.push(element.children[1].innerHTML);
-  });
-  shuffle(petsArray);
-  for(let i=0; i<petsArray.length; i++){
-    if(!nameArray.includes(petsArray[i].name)){
-      newPets.push(petsArray[i]);
-      if(newPets.length === 3){
-        break;
-      }
-    } 
-  }
-  for(let i=0; i< cardsArray.length; i++){
-    //cardsArray[i].classList.add("animationCard");
-    cardsArray[i].children[1].innerHTML =  newPets[i].name;
-    cardsArray[i].children[0].outerHTML = `<img src="${newPets[i].img}" alt="${newPets[i].name}">`;
+  let cardsArrayActive = document.querySelectorAll('.active');
+  let cardsArrayUnactive = document.querySelectorAll('.unactive');
+
+  let massPosition = [0,1,2,3,4];
+  shuffle(massPosition);
+  for(let i=0; i< cardsArrayActive.length; i++){
+    cardsArrayActive[i].classList.add("unactive");
+    if(cardsArrayActive[i].className === "card first-card active unactive"){
+      cardsArrayActive[i].classList.remove("first-card");
+      cardsArrayUnactive[massPosition[i]].classList.add("first-card");
+    } else if(cardsArrayActive[i].className === "card second-card active unactive") {
+      cardsArrayActive[i].classList.remove("second-card");
+      cardsArrayUnactive[massPosition[i]].classList.add("second-card");
+    } else {
+      cardsArrayActive[i].classList.remove("last-card");
+      cardsArrayUnactive[massPosition[i]].classList.add("last-card");
+    }
+   
+    cardsArrayActive[i].classList.remove("active");
+    cardsArrayUnactive[massPosition[i]].classList.remove("unactive");
+    cardsArrayUnactive[massPosition[i]].classList.add("active");
+   
+    //cardsArray[i].children[0].outerHTML = `<img src="${newPets[i].img}" alt="${newPets[i].name}">`;
    //cardsArray[i].classList.remove("animationCard");
   }
 }
@@ -134,6 +142,8 @@ function shuffle(arr){
 	}
 	return arr;
 }
+
+
 
 (function () {
   burgerItem.addEventListener("click", () => {
@@ -160,3 +170,16 @@ function removeInfo(){
   menuCloseItem.classList.remove("header__nav-animation");
 }
 
+firstCard.onclick = function() {
+  modal.style.display = "flex";
+}
+
+closeModal.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event){
+  if (event.target == modal){
+    modal.style.display="none";
+  }
+}

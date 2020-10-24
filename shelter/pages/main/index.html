@@ -9,6 +9,7 @@
     <title>Shelter</title>
   </head>
   <body>
+  
     <header>
       <div class="wrapper">
         <div class="content-header">
@@ -29,10 +30,7 @@
               <h1 class="title-header disabled"><a href="#">Cozy House</a></h1>
               <p class="title-p">Shelter for pets in Boston</p>
             </div>
-            <!--<div class="header__nav-close">
-              <span class="header__nav-close-line"></span>
-              <span class="header__nav-close-line"></span>
-            </div>-->
+         
             <div class="header__nav-close">
               <span class="burger_line burger_line__first"></span>
               <span class="burger_line burger_line__second"></span>
@@ -96,6 +94,7 @@
     </section>
 
     <main>
+    
       <section class="pets" id="pets">
         <div class="wrapper">
           <div class="pets-title">
@@ -104,21 +103,25 @@
               are looking for a house
             </h3>
           </div>
+
           <div class="pet-cards">
-            <div class="arrow-container">
+            <div class="arrow-container left-arrow">
               <a class="arrow">&#8592;</a>
             </div>
+
+
             <div class="card-container">
-              <div class="card">
+
+              <div class="card first-card active">
                 <img
                 src="../../assets/images/pets-katrine-min.png"
                 alt="Katrine-cat"
               />
               <h4>Katrine</h4>
               <a href="#" class="learn-button">Learn more</a>
-              </div>
+              
             </div>
-            <div class="card second-card">
+            <div class="card second-card active">
               <img
                 src="../../assets/images/pets-jennifer-min.png"
                 alt="Jennifer-dog"
@@ -126,7 +129,8 @@
               <h4>Jennifer</h4>
               <a href="#" class="learn-button">Learn more</a>
             </div>
-            <div class="card last-card">
+
+            <div class="card last-card active">
               <img
                 src="../../assets/images/pets-woody-min.png"
                 alt="Woody-dog"
@@ -134,7 +138,48 @@
               <h4>Woody</h4>
               <a href="#" class="learn-button">Learn more</a>
             </div>
-            <div class="arrow-container">
+
+            <div class="card unactive">
+              <img
+              src="../../assets/images/pets-sophia-min.jpg"
+              alt="Sophia"
+              />
+              <h4>Sophia</h4>
+              <a href="#" class="learn-button">Learn more</a>
+            </div>
+            <div class="card unactive">
+              <img src="../../assets/images/pets-timmy-min.png" alt="Timmy" />
+              <h4>Timmy</h4>
+              <a href="#" class="learn-button">Learn more</a>
+            </div>
+
+            <div class="card unactive">
+              <img src="../../assets/images/pets-charly-min.jpg" alt="Charly" />
+              <h4>Charly</h4>
+              <a href="#" class="learn-button">Learn more</a>
+            </div>
+
+             <div class="card unactive">
+              <img
+              src="../../assets/images/pets-scarlet-min.png"
+              alt="Scarlett"
+            />
+            <h4>Scarlett</h4>
+              <a href="#" class="learn-button">Learn more</a>
+            </div>
+
+             <div class="card unactive">
+              <img
+              src="../../assets/images/pets-freddie-min.png"
+              alt="Freddie"
+            />
+            <h4>Freddie</h4>
+              <a href="#" class="learn-button">Learn more</a>
+            </div>
+            </div>
+
+          
+            <div class="arrow-container right-arrow">
               <a  class="arrow">&#8594;</a>
             </div>
           </div>
@@ -143,8 +188,44 @@
               >Get to know the rest</a
             >
           </div>
+
+          <div id="pet-model" class="modal">
+            
+            <div class="modal-content">
+              <div class="close-model">&times;</div>
+                <img src="../../assets/images/pets-jennifer-min.png" alt="Jennifer" class="modal-image">
+                <div class="modal-text-block">
+                  <div class="modal-text">
+                    <h3>Jennifer</h3>
+                    <h4>Dog - Labrador</h4>
+                    <p>Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</p>
+                    <ul>
+                      <li>
+                        <h5> age: "2 months"</h5>
+                      </li>
+                      <li>
+                        <h5> age: "2 months"</h5>
+                      </li>
+                      <li>
+                        <h5> age: "2 months"</h5>
+                      </li>
+                      <li>
+                        <h5> age: "2 months"</h5>
+                      </li>
+                
+                    </ul>
+                    
+  
+                  </div>
+                         
+                </div>
+              
+             
+            </div>
+          </div>
         </div>
       </section>
+    
       <section class="help" id="help">
         <div class="wrapper">
           <div class="help-title">
@@ -315,6 +396,7 @@
         </div>
       </div>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>

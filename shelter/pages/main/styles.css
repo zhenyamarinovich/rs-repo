@@ -243,6 +243,8 @@ h3 {
 /*?block Pets*/
 .pets {
   background: #f6f6f6;
+  height: 877px;
+
 }
 .pets-title {
   padding-bottom: 60px;
@@ -250,7 +252,7 @@ h3 {
   text-align: center;
 }
 .pet-cards {
-  display: -webkit-box;
+  /*display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -260,15 +262,30 @@ h3 {
   justify-content: space-between;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
+  align-items: center;*/
   margin-bottom: 60px;
+  position: relative;
+  height: 435px;
+  overflow: hidden;
+}
+.left-arrow{
+  position: absolute;
+  top: 192px;
+  left:0;
+}
+.right-arrow{
+  position: absolute;
+  top: 192px;
+  right:0;
 }
 .card {
   height: 435px;
   width: 270px;
-  margin-right: 90px;
+  /*margin-right: 90px;*/
   background: #fafafa;
   border-radius: 9px;
+  position: absolute;
+  top:0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -277,6 +294,26 @@ h3 {
   -ms-flex-direction: column;
   flex-direction: column;
   align-items: center;
+
+}
+.first-card {
+  left:105px;
+}
+.second-card {
+  right:465px;
+}
+.last-card {
+  margin-right: 0px;
+  left:825px;
+}
+.active{
+  display: flex;
+  transform: translate(0);
+  transition: 1.5s all ease;
+}
+.unactive{
+  /*display: none;*/
+  transform: translate(100vw);
 }
 .card:hover {
   background: #ffffff;
@@ -298,9 +335,7 @@ h3 {
 }
 }*/
 
-.last-card {
-  margin-right: 0px;
-}
+
 .pets-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -361,7 +396,7 @@ h4 {
 .arrow-container {
   border: 2px solid #f1cdb3;
   border-radius: 100px;
-  margin-right: 53px;
+  /*margin-right: 53px;*/
   width: 48px;
   height: 48px;
   display: -webkit-box;
@@ -385,12 +420,73 @@ h4 {
   border: none;
 }
 .pet-cards > .arrow-container:last-child {
-  margin-left: 53px;
-  margin-right: 0px;
+  /*margin-left: 53px;
+  margin-right: 0px;*/
 }
 .rest-button {
   width: 262px;
   height: 52px;
+}
+
+
+.modal{
+  display: none;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background:rgba(41, 41, 41, 0.6);
+}
+
+.modal-content {
+  background: #FAFAFA;
+border-radius: 9px;
+margin-top: 104px;
+width: 900px;
+height: 500px;
+display: flex;
+}
+.modal-image{
+  width: 500px;
+  height: 500px;
+}
+.modal-text-block{
+  width: 400px;
+  height: 500px;
+}
+.modal-text{
+  margin-left: 30px;
+  margin-top:50px;
+}
+.modal-text > p{
+  padding: 40px 20px 40px 0;
+  width: 350px;
+}
+.modal-text > ul {
+ margin-left: 18px;
+  list-style-type: circle;
+  color: black
+}
+.close-model{
+  color: black;
+  font-size: 28px;
+  font-weight: bold;
+  width: 50px;
+  height: 48px;
+  position: relative;
+  top: -48px;
+  left: 893px;
+  border: 2px solid #F1CDB3;
+  border-radius: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /*?END block Pets*/
 
@@ -616,7 +712,12 @@ a > img:hover {
     display: none;
   }
   .second-card {
-    margin: 0;
+    
+    right:94px;
+    
+  }
+  .first-card{
+    left: 94px;
   }
   .arrow-container {
     margin-right: 0;
@@ -630,6 +731,10 @@ a > img:hover {
   }
   .second-card{
     margin-right: 0;
+    right: 64px;
+  }
+  .first-card{
+    left: 64px;
   }
   .offer{
     width: 170px;
@@ -782,7 +887,7 @@ margin-left: 0;
     padding-top: 90px;
   }
   .about-info{
-    margin: 42px 0;.
+    margin: 42px 0;
   }
   .about-info >h3 {
     width: 250px;
@@ -801,17 +906,31 @@ margin-left: 0;
     height: 353.6px;
     margin-bottom: 42.5px;
   }
+  .pets{
+    height: auto;
+  }
   .pets-title{
     padding: 42px 0;
   }
   .second-card{
     display: none;
   }
-  .card{
+  .first-card{
+    left: 0px;
+  }
+  .left-arrow {
+    left:43px;
+    top: 455px;
+  }
+  .right-arrow {
+    right:43px;
+    top: 455px;
+  }
+  /*.card{
     order: 0;
     margin: 0 auto;
     width: 100%;
-  }
+  }*/
   .card > h4 {
     font-family: Georgia;
 font-size: 20px;
@@ -820,24 +939,26 @@ letter-spacing: 0.06em;
 color: #545454;
   }
   .pet-cards{
-    justify-content: center;
-    margin-bottom: 42px;
-  }
-  .card-container{
+    margin: 0 auto 42px;
+    height: 507px;
+    width: 270px;
+
+  } 
+  /*.card-container{
     width: 100%;
     display: flex;
     justify-content: center;
-  }
+  }*/
   .card{
-    width: 270px;
-    margin-bottom: 20px;
+    /*width: 270px;*/
+    /*margin-bottom: 20px;*/
   }
 
 
-  .arrow-container {
+  /*.arrow-container {
     order: 1;
     margin-right: 80px;
-  }
+  }*/
 
   .pets-button {
     padding-bottom: 42px;
