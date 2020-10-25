@@ -451,10 +451,10 @@ margin-top: 104px;
 width: 900px;
 height: 500px;
 display: flex;
+position: relative;
 }
 .modal-image{
   width: 500px;
-  height: 500px;
 }
 .modal-text-block{
   width: 400px;
@@ -470,24 +470,32 @@ display: flex;
 }
 .modal-text > ul {
  margin-left: 18px;
-  list-style-type: circle;
-  color: black
+  list-style-type: disc;
+  color: #F1CDB3;
+}
+.modal-li-title{
+  color: black;
+  font-weight: 700;
+}
+.modal-title, .modal-subtitle{
+  color: black;
 }
 .close-model{
-  color: black;
-  font-size: 28px;
-  font-weight: bold;
-  width: 50px;
+  width: 48px;
   height: 48px;
-  position: relative;
+  position: absolute;
   top: -48px;
   left: 893px;
   border: 2px solid #F1CDB3;
-  border-radius: 75%;
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.close-model:hover{
+  background-color: #F1CDB3;
+}
+
 /*?END block Pets*/
 
 /*?block Help*/
@@ -736,6 +744,35 @@ a > img:hover {
   .first-card{
     left: 64px;
   }
+  .modal-content {
+  width: 630px;
+  height: 350px;
+  }
+  .modal-image{
+    width: 350px;
+    height: 350px;
+  }
+  .modal-text-block{
+    width: 280px;
+    height: 350px;
+  }
+  .modal-text{
+    margin-left: 11px;
+    margin-top:10px;
+  }
+  .modal-text > p{
+    padding: 20px 9px 20px 0;
+    width: 260px;
+  }
+  .modal-text > ul{
+    margin-bottom: 38px;
+  }
+  .modal-text > ul>li > h5{
+    margin-bottom: 6px;
+  }
+  .close-model{
+    left: 613px;
+  }
   .offer{
     width: 170px;
     margin: 0 30px 55px 30px;
@@ -959,6 +996,35 @@ color: #545454;
     order: 1;
     margin-right: 80px;
   }*/
+
+  .modal-content {
+    width: 240px;
+    height: 341px;
+    }
+    .modal-image{
+      display: none;
+    }
+    .modal-text-block{
+      width: 240px;
+    height: 341px;
+    }
+    .modal-text{
+      margin:10px;
+    }
+    .modal-text > p{
+      padding: 20px 0 20px;
+      width: 220px;
+    }
+    .modal-text > ul>li > h5{
+      margin-bottom: 0;
+    }
+    .modal-subtitle{
+      width: 230px;
+      text-align: center;
+    }
+    .close-model{
+      left: 233px;
+    }
 
   .pets-button {
     padding-bottom: 42px;
