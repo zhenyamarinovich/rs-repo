@@ -60,12 +60,12 @@ button {
 
 button:hover {
   background:darkgray;
-  transition: background-color 1s ease-in-out;
+  transition: all 1s ease;
   cursor: pointer;
 }
 button:active {
   background:green;
-  transition: background-color 0.5s;
+  transition: all 0.5s ease;
 }
 
 .city {  
@@ -147,7 +147,11 @@ p {
 .btn-changeText:hover {
   cursor: pointer;
   opacity: 0.2;
-  transition: 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.btn-changeText:active {
+  opacity: 1;
+  transition: all 1s ease-in-out;
 }
 
 .footer-container {
