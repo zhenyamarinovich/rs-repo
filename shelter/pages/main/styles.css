@@ -109,6 +109,9 @@ header {
   color: #fafafa;
   border-bottom: 3px solid #f1cdb3;
 }
+#active-href:hover {
+  border: none;
+}
 .title-header {
   font-family: Georgia;
   margin-bottom: 10px;
@@ -318,7 +321,7 @@ h3 {
 .card:hover {
   background: #ffffff;
   -webkit-box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.1);
   cursor: pointer;
 }
 /*.animationCard{
