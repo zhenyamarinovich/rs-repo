@@ -264,7 +264,10 @@ firstPage.onclick= function() {
 }
 
 window.onresize = function( event ) {
-  getCardOnPage(pageNumber );
+  const screenWidth = window.screen.width;
+  if(screenWidth > 767){
+      getCardOnPage(pageNumber );
+  }
 };
 
 //рандомная сортировка
