@@ -264,7 +264,7 @@ firstPage.onclick= function() {
 }
 
 window.onresize = function( event ) {
-  getCardOnPage(pageNumber);
+  getCardOnPage(pageNumber );
 };
 
 //рандомная сортировка
