@@ -131,6 +131,11 @@ header {
 }
 .card {
   background: #FAFAFA;
+  opacity:1;
+  transition: opacity 1s; 
+}
+.fadeOut {
+  opacity:0;
 }
 .card > img {
   height: 270px;
@@ -237,6 +242,93 @@ button:hover {
 .next_page-card {
   border: 2px solid #f1cdb3;
 }
+
+.modal{
+  display: none;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background:rgba(41, 41, 41, 0.6);
+}
+
+.modal-content {
+  background: #FAFAFA;
+border-radius: 9px;
+margin-top: 104px;
+width: 900px;
+height: 500px;
+display: flex;
+position: relative;
+font-family: Georgia;
+}
+.modal-image{
+  width: 500px;
+}
+.modal-text-block{
+  width: 400px;
+  height: 500px;
+}
+.modal-text{
+  margin-left: 30px;
+  margin-top:50px;
+  font-size: 15px;
+}
+.modal-text > p{
+  padding: 40px 20px 40px 0;
+  width: 350px;
+}
+.modal-text > ul {
+ margin-left: 18px;
+  list-style-type: disc;
+  color: #F1CDB3;
+}
+.modal-text > ul > li {
+  padding-bottom: 10px;
+}
+.modal-li-title{
+  color: black;
+  font-weight: 700;
+}
+.modal-title{
+  font-size: 35px;
+line-height: 130%;
+letter-spacing: 0.06em;
+color: #000000;
+}
+.modal-subtitle{
+  padding-top: 10px;
+  padding-bottom: 0;
+  color: #000000;
+}
+.modal-title, .modal-subtitle{
+  color: black;
+}
+.modal-li-text{
+  color:black;
+}
+.close-model{
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: -48px;
+  left: 893px;
+  border: 2px solid #F1CDB3;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.close-model:hover{
+  background-color: #F1CDB3;
+}
+
 /*End Pets Section*/
 /*? Footer */
 footer {
@@ -308,6 +400,38 @@ a > img:hover {
     grid-template-columns: repeat(3, 270px);
     padding-bottom: 41px;
   }
+  .modal-content {
+    width: 630px;
+    height: 375px;
+    }
+    .modal-image{
+      width: 350px;
+      height: 375px;
+    }
+    .modal-text-block{
+      width: 280px;
+      height: 375px;
+    }
+    .modal-text{
+      margin-left: 11px;
+      margin-top:10px;
+    }
+    .modal-text > p{
+      font-size: 13px;
+      padding: 20px 9px 20px 0;
+      line-height: 110%;
+  letter-spacing: 0.06em;
+      width: 260px;
+    }
+    .modal-text > ul{
+      margin-bottom: 38px;
+    }
+    .modal-text > ul>li > h5{
+      margin-bottom: 6px;
+    }
+    .close-model{
+      left: 613px;
+    }
   .footer-container {
     justify-content: space-evenly;
   }
@@ -433,6 +557,52 @@ margin-left: 0;
   .pet-cards{
     padding-bottom: 42px;
   }
+  .modal-content {
+    width: 240px;
+    height: 381px;
+    }
+    .modal-image{
+      display: none;
+    }
+    .modal-text-block{
+      /*width: 240px;*/
+    /*height: 361px;*/
+    }
+    .modal-title{
+      font-size: 35px;
+      line-height: 130%;
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+    .modal-text{
+      margin:10px;
+    }
+    .modal-text > p{
+      padding: 20px 0 20px;
+      width: 220px;
+    }
+    .modal-text > ul>li > h5{
+      margin-bottom: 0;
+    }
+    .modal-text > ul > li{
+      padding-bottom: 0;
+    }
+    .modal-subtitle{
+      /*width: 230px;*/
+      text-align: center;
+      font-size: 18px;
+      line-height: 115%;
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: center;
+    }
+    .modal-li-text{
+      font-size: 15px;
+    }
+    .close-model{
+      left: 233px;
+    }
+
   .switch {
     margin-right: 10px;
   }

@@ -452,6 +452,7 @@ width: 900px;
 height: 500px;
 display: flex;
 position: relative;
+font-family: Georgia;
 }
 .modal-image{
   width: 500px;
@@ -479,6 +480,9 @@ position: relative;
 }
 .modal-title, .modal-subtitle{
   color: black;
+}
+.modal-li-text{
+  color:black;
 }
 .close-model{
   width: 48px;
@@ -761,7 +765,10 @@ a > img:hover {
     margin-top:10px;
   }
   .modal-text > p{
+    font-size: 13px;
     padding: 20px 9px 20px 0;
+    line-height: 110%;
+letter-spacing: 0.06em;
     width: 260px;
   }
   .modal-text > ul{
@@ -999,14 +1006,19 @@ color: #545454;
 
   .modal-content {
     width: 240px;
-    height: 341px;
+    height: 381px;
     }
     .modal-image{
       display: none;
     }
     .modal-text-block{
-      width: 240px;
-    height: 341px;
+      /*width: 240px;*/
+    /*height: 361px;*/
+    }
+    .modal-title{
+      font-size: 35px;
+      line-height: 130%;
+      letter-spacing: 0.06em;
     }
     .modal-text{
       margin:10px;
@@ -1019,8 +1031,16 @@ color: #545454;
       margin-bottom: 0;
     }
     .modal-subtitle{
-      width: 230px;
+      /*width: 230px;*/
       text-align: center;
+      font-size: 18px;
+      line-height: 115%;
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: center;
+    }
+    .modal-li-text{
+      font-size: 15px;
     }
     .close-model{
       left: 233px;
