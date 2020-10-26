@@ -58,9 +58,9 @@
             </h2>
           </div>
           <div class="pet-cards">
-            <div class="card">
+            <div class="card ">
               <img
-                src="../../assets/images/pets-katrine (1)-min.png"
+                src="../../assets/images/pets-katrine-min.png"
                 alt="Katrine"
               />
               <h4>Katrine</h4>
@@ -71,9 +71,9 @@
             <div class="card">
               <img
                 src="../../assets/images/pets-jennifer-min.png"
-                alt="Jannifer"
+                alt="Jennifer"
               />
-              <h4>Jannifer</h4>
+              <h4>Jennifer</h4>
               <button>
                 <a href="#" class="learn-button">Learn more</a>
               </button>
@@ -87,7 +87,7 @@
             </div>
             <div class="card last-card-320">
               <img
-                src="../../assets/images/pets-katrine-min.jpg"
+                src="../../assets/images/pets-sophia-min.jpg"
                 alt="Sophia"
               />
               <h4>Sophia</h4>
@@ -121,7 +121,7 @@
             </div>
             <div class="card last-card">
               <img
-                src="../../assets/images/pets-katrine-min.png"
+                src="../../assets/images/pets-freddie-min.png"
                 alt="Freddie"
               />
               <h4>Freddie</h4>
@@ -131,11 +131,42 @@
             </div>
           </div>
           <div class="navigation-cards">
-            <div class="inactive_page-card switch" disabled><a href="#"><<</a></div>
-            <div class="inactive_page-card switch" disabled><a href="#"><</a></div>
-            <div class="active_page-card switch"><a href="#">1</a></div>
-            <div class="next_page-card switch"><a href="#">></a></div>
-            <div class="next_page-card switch"><a href="#">>></a></div>
+            <div class="next_page-card switch first-page" disabled><a><<</a></div>
+            <div class="next_page-card switch prev-page" disabled><a><</a></div>
+            <div class="active_page-card switch"><a href="">1</a></div>
+            <div class="next_page-card switch next-page"><a>></a></div>
+            <div class="next_page-card switch last-page"><a>>></a></div>
+          </div>
+        </div>
+
+        <div id="pet-model" class="modal">
+           
+          <div class="modal-content">
+            <div class="close-model"><img src="../../assets/images/close-modal.png" alt="close-modal"></div>
+              <img src="../../assets/images/pets-jennifer-min.png" alt="Jennifer" class="modal-image">
+             
+              <div class="modal-text-block">
+                <div class="modal-text">
+                  <h3 class="modal-title"></h3>
+                  <h4 class="modal-subtitle" id="modal-subtitle"></h4>
+                  <p class="modal-description"></p>
+                  <ul>
+                    <li>
+                      <h5><span class="modal-li-title">Age:</span><span class="age modal-li-text"></span></h5>
+                    </li>
+                    <li>
+                      <h5><span class="modal-li-title">Inoculations:</span><span class="inoculations modal-li-text"></span></h5>
+                    </li>
+                    <li>
+                      <h5><span class="modal-li-title">Diseases:</span> <span class="diseases modal-li-text"></span></h5>
+                    </li>
+                    <li>
+                      <h5><span class="modal-li-title">Parasites:</span><span class="parasites modal-li-text"></span></h5>
+                    </li>
+              
+                  </ul>                 
+                </div>        
+              </div>            
           </div>
         </div>
       </section>
