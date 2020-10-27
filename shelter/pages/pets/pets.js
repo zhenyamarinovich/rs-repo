@@ -324,16 +324,19 @@ cards.forEach(card => {
       }
     }
     modal.style.display = "flex";
+    document.querySelector('body').style.overflow = "hidden";
   })
 })
   
 closeModal.onclick = function() {
   modal.style.display = "none";
+  document.querySelector('body').style.overflow = "auto";
 }
 
 window.onclick = function(event){
   if (event.target == modal){
     modal.style.display="none";
+    document.querySelector('body').style.overflow = "auto";
   }
 }
 
