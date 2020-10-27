@@ -112,11 +112,40 @@ let countPage1280 = 8;
 let countPageMaxWidth = 6;
 
 
+const sortForSix = (mass) => {
+  let length = mass.length;
+
+  for(let i=0; i< (length/6); i++){
+    const stepList = mass.slice(i*6, (i*6)+6);
+  
+  for(let j=0; j<6; j++){
+    const duplicatedItem = stepList.find((item,ind) => {
+      return item.name === stepList[j].name && (ind != j);
+    });
+
+    if(duplicatedItem !== undefined){
+      const ind = (i*6)+j;
+      const whichOfList = Math.trunc(ind/8);
+
+      mass.splice(whichOfList*8, 0, mass.splice(ind,1)[0]);
+      i-=2;
+      break;
+    }
+  }
+}
+  
+  return mass;
+}
+
 for(let i=0; i< 6; i++){
  paginationArray.push(shuffle(petsArray.slice(0)));
 }
-let pageArray = paginationArray.flat();
-console.log(pageArray);
+let pageArray = sortForSix(paginationArray.flat());
+
+
+
+
+
 
 
 getCardOnPage(pageNumber);
@@ -235,7 +264,10 @@ firstPage.onclick= function() {
 }
 
 window.onresize = function( event ) {
-  getCardOnPage(pageNumber);
+  const screenWidth = window.screen.width;
+  if(screenWidth > 767){
+      getCardOnPage(pageNumber );
+  }
 };
 
 //рандомная сортировка
