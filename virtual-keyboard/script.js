@@ -102,10 +102,11 @@ const Keyboard = {
 
         case "shift":
           keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
-          keyElement.textContent = key[indexLang].toLowerCase();
+          keyElement.classList.toggle("keyboard__key--active", this.properties.shift);
+          keyElement.textContent = key[0].toLowerCase();
           keyElement.addEventListener("click", () => {
             this._toggleShift();
-            keyElement.classList.toggle("keyboard__key--active", this.properties.shift);
+            
           });
 
           break;
@@ -224,7 +225,7 @@ const Keyboard = {
     document.querySelector(".keyboard__keys").innerHTML = "";
     this.elements.keysContainer.appendChild(this._createKeys());
     this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
-    /*this._toggleCapsLock("shift");*/
+    this._toggleCapsLock("shift");
   },
 
 
