@@ -46,11 +46,12 @@ const Keyboard = {
   _createKeys() {
     let indexLang = this.properties.russianLanguage ? 1 : 0;
     const fragment = document.createDocumentFragment();
+    let notLetters = [",",".","/","`",";","'","[","]"]; 
     const keyLayout = [
-      ["`","ё"],["1","!"], ["2","@"], ["3","#"], ["4","$"], ["5","%"], ["6","^"], ["7", "&"], ["8", "*"], ["9", "("], ["0",")"], ["backspace"],
-      ["q","й"], ["w","ц"], ["e","у"], ["r","к"], ["t","е"], ["y","н"], ["u","г"], ["i","ш"], ["o","щ"], ["p","з"],["[","х"], ["]","ъ"],
-      ["caps"], ["a","ф"], ["s","ы"], ["d","в"], ["f","а"], ["g","п"], ["h","р"], ["j","о"], ["k","л"], ["l","д"], [";","ж"], ["''","э"],["enter"],
-      ["shift"], ["z","я"], ["x","ч"], ["c","с"], ["v","м"], ["b","и"], ["n","т"], ["m","ь"], [",","б"], [".","ю"], ["?","."],
+      ["`","ё","~"],["1","!"], ["2","@","\""], ["3","#","№"], ["4","$",";"], ["5","%"], ["6","^",":"], ["7", "&","?"], ["8", "*"], ["9", "("], ["0",")"], ["backspace"],
+      ["q","й"], ["w","ц"], ["e","у"], ["r","к"], ["t","е"], ["y","н"], ["u","г"], ["i","ш"], ["o","щ"], ["p","з"],["[","х","{"], ["]","ъ","}"],
+      ["caps"], ["a","ф"], ["s","ы"], ["d","в"], ["f","а"], ["g","п"], ["h","р"], ["j","о"], ["k","л"], ["l","д"], [";","ж",":"], ["'","э","\""],["enter"],
+      ["shift"], ["z","я"], ["x","ч"], ["c","с"], ["v","м"], ["b","и"], ["n","т"], ["m","ь"], [",","б","<"], [".","ю",">"], ["/",".","?",","],
       ["en","ru"],["space"],["done"]
     ];
     /*const keyLayout = [
@@ -69,7 +70,7 @@ const Keyboard = {
     keyLayout.forEach(key => {
       const keyElement = document.createElement("button");
       //const insertLineBreak = [].indexOf(key) !== -1;
-      const insertLineBreakMass = ["]", "?","backspace", "enter"].indexOf(key[0]) !== -1;
+      const insertLineBreakMass = ["]", "/","backspace", "enter"].indexOf(key[0]) !== -1;
       
 
       // Add attributes/classes
@@ -91,6 +92,10 @@ const Keyboard = {
 
         case "caps":
           keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
+          if(this.properties.capsLock){
+            keyElement.classList.add("keyboard__key--active");
+          }
+         
           keyElement.innerHTML = createIconHTML("keyboard_capslock");
 
           keyElement.addEventListener("click", () => {
@@ -150,6 +155,8 @@ const Keyboard = {
             keyElement.classList.add("keyboard__key--wide");
             keyElement.textContent = key[indexLang].toLowerCase();
             keyElement.addEventListener("click", () => {
+              /*this.properties.shift =  false;
+              this.properties.capsLock = false;*/
               this._toggleLanguage();
               //keyElement.classList.toggle("keyboard__key--active", this.properties.capsLock);
             });
@@ -158,11 +165,19 @@ const Keyboard = {
 
         default:
           let index = indexLang;
-          //чтобы не перезаписывало цифры при смене языка
-          if(indexLang === 1 &&  !isNaN(key[0])){
+          //RU + shift клавиши доп
+          if(this.properties.russianLanguage && (!isNaN(key[0]) || key[length-1] === ",") && this.properties.shift){
+            index = key.length-1;
+          }
+          //проверка клавиш где есть русские буквы, а английских нету
+          else if(!this.properties.russianLanguage && this.properties.shift && notLetters.indexOf(key[0])!=-1){
+            index = 2;
+          }
+          //чтобы не перезаписывало цифры при смене языка RU/EN
+          else if(indexLang === 1 &&  !isNaN(key[0])){
             index = 0;
             //проверка на зажатый shift
-          } else if(this.properties.shift && !isNaN(key[0])){
+          } else if(this.properties.shift && (!isNaN(key[0]) || !key[0].match(/[a-z]/i))){
             index = 1;
           }
           else{
@@ -200,7 +215,7 @@ const Keyboard = {
   },
 
   _toggleCapsLock(nameBtn) {
-    if(nameBtn !== "shift"){
+    if(nameBtn === "caps"){
       this.properties.capsLock = !this.properties.capsLock;
     }
    
@@ -234,6 +249,9 @@ const Keyboard = {
     document.querySelector(".keyboard__keys").innerHTML = "";
     this.elements.keysContainer.appendChild(this._createKeys());
     this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
+    if((this.properties.capsLock && !this.properties.shift) || (!this.properties.capsLock && this.properties.shift)){
+      this._toggleCapsLock();
+    }
   },
 
   open(initialValue, oninput, onclose) {
