@@ -73,6 +73,10 @@ textarea:focus
   width: 12%;
 }
 
+.keyboard__key--shift-wide {
+  width: 14%;
+  max-width: 400px;
+}
 .keyboard__key--extra-wide {
   width: 36%;
   max-width: 500px;
@@ -95,4 +99,18 @@ textarea:focus
 
 .keyboard__key--dark {
   /*background: rgba(0, 0, 0, 0.25);*/
+}
+
+
+@media screen and (max-width: 768px) {
+  .keyboard__key--wide {
+    width: 8%;
+  }
+  
+  .keyboard__key--extra-wide {
+    width: 24%;
+  }
+  .keyboard__key--shift-wide {
+    width: 10%;
+  }
 }
