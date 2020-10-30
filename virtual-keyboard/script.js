@@ -146,30 +146,22 @@ const Keyboard = {
             let position = element.selectionEnd;
             let beginString =  element.value;
 
-            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            //window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const recognition = new SpeechRecognition();
-            recognition.interimResults = true;
+           // recognition.interimResults = true;
             recognition.lang = 'ru-RU';
-            recognition.addEventListener('result', e => {
-              const transcript = Array.from(e.results)
-                .map(result => result[0])
-                .map(result => result.transcript)
-                .join('');
-          
-                if (e.results[0].isFinal) {
-                  this.properties.value += transcript;
-                  this._triggerEvent("oninput");
-                  element.selectionEnd = position - 1;
-                }
-            });
-          
-            recognition.addEventListener('end', recognition.start);
-          
+            
+            recognition.onresult = function(event){
+              //this.properties.value += event.results[0][0].transcript;
+              element.value = event.results[0][0].transcript;
+              this._triggerEvent("oninput");         
+              element.selectionEnd = position - 1;
+            }
             recognition.start();
             beep.play();
-            
+            });
           
-          });
+            
         break;
 
         case "backspace":
