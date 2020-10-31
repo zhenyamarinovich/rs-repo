@@ -169,10 +169,9 @@ const Keyboard = {
                 element.value += " ";
               }
               element.value = beginString.substring(0, position);
-              element.value +=" "+ e.results[0][0].transcript; 
-              
+              element.value +=e.results[0][0].transcript + " "; 
               element.value += beginString.substring(position, length);
-              element.selectionEnd = position + e.results[0][0].transcript.length +1;
+              element.selectionEnd = position + e.results[0][0].transcript.length + 1;
               
             }
 
