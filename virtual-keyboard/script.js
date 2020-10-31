@@ -161,13 +161,19 @@ const Keyboard = {
            if(this.properties.voice){
 
             recognition.onresult = function(e){
+              let length = element.value.length;
+              let position = element.selectionEnd;
+              let beginString =  element.value;
               //this.properties.value += event.results[0][0].transcript;
               if(element.value !== ""){
                 element.value += " ";
               }
-              element.value += e.results[0][0].transcript;     
-              element.selectionEnd = element.value.length;
-              element.selectionEnd =  element.selectionEnd;
+              element.value = beginString.substring(0, position);
+              element.value +=" "+ e.results[0][0].transcript; 
+              
+              element.value += beginString.substring(position, length);
+              element.selectionEnd = position + e.results[0][0].transcript.length +1;
+              
             }
 
             recognition.addEventListener('end', function () {
