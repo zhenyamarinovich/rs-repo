@@ -1,12 +1,23 @@
-
+body{
+  background: url("assets/acground.jpg");
+  /*background-repeat: no-repeat;
+  background-size: cover;*/
+}
+textarea::placeholder {
+  color: white;
+}
 .use-keyboard-input {
   display: block;
-  width: 90%;
-  margin: 30px auto;
+  width: 80%;
+  margin: 15px auto;
   padding: 10px;
   font-size: 20px;
-  height: calc(100vh - 380px);
-  min-height: 300px;
+  /*height: calc(100vh - 500px);*/
+  height: 10vh;
+  min-height: 40vh;
+  background: url("assets/window1.jpg") center;
+  border: 5px solid black;
+  color:white;
   
 }
 textarea:focus
@@ -16,12 +27,13 @@ textarea:focus
 
 .keyboard {
   position: fixed;
-  left: 0;
+  left: 10%;
   bottom: 0;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   padding: 5px 0;
   /*background: #004134;*/
-  background: black;
+  /*background: black;*/
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   user-select: none;
   transition: bottom 0.4s;
@@ -32,19 +44,20 @@ textarea:focus
 }
 
 .keyboard__keys {
-  text-align: center;
+ text-align: center;
 }
 
 .keyboard__key {
   height: 45px;
   width: 6%;
   max-width: 90px;
-  margin: 3px;
+  margin: 2px;
   border-radius: 4px;
   border: none;
   /*background: rgba(255, 255, 255, 0.2);*/
-  background: rgba(255,255, 255, 0.2);
+  background: black;
   color: #ffffff;
+  border: 1px solid white;
   /*color: #000;*/
   font-size: 1.05rem;
   outline: none;
@@ -70,11 +83,28 @@ textarea:focus
 }
 
 .keyboard__key--wide {
-  width: 12%;
+  width: 10%;
+  max-width: 400px;
 }
 
 .keyboard__key--shift-wide {
-  width: 14%;
+  width: 13%;
+  max-width: 400px;
+}
+.keyboard__key--backspace-wide {
+  width: 15%;
+  max-width: 400px;
+}
+.keyboard__key--capslock-wide {
+  width: 7%;
+  max-width: 400px;
+}
+.keyboard__key--voice-wide {
+  width: 7%;
+  max-width: 400px;
+}
+.keyboard__key--done-wide {
+  width: 8%;
   max-width: 400px;
 }
 .keyboard__key--extra-wide {
@@ -89,12 +119,12 @@ textarea:focus
   position: absolute;
   width: 8px;
   height: 8px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
 }
 
 .keyboard__key--active::after {
-  background: #08ff00;
+  background:rgb(1, 255, 14);
 }
 
 .keyboard__key--dark {
@@ -106,11 +136,34 @@ textarea:focus
   .keyboard__key--wide {
     width: 8%;
   }
-  
+  .keyboard__key--done-wide {
+    width: 7%;
+    max-width: 400px;
+  }
   .keyboard__key--extra-wide {
     width: 24%;
   }
   .keyboard__key--shift-wide {
     width: 10%;
+  }
+  .keyboard {
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    background: black;
+  }
+  .keyboard__key {
+    height: 40px;
+  }
+}
+@media screen and (max-height: 497px) {
+  .keyboard {
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    background: black;
+  }
+  .keyboard__key {
+    height: 40px;
   }
 }
