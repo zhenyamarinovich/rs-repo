@@ -1,5 +1,15 @@
-const beep = new Audio();
-beep.src = "assets/click.mp3";
+const buttonVoice = new Audio();
+const buttonTwoVoice = new Audio();
+const shiftVoice = new Audio();
+const enterVoice = new Audio();
+const backspaceVoice = new Audio();
+const capsVoice = new Audio();
+buttonVoice.src = "assets/button2.mp3";
+buttonTwoVoice.src = "assets/click.mp3";
+shiftVoice.src="assets/shift.mp3";
+enterVoice.src="assets/enter.mp3";
+backspaceVoice.src="assets/Backspace.mp3";
+capsVoice.src="assets/caps.mp3";
 
 const Keyboard = {
   elements: {
@@ -19,7 +29,8 @@ const Keyboard = {
     capsLock: false,
     shift: false,
     indexNeedElement: 0,
-    voice: false
+    voice: false,
+    volum: true
   },
   KeysValuesMaps : [
     [192, ['`', '~', 'ё', 'Ё']],
@@ -73,6 +84,7 @@ const Keyboard = {
     [191, ['/', '?', '.', ',']],
     [13, ['enter']],
     [18, ["en","ru"]],
+    [302,["volum"]],
     [32, ['space']],
     [37, ['left-arrow']],
     [39, ['right-arrow']]
@@ -189,8 +201,14 @@ const Keyboard = {
           } else {
             recognition.stop();
           }
+          if(this.properties.volum){
+            if(this.properties.russianLanguage){
+              buttonVoice.play();
+              }else{
+                buttonTwoVoice.play();
+              }
+          }
            
-            beep.play();
             });
           
             
@@ -201,7 +219,9 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("backspace");
 
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+            backspaceVoice.play();
+            }
             let element =  document.querySelector(".use-keyboard-input");
             let length = element.value.length;
             let position = element.selectionEnd;
@@ -214,7 +234,9 @@ const Keyboard = {
 
           document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
             if(key[0] === event.keyCode){
-              beep.play();
+              if(Keyboard.properties.volum){
+              backspaceVoice.play();
+              }
               keyElement.classList.add("keyboard__key--active-button");
             }
           });
@@ -231,7 +253,13 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("keyboard_arrow_left");
 
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+              if(this.properties.russianLanguage){
+              buttonVoice.play();
+              }else{
+                buttonTwoVoice.play();
+              }
+            }
             let element =  document.querySelector(".use-keyboard-input");
             if( element.selectionEnd !== 0){
             element.selectionEnd= element.selectionEnd-1;
@@ -241,7 +269,13 @@ const Keyboard = {
 
           document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
             if(key[0] === event.keyCode){
-              beep.play();
+              if(Keyboard.properties.volum){
+                if(Keyboard.properties.russianLanguage){
+                buttonVoice.play();
+                }else{
+                  buttonTwoVoice.play();
+                }
+              }
               keyElement.classList.add("keyboard__key--active-button");
             }
           });
@@ -258,7 +292,13 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("keyboard_arrow_right");
 
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+              if(this.properties.russianLanguage){
+              buttonVoice.play();
+              }else{
+                buttonTwoVoice.play();
+              }
+            }
             let element =  document.querySelector(".use-keyboard-input");
             element.selectionStart = element.selectionEnd+1;
             this._triggerEvent("oninput");
@@ -266,7 +306,13 @@ const Keyboard = {
 
           document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
             if(key[0] === event.keyCode){
-              beep.play();
+              if(Keyboard.properties.volum){
+              if(Keyboard.properties.russianLanguage){
+                buttonVoice.play();
+                }else{
+                  buttonTwoVoice.play();
+                }
+              }
               keyElement.classList.add("keyboard__key--active-button");
             }
           });
@@ -287,7 +333,9 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("keyboard_capslock");
 
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+            capsVoice.play();
+            }
             this._toggleCapsLock("caps");
             keyElement.classList.toggle("keyboard__key--active", this.properties.capsLock);
           });
@@ -295,7 +343,9 @@ const Keyboard = {
 
           document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
             if(key[0] === event.keyCode){  
-              beep.play();
+              if(Keyboard.properties.volum){
+                capsVoice.play();
+              }
               Keyboard.properties.capsLock = event.getModifierState("CapsLock"); 
               Keyboard._toggleCapsLock();
               keyElement.classList.toggle("keyboard__key--active", Keyboard.properties.capsLock);
@@ -303,12 +353,30 @@ const Keyboard = {
           });
           break;
 
+          case "volum":
+            keyElement.classList.add("keyboard__key--capslock-wide", "keyboard__key--activatable");
+            if(this.properties.volum){
+              keyElement.classList.add("keyboard__key--active");
+            }
+            
+            keyElement.innerHTML = createIconHTML("hearing");
+  
+            keyElement.addEventListener("click", () => {
+              this.properties.volum = ! this.properties.volum
+              keyElement.classList.toggle("keyboard__key--active", this.properties.volum);
+            });
+
+            break;
+  
+
         case "Shift":
           keyElement.classList.add("keyboard__key--shift-wide", "keyboard__key--activatable");
           keyElement.classList.toggle("keyboard__key--active", this.properties.shift);
           keyElement.textContent = key[1][0].toLowerCase();        
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+           shiftVoice.play();
+            }
             this.properties.shift = !this.properties.shift;
             keyElement.classList.toggle("keyboard__key--active", this.properties.shift);
             this._getIndexElement();
@@ -327,7 +395,9 @@ const Keyboard = {
 
           document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
             if(key[0] === event.keyCode && !keyElement.classList.contains("keyboard__key--active")){  
-              beep.play();
+              if(Keyboard.properties.volum){
+                shiftVoice.play();
+              }
               Keyboard.properties.shift = !Keyboard.properties.shift;
               keyElement.classList.toggle("keyboard__key--active", Keyboard.properties.shift);
               Keyboard._getIndexElement();
@@ -370,7 +440,9 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("keyboard_return");
 
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+             enterVoice.play();
+            }
             let element =  document.querySelector(".use-keyboard-input");
             let length = element.value.length;
             let position = element.selectionEnd;
@@ -384,7 +456,9 @@ const Keyboard = {
 
           document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
             if(key[0] === event.keyCode){
-              beep.play();
+              if(Keyboard.properties.volum){
+                enterVoice.play();
+              }
               keyElement.classList.add("keyboard__key--active-button");
             }
           });
@@ -401,7 +475,13 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("space_bar");
 
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+              if(this.properties.russianLanguage){
+                buttonVoice.play();
+                }else{
+                  buttonTwoVoice.play();
+                }
+            }
             let element =  document.querySelector(".use-keyboard-input");
             let length = element.value.length;
             let position = element.selectionEnd;
@@ -415,7 +495,13 @@ const Keyboard = {
 
           document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
             if(key[0] === event.keyCode){
-              beep.play();
+              if(Keyboard.properties.volum){
+                if(Keyboard.properties.russianLanguage){
+                  buttonVoice.play();
+                  }else{
+                    buttonTwoVoice.play();
+                };
+              }
               keyElement.classList.add("keyboard__key--active-button");
             }
           });
@@ -432,7 +518,13 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("check_circle");
 
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+            if(this.properties.russianLanguage){
+              buttonVoice.play();
+              }else{
+                buttonTwoVoice.play();
+              }
+            }
             this.close();
             this._triggerEvent("onclose");
             
@@ -444,7 +536,13 @@ const Keyboard = {
             keyElement.classList.add("keyboard__key--wide");
             keyElement.textContent = key[1][0].toLowerCase();
             keyElement.addEventListener("click", () => {
-              beep.play();
+              if(this.properties.volum){
+              if(this.properties.russianLanguage){
+                buttonVoice.play();
+                }else{
+                  buttonTwoVoice.play();
+                }
+              }
               this.properties.russianLanguage = !this.properties.russianLanguage;
               keyElement.textContent = this.properties.russianLanguage ? key[1][1].toLowerCase() : key[1][0].toLowerCase();
               this._getIndexElement();
@@ -460,7 +558,13 @@ const Keyboard = {
 
             document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
               if(key[0] === event.keyCode && event.getModifierState("Shift")){
-                  beep.play();
+                if(Keyboard.properties.volum){
+                if(Keyboard.properties.russianLanguage){
+                  buttonVoice.play();
+                  }else{
+                    buttonTwoVoice.play();
+                  }
+                }
                   Keyboard.properties.russianLanguage = !Keyboard.properties.russianLanguage;
                   keyElement.textContent = Keyboard.properties.russianLanguage ? key[1][1].toLowerCase() : key[1][0].toLowerCase();
                   Keyboard._getIndexElement();
@@ -480,7 +584,13 @@ const Keyboard = {
         default:
           document.querySelector(".use-keyboard-input").addEventListener('keydown', function(event) {
             if(key[0] === event.keyCode){
-              beep.play();
+              if(Keyboard.properties.volum){
+              if(Keyboard.properties.russianLanguage){
+                buttonVoice.play();
+                }else{
+                  buttonTwoVoice.play();
+                }
+              }
               keyElement.classList.add("keyboard__key--active-button");
             }
           });
@@ -492,7 +602,13 @@ const Keyboard = {
           this._getIndexElement();
           keyElement.textContent = key[1][this.indexNeedElement].toLowerCase();
           keyElement.addEventListener("click", () => {
-            beep.play();
+            if(this.properties.volum){
+            if(this.properties.russianLanguage){
+              buttonVoice.play();
+              }else{
+              buttonTwoVoice.play();
+              }
+            }
             let element =  document.querySelector(".use-keyboard-input");
             let length = element.value.length;
             let position = element.selectionEnd;
@@ -594,6 +710,7 @@ const Keyboard = {
     this.eventHandlers.oninput = oninput;
     this.eventHandlers.onclose = onclose;
     this.elements.main.classList.add("keyboard--hidden");
+    document.querySelector(".use-keyboard-input").blur();
   }
 };
 
