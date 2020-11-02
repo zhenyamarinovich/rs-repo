@@ -8,7 +8,7 @@ buttonVoice.src = "assets/button2.mp3";
 buttonTwoVoice.src = "assets/click.mp3";
 shiftVoice.src="assets/shift.mp3";
 enterVoice.src="assets/enter.mp3";
-backspaceVoice.src="assets/Backspace.mp3";
+backspaceVoice.src="assets/backspace.mp3";
 capsVoice.src="assets/caps.mp3";
 
 const Keyboard = {
@@ -220,6 +220,7 @@ const Keyboard = {
 
           keyElement.addEventListener("click", () => {
             if(this.properties.volum){
+            
             backspaceVoice.play();
             }
             let element =  document.querySelector(".use-keyboard-input");
