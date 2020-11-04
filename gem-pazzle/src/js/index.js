@@ -1,27 +1,12 @@
 import '../css/style.css';
 import '../css/style.scss';
-import {
-  moduleOne
-} from './moduleOne';
+import BackgroundImg from '../img/99.jpg';
+import Puzzle from './Puzzle.js';
 
-const helloArr = require('./moduleOne.js');
+const puzzleWrapper = document.createElement("div");
+puzzleWrapper.classList.add("puzzle-wrapper");
+document.querySelector("body").appendChild(puzzleWrapper);
 
+const puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600);
 
-
-class TestClass {
-  constructor() {
-    const msg = "Using ES2015+ syntax";
-    console.log(msg);
-  }
-}
-
-const test = new TestClass();
-
-
-// Пример массива
-console.log(helloArr);
-
-/* пример подключения модуля*/
-let mod = moduleOne(2, 3);
-
-console.log(mod);
+//puzzle.setup();

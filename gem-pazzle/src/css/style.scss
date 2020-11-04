@@ -1,7 +1,27 @@
 body {
-  text-align: center;
+  background-image: url("../img/mainBackground.jpg");
+  background-size: cover;
+  background-position: center;
+  //background-color: slateblue;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.hello {
-  font-size: 2rem;
+.puzzle-wrapper{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.block-container{
+  position: relative;
+
+  .fragment{
+    border: 1px solid white;
+    position: absolute;
+  }
+}
+
+
