@@ -12,15 +12,9 @@ export default class Puzzle{
         this.init();  
         this.blockContainer.style.width = `${this.width}px`;
         this.blockContainer.style.height = `${this.height}px`;
-        
+
         this.setup();
-        /*const img = new Image();
-        img.onload = () => {
-            this.height = img.height * this.width/ img.width;
-            this.blockContainer.style.width = `${this.width}px`;
-            this.blockContainer.style.height = `${this.height}px`;*/   
-        /*};
-        img.src = "../"+this.image;*/ 
+
     }
 
     init(){
@@ -38,7 +32,7 @@ export default class Puzzle{
 
     setup(){
 
-        for(let i = 0; i < this.sizeGame * this.sizeGame -1; i++){
+        for(let i = 0; i < this.sizeGame * this.sizeGame; i++){
             this.fragments.push( new Fragment(this,i));
         }
         this.shuffle();
@@ -46,12 +40,24 @@ export default class Puzzle{
     }
 
     shuffle() {
-        for (let i = this.fragments.length - 1; i > 0; i--) {
+        for (let i = this.fragments.length -1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [this.fragments[i], this.fragments[j]] = [this.fragments[j], this.fragments[i]];
-            this.fragments[i].setPosition(i);
-            this.fragments[j].setPosition(j);
-        }
-       
+            this.swapFragment(i,j);
+        }  
+    }
+
+    swapFragment(i,j){
+        [this.fragments[i], this.fragments[j]] = [this.fragments[j], this.fragments[i]];
+        this.fragments[i].setPosition(i);
+        this.fragments[j].setPosition(j);
+    }
+
+    //убрать
+    findPosition(index){
+        return this.fragments.findIndex(fragment => fragment.index === index);
+    }
+
+    findEmpty(){
+        return this.fragments.findIndex(fragment => fragment.empty);
     }
 }

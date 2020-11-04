@@ -17,11 +17,11 @@ body {
 
 .block-container{
   position: relative;
-
-  .fragment{
-    border: 1px solid white;
-    position: absolute;
-  }
+  background-color: white;
+}
+.fragment{
+  border: 1px solid white;
+  position: absolute; 
 }
 
 
