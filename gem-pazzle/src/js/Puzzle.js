@@ -50,6 +50,9 @@ export default class Puzzle{
         [this.fragments[i], this.fragments[j]] = [this.fragments[j], this.fragments[i]];
         this.fragments[i].setPosition(i);
         this.fragments[j].setPosition(j);
+        if(this.finish()){
+            console.log("win");
+        }
     }
 
     //убрать
@@ -59,5 +62,14 @@ export default class Puzzle{
 
     findEmpty(){
         return this.fragments.findIndex(fragment => fragment.empty);
+    }
+
+    finish(){
+        for(let i=0; i<this.fragments.length;i++){
+            if(i !== this.fragments[i].index){
+                return false;
+            }
+        }
+        return true;
     }
 }

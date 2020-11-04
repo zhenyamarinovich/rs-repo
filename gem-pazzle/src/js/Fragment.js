@@ -39,6 +39,7 @@ export default class Fragment {
              (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
                  console.log("swap");
                  this.puzzle.swapFragment(currentIndex,emptyIndex);
+                 
              }
         });
         return element;
