@@ -26,8 +26,6 @@ export default class Fragment {
         element.style.left = `${left}px`;
         element.style.top = `${top}px`;
         element.addEventListener("click", () => {
-            
-           // console.log(this.index, this.puzzle.findPosition(this.index));
             console.log(this.puzzle.findEmpty());
             const currentIndex = this.puzzle.findPosition(this.index);
             const emptyIndex = this.puzzle.findEmpty();
@@ -36,11 +34,11 @@ export default class Fragment {
             console.log(x,y);
             console.log(emptyX,emptyY);
             if((x === emptyX || y === emptyY) &&
-             (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
-                 console.log("swap");
-                 this.puzzle.swapFragment(currentIndex,emptyIndex);
-                 
-             }
+                (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
+                    console.log("swap");
+                    this.puzzle.swapFragment(currentIndex,emptyIndex);
+                    
+                }
         });
         return element;
     }
@@ -59,6 +57,7 @@ export default class Fragment {
             left: this.width * (index % this.puzzle.sizeGame),
             top:this.height*Math.floor(index / this.puzzle.sizeGame)
         };
+
         this.element.style.left = `${left}px`;
         this.element.style.top = `${top}px`;
     }

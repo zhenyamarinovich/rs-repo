@@ -8,13 +8,14 @@ export default class Puzzle{
         this.height = width;
         this.sizeGame = 3;
         this.fragments = [];
-
+        this.arrayMoves = [];
         this.init();  
         this.blockContainer.style.width = `${this.width}px`;
         this.blockContainer.style.height = `${this.height}px`;
 
         this.setup();
 
+       
     }
 
     init(){
@@ -22,6 +23,7 @@ export default class Puzzle{
         this.blockContainer = this.createBlockContainer();
         this.blockContainer.classList.add("block-container");
         this.wrapper.appendChild(this.blockContainer);
+
     }
 
     createBlockContainer(){
@@ -36,14 +38,36 @@ export default class Puzzle{
             this.fragments.push( new Fragment(this,i));
         }
         this.shuffle();
+        setTimeout(()=>{},10000);
         console.log(this.fragments);
     }
 
     shuffle() {
-        for (let i = this.fragments.length -1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            this.swapFragment(i,j);
-        }  
+        let countSwap = 0;
+        for(let i=0; i< Math.pow(this.sizeGame, 5); i++){
+           let emptyY= Math.floor(this.findEmpty() / this.sizeGame);
+           let emptyX = this.findEmpty() % this.sizeGame;
+           let randomNumber = Math.floor(Math.random() * this.sizeGame * this.sizeGame);           
+           const {x,y} =this.fragments[randomNumber].getXY(randomNumber);
+           if((x === emptyX  || y === emptyY) &&
+           (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
+                this.arrayMoves.push([this.findPosition(this.fragments[randomNumber].index),this.findEmpty()]);
+                this.swapFragment(this.findPosition(this.fragments[randomNumber].index), this.findEmpty());  
+                countSwap++;
+           }   
+        }
+        console.log(this.arrayMoves);
+        console.log("Количество перемещений "+ countSwap);
+    }
+
+    autoSolve(){
+        
+        document.querySelector(".btn").addEventListener("click", ()=> {
+            for(let i = this.arrayMoves.length-1; i > -1; i--){
+                this.swapFragment(this.arrayMoves[i][0],this.arrayMoves[i][1]);
+            }
+            console.log("solve");
+        })      
     }
 
     swapFragment(i,j){
