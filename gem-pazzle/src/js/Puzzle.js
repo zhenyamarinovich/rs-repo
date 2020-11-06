@@ -6,16 +6,14 @@ export default class Puzzle{
         this.image = image;
         this.width = width;
         this.height = width;
-        this.sizeGame = 3;
+        this.sizeGame = 4;
         this.fragments = [];
         this.arrayMoves = [];
+        this.countSwap = 0;
         this.init();  
         this.blockContainer.style.width = `${this.width}px`;
         this.blockContainer.style.height = `${this.height}px`;
-
         this.setup();
-
-       
     }
 
     init(){
@@ -23,6 +21,8 @@ export default class Puzzle{
         this.blockContainer = this.createBlockContainer();
         this.blockContainer.classList.add("block-container");
         this.wrapper.appendChild(this.blockContainer);
+
+        this.autoSolve();
 
     }
 
@@ -38,13 +38,14 @@ export default class Puzzle{
             this.fragments.push( new Fragment(this,i));
         }
         this.shuffle();
-        setTimeout(()=>{},10000);
-        console.log(this.fragments);
+        this.startTime =  new Date();
+        //setTimeout(()=>{},10000);
+        console.log(this.arrayMoves);
     }
 
     shuffle() {
         let countSwap = 0;
-        for(let i=0; i< Math.pow(this.sizeGame, 5); i++){
+        for(let i=0; i< Math.pow(this.sizeGame, 6); i++){
            let emptyY= Math.floor(this.findEmpty() / this.sizeGame);
            let emptyX = this.findEmpty() % this.sizeGame;
            let randomNumber = Math.floor(Math.random() * this.sizeGame * this.sizeGame);           
@@ -56,26 +57,61 @@ export default class Puzzle{
                 countSwap++;
            }   
         }
+        
+        //ходы  туда назад удаляю
+        let length = this.arrayMoves.length -1;
+        for(let j = length; j > 0 ; j--){
+            if(this.arrayMoves[j][0] === this.arrayMoves[j-1][1]){
+                this.arrayMoves.splice(j-1,2);
+                if(j>this.arrayMoves.length -1){
+                    j--;
+                }
+            }
+        }
         console.log(this.arrayMoves);
-        console.log("Количество перемещений "+ countSwap);
+        //console.log("Количество перемещений "+ countSwap);
     }
 
     autoSolve(){
         
         document.querySelector(".btn").addEventListener("click", ()=> {
+            let j=0;
             for(let i = this.arrayMoves.length-1; i > -1; i--){
-                this.swapFragment(this.arrayMoves[i][0],this.arrayMoves[i][1]);
+                //setTimeout( function() {
+                //console.log(this.arrayMoves);
+                
+                let that = this;
+                let indexOne = that.arrayMoves[i][0];
+                let indexTwo = that.arrayMoves[i][1];
+                
+                //console.log("i: "+this.arrayMoves[i][0] + " j :" + this.arrayMoves[i][1]);
+                //setTimeout(()=> {}, 500);
+                   j++; 
+                    (function(j){
+                        setTimeout(function(){
+                        //this.swapFragment(this.arrayMoves[j][0],this.arrayMoves[j][1]);
+                        that.swapFragment(indexOne,indexTwo);
+                        that.countSwap ++;
+                        //console.log("qwer" + that.fragments);
+                        }, j * 20);
+                        }(j));       
+                //}, i*1000);        
             }
             console.log("solve");
-        })      
+
+        });
     }
+    
 
     swapFragment(i,j){
         [this.fragments[i], this.fragments[j]] = [this.fragments[j], this.fragments[i]];
         this.fragments[i].setPosition(i);
         this.fragments[j].setPosition(j);
         if(this.finish()){
-            console.log("win");
+            let min = Math.floor((this.endTime - this.startTime)/1000/60);
+            let sec = Math.floor((this.endTime - this.startTime)/1000) - min*60;
+            console.log("win : " + min +" min " + sec +" sec");
+            console.log("countSwap: "+ this.countSwap);
         }
     }
 
@@ -94,6 +130,7 @@ export default class Puzzle{
                 return false;
             }
         }
+        this.endTime = new Date();
         return true;
     }
 }

@@ -17,9 +17,13 @@ export default class Fragment {
 
     createElement(){
         const element = document.createElement("div");
+        const numberBlock = document.createElement("div");
+        element.appendChild(numberBlock);
         const left = this.width * (this.index % this.puzzle.sizeGame);
         const top = this.height * Math.floor(this.index / this.puzzle.sizeGame);
-        element.classList.add("fragment"); 
+        element.classList.add("fragment");
+        numberBlock.classList.add("number-block"); 
+        numberBlock.innerHTML = this.index + 1;
         element.style.backgroundSize = `${this.puzzle.width}px ${this.puzzle.height}px`
         element.style.width = `${this.width}px`;
         element.style.height = `${this.height}px`;
@@ -37,6 +41,7 @@ export default class Fragment {
                 (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
                     console.log("swap");
                     this.puzzle.swapFragment(currentIndex,emptyIndex);
+                    this.puzzle.countSwap ++;
                     
                 }
         });
