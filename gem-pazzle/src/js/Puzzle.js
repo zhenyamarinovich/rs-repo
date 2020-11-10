@@ -22,8 +22,7 @@ export default class Puzzle{
         this.blockContainer = this.createBlockContainer();
         this.blockContainer.classList.add("block-container");
         this.wrapper.appendChild(this.blockContainer);
-
-        this.autoSolve();
+        //this.autoSolve();
 
     }
 
@@ -38,7 +37,13 @@ export default class Puzzle{
         for(let i = 0; i < this.sizeGame * this.sizeGame; i++){
             this.fragments.push( new Fragment(this,i));
         }
+        let datalist = JSON.parse(localStorage.getItem("arrayMoves"));
+        if(datalist == null){
         this.shuffle();
+        } else {
+            this.arrayMoves = datalist;
+            this.autoSolve();
+        }
         //this.startTime =  new Date();
         //setTimeout(()=>{},10000);
         //console.log(this.arrayMoves);
@@ -70,12 +75,14 @@ export default class Puzzle{
             }
         }
         console.log(this.arrayMoves);
+        var record = JSON.stringify(this.arrayMoves);
+        localStorage["arrayMoves"] = record;
         //console.log("Количество перемещений "+ countSwap);
     }
 
     autoSolve(){
         
-        /*document.querySelector(".btn").addEventListener("click", ()=> {
+        //document.querySelector(".btn").addEventListener("click", ()=> {
             let j=0;
             for(let i = this.arrayMoves.length-1; i > -1; i--){
                 //setTimeout( function() {
@@ -100,7 +107,7 @@ export default class Puzzle{
             }
             console.log("solve");
 
-        });*/
+        //});
     }
     
 

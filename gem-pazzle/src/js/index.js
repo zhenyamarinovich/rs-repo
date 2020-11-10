@@ -57,6 +57,7 @@ function getCurrentTime(dateBegin,time){
 
 function newGame(){
     puzzleWrapper.innerHTML="";
+    localStorage.clear();
     init();
     //puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600);
 }
