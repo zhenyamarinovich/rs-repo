@@ -42,7 +42,7 @@ export default class Puzzle{
         this.shuffle();
         } else {
             this.arrayMoves = datalist;
-            this.autoSolve();
+            this.autoSolve("reload");
         }
         //this.startTime =  new Date();
         //setTimeout(()=>{},10000);
@@ -80,9 +80,13 @@ export default class Puzzle{
         //console.log("Количество перемещений "+ countSwap);
     }
 
-    autoSolve(){
+    autoSolve(reload){
         
         //document.querySelector(".btn").addEventListener("click", ()=> {
+            let time = 40;
+            if(reload === "reload"){
+                time = 0;
+            }
             let j=0;
             for(let i = this.arrayMoves.length-1; i > -1; i--){
                 //setTimeout( function() {
@@ -101,7 +105,7 @@ export default class Puzzle{
                         that.swapFragment(indexOne,indexTwo);
                         that.countSwap ++;
                         //console.log("qwer" + that.fragments);
-                        }, j * 20);
+                        }, j * time);
                         }(j));       
                 //}, i*1000);        
             }
