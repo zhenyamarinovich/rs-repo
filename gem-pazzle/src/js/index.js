@@ -40,17 +40,19 @@ function init() {
 
 function setTime(time) {
     let dateBegin = new Date();
+    getCurrentTime(dateBegin,time);
+    setInterval(()=>{
+        getCurrentTime(dateBegin,time);
+    },1000); 
+}
+
+function getCurrentTime(dateBegin,time){
     let dateNow = new Date();
     let min = Math.floor((dateNow - dateBegin)/1000/60);
+    min = min < 10 ? "0" + min : min;
     let sec = Math.floor((dateNow - dateBegin)/1000) - min*60;
+    sec = sec < 10 ? "0" + sec : sec;
     time.innerHTML = `Time: ${min}: ${sec}`;
-    setInterval(()=>{
-        dateNow = new Date();    
-        min = Math.floor((dateNow - dateBegin)/1000/60);
-        sec = Math.floor((dateNow - dateBegin)/1000) - min*60;
-        time.innerHTML = `Time: ${min}: ${sec}`;
-    },1000);
-   
 }
 
 function newGame(){
