@@ -1,3 +1,5 @@
+import Puzzle from "./Puzzle";
+
 export default class Fragment {
     constructor(puzzle, index){
         this.puzzle = puzzle;
@@ -12,6 +14,7 @@ export default class Fragment {
             this.empty = true;
             return;
         }
+   
         this.setImage();
     }
 
@@ -24,28 +27,50 @@ export default class Fragment {
         element.classList.add("fragment");
         numberBlock.classList.add("number-block"); 
         numberBlock.innerHTML = this.index + 1;
+        element.draggable = "true";
         element.style.backgroundSize = `${this.puzzle.width}px ${this.puzzle.height}px`
         element.style.width = `${this.width}px`;
         element.style.height = `${this.height}px`;
         element.style.left = `${left}px`;
         element.style.top = `${top}px`;
+
+
         element.addEventListener("click", () => {
-            console.log(this.puzzle.findEmpty());
-            const currentIndex = this.puzzle.findPosition(this.index);
-            const emptyIndex = this.puzzle.findEmpty();
-            const {x,y} = this.getXY(currentIndex);
-            const {x:emptyX,y:emptyY} = this.getXY(emptyIndex); 
-            console.log(x,y);
-            console.log(emptyX,emptyY);
-            if((x === emptyX || y === emptyY) &&
-                (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
-                    console.log("swap");
-                    this.puzzle.swapFragment(currentIndex,emptyIndex);
-                    this.puzzle.countSwap ++;
-                    
-                }
+           this.getPositionAndSwap(this.index);
         });
+
+       //drag and drop
+        element.addEventListener("dragstart",() => {
+            this.puzzle.dragIndex = this.index;
+            console.log(this.puzzle.dragIndex);
+        });
+
+        element.addEventListener("dragover", function(event){
+            event.preventDefault();
+        });
+
+        element.addEventListener("drop", () => {
+            this.getPositionAndSwap(this.puzzle.dragIndex);
+        });
+
         return element;
+    }
+
+    getPositionAndSwap(indexCurrent = this.puzzle.dragIndex){
+        const currentIndex = this.puzzle.findPosition(indexCurrent);
+        const emptyIndex = this.puzzle.findEmpty();
+        const {x,y} = this.getXY(currentIndex);
+        const {x:emptyX,y:emptyY} = this.getXY(emptyIndex); 
+        // console.log(x,y);
+        // console.log(emptyX,emptyY);
+        if((x === emptyX || y === emptyY) &&
+            (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
+                console.log("swap");
+                this.puzzle.swapFragment(currentIndex,emptyIndex);
+                this.puzzle.countSwap ++;
+                document.querySelector(".countSwap").innerHTML ="Moves: "+ this.puzzle.countSwap;
+                
+            }
     }
 
     setImage(){

@@ -6,10 +6,11 @@ export default class Puzzle{
         this.image = image;
         this.width = width;
         this.height = width;
-        this.sizeGame = 4;
+        this.sizeGame = 3;
         this.fragments = [];
         this.arrayMoves = [];
         this.countSwap = 0;
+        this.dragIndex = 0;
         this.init();  
         this.blockContainer.style.width = `${this.width}px`;
         this.blockContainer.style.height = `${this.height}px`;
@@ -38,13 +39,13 @@ export default class Puzzle{
             this.fragments.push( new Fragment(this,i));
         }
         this.shuffle();
-        this.startTime =  new Date();
+        //this.startTime =  new Date();
         //setTimeout(()=>{},10000);
-        console.log(this.arrayMoves);
+        //console.log(this.arrayMoves);
     }
 
     shuffle() {
-        let countSwap = 0;
+        //let countSwap = 0;
         for(let i=0; i< Math.pow(this.sizeGame, 6); i++){
            let emptyY= Math.floor(this.findEmpty() / this.sizeGame);
            let emptyX = this.findEmpty() % this.sizeGame;
@@ -54,7 +55,7 @@ export default class Puzzle{
            (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
                 this.arrayMoves.push([this.findPosition(this.fragments[randomNumber].index),this.findEmpty()]);
                 this.swapFragment(this.findPosition(this.fragments[randomNumber].index), this.findEmpty());  
-                countSwap++;
+                //countSwap++;
            }   
         }
         
@@ -74,7 +75,7 @@ export default class Puzzle{
 
     autoSolve(){
         
-        document.querySelector(".btn").addEventListener("click", ()=> {
+        /*document.querySelector(".btn").addEventListener("click", ()=> {
             let j=0;
             for(let i = this.arrayMoves.length-1; i > -1; i--){
                 //setTimeout( function() {
@@ -99,7 +100,7 @@ export default class Puzzle{
             }
             console.log("solve");
 
-        });
+        });*/
     }
     
 
@@ -108,10 +109,10 @@ export default class Puzzle{
         this.fragments[i].setPosition(i);
         this.fragments[j].setPosition(j);
         if(this.finish()){
-            let min = Math.floor((this.endTime - this.startTime)/1000/60);
-            let sec = Math.floor((this.endTime - this.startTime)/1000) - min*60;
-            console.log("win : " + min +" min " + sec +" sec");
-            console.log("countSwap: "+ this.countSwap);
+            //let min = Math.floor((this.endTime - this.startTime)/1000/60);
+            //let sec = Math.floor((this.endTime - this.startTime)/1000) - min*60;
+            //console.log("win : " + min +" min " + sec +" sec");
+            //console.log("countSwap: "+ this.countSwap);
         }
     }
 
@@ -130,7 +131,9 @@ export default class Puzzle{
                 return false;
             }
         }
-        this.endTime = new Date();
+        //this.endTime = new Date();
         return true;
     }
+
+    
 }

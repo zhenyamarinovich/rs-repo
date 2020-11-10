@@ -5,11 +5,15 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .puzzle-wrapper{
-  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -17,6 +21,7 @@ body {
 .block-container{
   position: relative;
   background-color: white;
+  margin: 0 10px;
 }
 .fragment{
   border: 1px solid white;
@@ -24,6 +29,7 @@ body {
   justify-content:flex-start;
   align-items: flex-start;
   position: absolute; 
+  cursor: all-scroll;
 }
 
 .number-block{
@@ -35,4 +41,37 @@ body {
   background-color:rgba(0,0,0,0.7);
 }
 
+.hidden {
+  display: none;
+}
 
+.hovered{
+  border:2px solid greenyellow;
+}
+
+.panel-info{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color:white;
+  font-size: 26px;
+  height: 60px;
+  width: 100%;
+  margin-bottom: 30px;
+
+}
+
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //background: linear-gradient(to right, #00aaff, #00ff6c);
+  //background: url("../img/images.jpg");
+  width: 650px;
+  height: 750px;
+}
+
+.time {
+  width: 200px;
+  text-align: center;
+}
