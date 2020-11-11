@@ -100,7 +100,7 @@ body {
   overflow: auto; /* Enable scroll if needed */
   //background-color: rgb(0,0,0); /* Fallback color */
   //background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-  background: url("../img/game-over.jpg") center;
+  background: url("../img/game-over.png") center;
   background-repeat: no-repeat;
   background-size: 100%;
   transform: translate(100%);
@@ -109,8 +109,11 @@ body {
 
 /* Modal Content */
 .info-modal {
-  background-color: black;
+  background-color: rgba(0,0,0,0.8);
   //margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   border: 1px solid #888;
   width: 40%;
@@ -132,7 +135,7 @@ body {
 
 .close-modal:hover,
 .close-modal:focus {
-  color: #000;
+  color: blue;
   text-decoration: none;
   cursor: pointer;
 }
