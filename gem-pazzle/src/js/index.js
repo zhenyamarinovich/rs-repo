@@ -23,23 +23,65 @@ function init() {
     const countSwap = document.createElement("div");
 
     panelInfo.classList.add("panel-info");
+    newGameBtn.classList.add("new-game");
+    time.classList.add("time");
+    countSwap.classList.add("countSwap");
+
     puzzleWrapper.appendChild(panelInfo);
     panelInfo.appendChild(newGameBtn);
-    newGameBtn.classList.add("new-game");
+    createSelectElement(panelInfo);
     panelInfo.appendChild(time);
-    time.classList.add("time");
     panelInfo.appendChild(countSwap);
-    countSwap.classList.add("countSwap");
-    countSwap.innerHTML ="Moves: 0";
-    newGameBtn.innerHTML = "New Game";
-    setTime(time);
+    finishModal();
 
+    newGameBtn.innerHTML = "New Game";
     newGameBtn.addEventListener("click", newGame);
-    const puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600);
+    setTime(time);
+    
+    let selectList = document.getElementById("mySelect");
+    let size;
+    if(localStorage.getItem("sizeGame") !== null) {
+        size = localStorage.getItem("sizeGame");
+        //console.log( selectList.value)
+        selectList.value = size;
+        //selectList.text = size;
+    } else {
+        size = 4;
+    }
+    selectList.addEventListener("change", () => {
+        localStorage.setItem('sizeGame', selectList.value);
+        newGame();
+    })
+    
+    const puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600 , size);
+}
+
+function createSelectElement(panelInfo){
+    let array = ["3x3","4x4","5x5","6x6","7x7","8x8"];
+
+    let selectList = document.createElement("select");
+    selectList.id = "mySelect";
+    panelInfo.appendChild(selectList);
+
+    //Create and append the options
+    for (var i = 0; i < array.length; i++) {
+        var option = document.createElement("option");
+        option.value = array[i][0];
+        option.text = array[i];
+        selectList.appendChild(option);
+    }
+    
 }
 
 function setTime(time) {
-    let dateBegin = new Date();
+    let dateBegin;
+    let dateList = localStorage.getItem('time');
+    if(dateList == null){
+     dateBegin = new Date();
+    localStorage.setItem('time', +dateBegin);
+    } else{
+        dateBegin = new Date(parseInt(localStorage.getItem('time')));
+    }
     getCurrentTime(dateBegin,time);
     setInterval(()=>{
         getCurrentTime(dateBegin,time);
@@ -56,10 +98,39 @@ function getCurrentTime(dateBegin,time){
 }
 
 function newGame(){
+    let sizeGame = document.getElementById("mySelect").value
     puzzleWrapper.innerHTML="";
     localStorage.clear();
+    localStorage.setItem('sizeGame', sizeGame);
     init();
     //puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600);
+}
+
+function finishModal(){
+    let modal = document.createElement("div");
+    modal.classList.add("finish-modal");
+    let close = document.createElement("span");
+    close.innerHTML = `&times;`;
+    close.classList.add("close-modal");
+    let info = document.createElement("p");
+    info.innerText="You win!!!";
+    info.classList.add("info-modal");
+    document.querySelector("body").appendChild(modal);
+    modal.appendChild(close);
+    modal.appendChild(info);
+    close.onclick = function() {
+        //modal.style.display = "none";
+        modal.style.transform = "translate(100%)";
+        newGame();
+    }
+
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        //modal.style.display = "none";
+        modal.style.transform = "translate(100%)";
+        newGame();
+    }
+    }
 }
 
 

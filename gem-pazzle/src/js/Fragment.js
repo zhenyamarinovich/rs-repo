@@ -36,13 +36,19 @@ export default class Fragment {
 
 
         element.addEventListener("click", () => {
+            element.classList.add("animation");
            this.getPositionAndSwap(this.index);
+           setTimeout(()=> {
+            element.classList.remove("animation");
+           },500);
+           
         });
 
        //drag and drop
         element.addEventListener("dragstart",() => {
+            element.classList.add("animation");
             this.puzzle.dragIndex = this.index;
-            console.log(this.puzzle.dragIndex);
+            //console.log(this.puzzle.dragIndex);
         });
 
         element.addEventListener("dragover", function(event){
@@ -51,6 +57,9 @@ export default class Fragment {
 
         element.addEventListener("drop", () => {
             this.getPositionAndSwap(this.puzzle.dragIndex);
+            setTimeout(()=> {
+                element.classList.remove("animation");
+               },1000)
         });
 
         return element;
@@ -66,9 +75,14 @@ export default class Fragment {
         if((x === emptyX || y === emptyY) &&
             (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
                 console.log("swap");
+                this.puzzle.arrayMoves.push([currentIndex,emptyIndex]);
+                //localStorage["arrayMoves"] = "";
+                localStorage["arrayMoves"] = JSON.stringify(this.puzzle.arrayMoves);
                 this.puzzle.swapFragment(currentIndex,emptyIndex);
+                //this.puzzle.arrayMoves.push()
                 this.puzzle.countSwap ++;
-                document.querySelector(".countSwap").innerHTML ="Moves: "+ this.puzzle.countSwap;
+                localStorage.setItem("countSwap",this.puzzle.countSwap);
+                document.querySelector(".countSwap").innerHTML ="Moves: "+ localStorage.getItem("countSwap")/*this.puzzle.countSwap*/;
                 
             }
     }

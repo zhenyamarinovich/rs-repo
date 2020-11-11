@@ -1,15 +1,15 @@
 import Fragment from "./Fragment.js";
 
 export default class Puzzle{
-    constructor(parentDiv,image, width){
+    constructor(parentDiv,image, width , size){
         this.wrapper = parentDiv;
         this.image = image;
         this.width = width;
         this.height = width;
-        this.sizeGame = 3;
+        this.sizeGame = size;
         this.fragments = [];
         this.arrayMoves = [];
-        this.countSwap = 0;
+        this.countSwap = localStorage.getItem("countSwap");
         this.dragIndex = 0;
         this.init();  
         this.blockContainer.style.width = `${this.width}px`;
@@ -44,9 +44,7 @@ export default class Puzzle{
             this.arrayMoves = datalist;
             this.autoSolve("reload");
         }
-        //this.startTime =  new Date();
-        //setTimeout(()=>{},10000);
-        //console.log(this.arrayMoves);
+        document.querySelector(".countSwap").innerHTML = localStorage.getItem("countSwap") == null ? "Moves: 0": "Moves: " + localStorage.getItem("countSwap");
     }
 
     shuffle() {
@@ -75,26 +73,27 @@ export default class Puzzle{
             }
         }
         console.log(this.arrayMoves);
-        var record = JSON.stringify(this.arrayMoves);
-        localStorage["arrayMoves"] = record;
+        localStorage["arrayMoves"] = JSON.stringify(this.arrayMoves);
         //console.log("Количество перемещений "+ countSwap);
     }
 
     autoSolve(reload){
         
         //document.querySelector(".btn").addEventListener("click", ()=> {
-            let time = 40;
+            let delay = 40;
+            let array = this.arrayMoves.slice();
             if(reload === "reload"){
-                time = 0;
+                delay = 0;
+                array = array.reverse();
             }
             let j=0;
-            for(let i = this.arrayMoves.length-1; i > -1; i--){
+            for(let i = array.length-1; i > -1; i--){
                 //setTimeout( function() {
                 //console.log(this.arrayMoves);
                 
                 let that = this;
-                let indexOne = that.arrayMoves[i][0];
-                let indexTwo = that.arrayMoves[i][1];
+                let indexOne = array[i][0];
+                let indexTwo = array[i][1];
                 
                 //console.log("i: "+this.arrayMoves[i][0] + " j :" + this.arrayMoves[i][1]);
                 //setTimeout(()=> {}, 500);
@@ -103,9 +102,10 @@ export default class Puzzle{
                         setTimeout(function(){
                         //this.swapFragment(this.arrayMoves[j][0],this.arrayMoves[j][1]);
                         that.swapFragment(indexOne,indexTwo);
-                        that.countSwap ++;
+                        //that.countSwap ++;
+                        //localStorage.setItem("countSwap",that.countSwap);
                         //console.log("qwer" + that.fragments);
-                        }, j * time);
+                        }, j * delay);
                         }(j));       
                 //}, i*1000);        
             }
@@ -119,7 +119,28 @@ export default class Puzzle{
         [this.fragments[i], this.fragments[j]] = [this.fragments[j], this.fragments[i]];
         this.fragments[i].setPosition(i);
         this.fragments[j].setPosition(j);
-        if(this.finish()){
+        if(this.finish() && this.countSwap !== null){
+            console.log("win");
+            var modal = document.querySelector(".finish-modal");
+            //modal.style.display="flex";
+            modal.style.transform = "translate(0)";
+            var info = document.querySelector(".info-modal");
+            let dateBegin = new Date(parseInt(localStorage.getItem('time')));
+            let dateNow = new Date();
+            let min = Math.floor((dateNow - dateBegin)/1000/60);
+            min = min < 10 ? "0" + min : min;
+            let sec = Math.floor((dateNow - dateBegin)/1000) - min*60;
+            sec = sec < 10 ? "0" + sec : sec;
+
+            info.innerText = "You win!!!";
+            info.innerText += "\nMoves: " + localStorage.getItem("countSwap");
+            info.innerText += `   Time: ${min}: ${sec}`;
+            info.innerText += "\nClose to start new game!"
+
+
+            
+// When the user clicks on <span> (x), close the modal
+           
             //let min = Math.floor((this.endTime - this.startTime)/1000/60);
             //let sec = Math.floor((this.endTime - this.startTime)/1000) - min*60;
             //console.log("win : " + min +" min " + sec +" sec");
@@ -145,6 +166,5 @@ export default class Puzzle{
         //this.endTime = new Date();
         return true;
     }
-
     
 }
