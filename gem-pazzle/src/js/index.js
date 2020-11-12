@@ -53,9 +53,9 @@ function getSizeGame(){
     let size;
     if(localStorage.getItem("sizeGame") !== null) {
         size = localStorage.getItem("sizeGame");
-        //console.log( selectList.value)
+        // console.log( selectList.value)
         selectList.value = size;
-        //selectList.text = size;
+        // selectList.text = size;
     } else {
         size = 4;
         selectList.value = size;
@@ -75,7 +75,7 @@ function createSelectElement(panelInfo){
     selectList.id = "mySelect";
     panelInfo.appendChild(selectList);
 
-    //Create and append the options
+    // Create and append the options
     for (var i = 0; i < array.length; i++) {
         var option = document.createElement("option");
         option.value = array[i][0];
@@ -110,12 +110,14 @@ function getCurrentTime(dateBegin,time){
 }
 
 function newGame(){
-    let sizeGame = document.getElementById("mySelect").value
+    let sizeGame = document.getElementById("mySelect").value;
+    const volume = localStorage.getItem("sound");
     puzzleWrapper.innerHTML="";
     localStorage.clear();
     localStorage.setItem('sizeGame', sizeGame);
+    localStorage.setItem("sound",volume);
     init();
-    //puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600);
+    // puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600);
 }
 
 function finishModal(){
@@ -147,7 +149,7 @@ function setSound(){
     let sound = document.querySelector(".sound");
     let volume = false;
     sound.style.backgroundImage = `url(../${SoundOff})`;
-    
+
     if(localStorage.getItem("sound") === "true"){
         volume = true;
         sound.style.backgroundImage = `url(../${SoundOn})`;
@@ -161,16 +163,16 @@ function setSound(){
             sound.style.backgroundImage = `url(../${SoundOff})`;
            
         }
-        /*let audio = new Audio(soundfile);
+        /* let audio = new Audio(soundfile);
         audio.play(); */
         volume = !volume;
         localStorage.setItem("sound",volume);
     })
 
-    //return 
+    // return 
 }
 
 
 
 
-//puzzle.setup();
+// puzzle.setup();

@@ -48,7 +48,7 @@ export default class Puzzle{
     }
 
     shuffle() {
-        //let countSwap = 0;
+        // let countSwap = 0;
         for(let i=0; i< Math.pow(this.sizeGame, 6); i++){
            let emptyY= Math.floor(this.findEmpty() / this.sizeGame);
            let emptyX = this.findEmpty() % this.sizeGame;
@@ -62,7 +62,7 @@ export default class Puzzle{
            }   
         }
         
-        //ходы  туда назад удаляю
+        // ходы  туда назад удаляю
         let length = this.arrayMoves.length -1;
         for(let j = length; j > 0 ; j--){
             if(this.arrayMoves[j][0] === this.arrayMoves[j-1][1]){
@@ -79,7 +79,7 @@ export default class Puzzle{
 
     autoSolve(reload){
         
-        //document.querySelector(".btn").addEventListener("click", ()=> {
+        // document.querySelector(".btn").addEventListener("click", ()=> {
             let delay = 40;
             let array = this.arrayMoves.slice();
             if(reload === "reload"){
@@ -95,23 +95,23 @@ export default class Puzzle{
                 let indexOne = array[i][0];
                 let indexTwo = array[i][1];
                 
-                //console.log("i: "+this.arrayMoves[i][0] + " j :" + this.arrayMoves[i][1]);
-                //setTimeout(()=> {}, 500);
+                // console.log("i: "+this.arrayMoves[i][0] + " j :" + this.arrayMoves[i][1]);
+                // setTimeout(()=> {}, 500);
                    j++; 
                     (function(j){
                         setTimeout(function(){
-                        //this.swapFragment(this.arrayMoves[j][0],this.arrayMoves[j][1]);
+                        // this.swapFragment(this.arrayMoves[j][0],this.arrayMoves[j][1]);
                         that.swapFragment(indexOne,indexTwo);
-                        //that.countSwap ++;
-                        //localStorage.setItem("countSwap",that.countSwap);
-                        //console.log("qwer" + that.fragments);
+                        // that.countSwap ++;
+                        // localStorage.setItem("countSwap",that.countSwap);
+                        // console.log("qwer" + that.fragments);
                         }, j * delay);
                         }(j));       
-                //}, i*1000);        
+                // }, i*1000);        
             }
             console.log("solve");
 
-        //});
+        // });
     }
     
 
@@ -122,7 +122,7 @@ export default class Puzzle{
         if(this.finish() && this.countSwap !== null){
             console.log("win");
             var modal = document.querySelector(".finish-modal");
-            //modal.style.display="flex";
+            // modal.style.display="flex";
             modal.style.transform = "translate(0)";
             var info = document.querySelector(".info-modal");
             let dateBegin = new Date(parseInt(localStorage.getItem('time')));
@@ -141,14 +141,14 @@ export default class Puzzle{
             
 // When the user clicks on <span> (x), close the modal
            
-            //let min = Math.floor((this.endTime - this.startTime)/1000/60);
-            //let sec = Math.floor((this.endTime - this.startTime)/1000) - min*60;
-            //console.log("win : " + min +" min " + sec +" sec");
-            //console.log("countSwap: "+ this.countSwap);
+            // let min = Math.floor((this.endTime - this.startTime)/1000/60);
+            // let sec = Math.floor((this.endTime - this.startTime)/1000) - min*60;
+            // console.log("win : " + min +" min " + sec +" sec");
+            // console.log("countSwap: "+ this.countSwap);
         }
     }
 
-    //убрать
+    // убрать
     findPosition(index){
         return this.fragments.findIndex(fragment => fragment.index === index);
     }
@@ -163,7 +163,7 @@ export default class Puzzle{
                 return false;
             }
         }
-        //this.endTime = new Date();
+        // this.endTime = new Date();
         return true;
     }
     

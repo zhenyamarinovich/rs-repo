@@ -1,4 +1,4 @@
-import Puzzle from "./Puzzle";
+
 import soundfile from '../sound/sound.mp3'; 
 
 export default class Fragment {
@@ -45,11 +45,11 @@ export default class Fragment {
            
         });
 
-       //drag and drop
+       // Drag and drop
         element.addEventListener("dragstart",() => {
             element.classList.add("animation");
             this.puzzle.dragIndex = this.index;
-            //console.log(this.puzzle.dragIndex);
+            // console.log(this.puzzle.dragIndex);
         });
 
         element.addEventListener("dragover", function(event){
@@ -77,10 +77,10 @@ export default class Fragment {
             (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
                 console.log("swap");
                 this.puzzle.arrayMoves.push([currentIndex,emptyIndex]);
-                //localStorage["arrayMoves"] = "";
+                // localStorage["arrayMoves"] = "";
                 localStorage["arrayMoves"] = JSON.stringify(this.puzzle.arrayMoves);
                 this.puzzle.swapFragment(currentIndex,emptyIndex);
-                //this.puzzle.arrayMoves.push()
+                // this.puzzle.arrayMoves.push()
                 this.puzzle.countSwap ++;
                 localStorage.setItem("countSwap",this.puzzle.countSwap);
                 if(localStorage.getItem("sound") === "true"){
