@@ -1,8 +1,10 @@
 import '../css/style.css';
 import '../css/style.scss';
-import BackgroundImg from '../img/99.jpg';
+import BackgroundImg from '../img/98.jpg';
+import SoundOff from '../img/sound-off.jpg';
+import SoundOn from '../img/sound-on.jpg';
 import Puzzle from './Puzzle.js';
-
+import soundfile from '../sound/sound.mp3'; 
 
 
 const mainContainer = document.createElement("div");
@@ -21,24 +23,33 @@ function init() {
     const newGameBtn =  document.createElement("button");
     const time =  document.createElement("div");
     const countSwap = document.createElement("div");
+    const sound = document.createElement("div");
 
     panelInfo.classList.add("panel-info");
     newGameBtn.classList.add("new-game");
     time.classList.add("time");
     countSwap.classList.add("countSwap");
+    sound.classList.add("sound");
 
     puzzleWrapper.appendChild(panelInfo);
     panelInfo.appendChild(newGameBtn);
     createSelectElement(panelInfo);
     panelInfo.appendChild(time);
     panelInfo.appendChild(countSwap);
-    finishModal();
+    panelInfo.appendChild(sound);
 
+    
+    finishModal();
     newGameBtn.innerHTML = "New Game";
     newGameBtn.addEventListener("click", newGame);
     setTime(time);
-    
-    let selectList = document.getElementById("mySelect");
+    setSound();
+    const puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600 , getSizeGame());
+}
+
+
+function getSizeGame(){
+    const selectList = document.getElementById("mySelect");
     let size;
     if(localStorage.getItem("sizeGame") !== null) {
         size = localStorage.getItem("sizeGame");
@@ -47,19 +58,20 @@ function init() {
         //selectList.text = size;
     } else {
         size = 4;
+        selectList.value = size;
     }
     selectList.addEventListener("change", () => {
         localStorage.setItem('sizeGame', selectList.value);
         newGame();
     })
-    
-    const puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600 , size);
+    return size;
 }
 
 function createSelectElement(panelInfo){
     let array = ["3x3","4x4","5x5","6x6","7x7","8x8"];
 
     let selectList = document.createElement("select");
+    selectList.classList.add("select");
     selectList.id = "mySelect";
     panelInfo.appendChild(selectList);
 
@@ -119,18 +131,43 @@ function finishModal(){
     modal.appendChild(close);
     modal.appendChild(info);
     close.onclick = function() {
-        //modal.style.display = "none";
         modal.style.transform = "translate(100%)";
         newGame();
     }
 
     window.onclick = function(event) {
-    if (event.target == modal) {
-        //modal.style.display = "none";
-        modal.style.transform = "translate(100%)";
-        newGame();
+        if (event.target == modal) {
+            modal.style.transform = "translate(100%)";
+            newGame();
+        }
     }
+}
+
+function setSound(){
+    let sound = document.querySelector(".sound");
+    let volume = false;
+    sound.style.backgroundImage = `url(../${SoundOff})`;
+    
+    if(localStorage.getItem("sound") === "true"){
+        volume = true;
+        sound.style.backgroundImage = `url(../${SoundOn})`;
     }
+    
+   
+    sound.addEventListener("click", () => {
+        if(!volume){
+            sound.style.backgroundImage = `url(../${SoundOn})`;
+        } else {
+            sound.style.backgroundImage = `url(../${SoundOff})`;
+           
+        }
+        /*let audio = new Audio(soundfile);
+        audio.play(); */
+        volume = !volume;
+        localStorage.setItem("sound",volume);
+    })
+
+    //return 
 }
 
 

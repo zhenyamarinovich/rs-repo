@@ -1,7 +1,7 @@
 body {
-  background-image: url("../img/mainBackground.jpg");
+  background-image: url("../img/84.jpg");
   background-size: cover;
-  background-position: center;
+  background-position:center;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -70,6 +70,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid white;
+  background: rgb(0,0,0);
   //background: linear-gradient(to right, #00aaff, #00ff6c);
   //background: url("../img/images.jpg");
   width: 650px;
@@ -83,7 +85,11 @@ body {
 
 .new-game{
   font-size: 26px;
-  background: linear-gradient(to right, #02fab0, #00ff6c);
+  height: 34px;
+  border: 1px solid gray;
+  //background: linear-gradient(to right, #02fab0, #00ff6c);
+  background: black;
+  color: white;
 }
 
 .finish-modal {
@@ -138,4 +144,20 @@ body {
   color: blue;
   text-decoration: none;
   cursor: pointer;
+}
+
+.select{
+  //background: linear-gradient(to right, #02fab0, #00ff6c);
+  background: black;
+  color: white;
+  width: 50px;
+  height: 34px;
+}
+
+.sound{
+  //background-image: url("../img/sound-off.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
 }

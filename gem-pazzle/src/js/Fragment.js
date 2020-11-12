@@ -1,4 +1,5 @@
 import Puzzle from "./Puzzle";
+import soundfile from '../sound/sound.mp3'; 
 
 export default class Fragment {
     constructor(puzzle, index){
@@ -82,6 +83,10 @@ export default class Fragment {
                 //this.puzzle.arrayMoves.push()
                 this.puzzle.countSwap ++;
                 localStorage.setItem("countSwap",this.puzzle.countSwap);
+                if(localStorage.getItem("sound") === "true"){
+                    let audio = new Audio(soundfile);
+                    audio.play(); 
+                };
                 document.querySelector(".countSwap").innerHTML ="Moves: "+ localStorage.getItem("countSwap")/*this.puzzle.countSwap*/;
                 
             }

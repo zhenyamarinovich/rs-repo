@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+//const SRC = path.resolve(__dirname, 'node_modules');
 
 const ENV = process.env.npm_lifecycle_event;
 const isDev = ENV === 'dev';
@@ -132,6 +133,14 @@ const config = {
             outputPath: 'fonts'
           }
         }]
+      },
+      {
+        test: /\.mp3$/,
+        //include: SRC,
+        loader: 'file-loader',
+        options: {
+          name: './sound/[name].[ext]'
+        }
       }
     ]
   },
