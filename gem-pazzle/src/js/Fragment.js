@@ -75,19 +75,19 @@ export default class Fragment {
         // console.log(emptyX,emptyY);
         if((x === emptyX || y === emptyY) &&
             (Math.abs(x - emptyX) === 1 || Math.abs(y - emptyY) === 1)){
-                console.log("swap");
+                // console.log("swap");
                 this.puzzle.arrayMoves.push([currentIndex,emptyIndex]);
                 // localStorage["arrayMoves"] = "";
-                localStorage["arrayMoves"] = JSON.stringify(this.puzzle.arrayMoves);
+                localStorage.arrayMoves = JSON.stringify(this.puzzle.arrayMoves); // change "arrayMoves"
                 this.puzzle.swapFragment(currentIndex,emptyIndex);
                 // this.puzzle.arrayMoves.push()
-                this.puzzle.countSwap ++;
+                this.puzzle.countSwap += 1;
                 localStorage.setItem("countSwap",this.puzzle.countSwap);
                 if(localStorage.getItem("sound") === "true"){
-                    let audio = new Audio(soundfile);
+                    const audio = new Audio(soundfile);
                     audio.play(); 
                 };
-                document.querySelector(".countSwap").innerHTML ="Moves: "+ localStorage.getItem("countSwap")/*this.puzzle.countSwap*/;
+                document.querySelector(".countSwap").innerHTML = `Moves: ${localStorage.getItem("countSwap")}`;
                 
             }
     }
@@ -101,7 +101,7 @@ export default class Fragment {
     }
 
     setPosition(index) {
-        const {x,y} = this.getXY(this.index); 
+        // const {x,y} = this.getXY(this.index); 
         const  {left, top} = {
             left: this.width * (index % this.puzzle.sizeGame),
             top:this.height*Math.floor(index / this.puzzle.sizeGame)

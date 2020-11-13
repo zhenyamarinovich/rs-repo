@@ -16,6 +16,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .block-container{
@@ -74,22 +75,30 @@ body {
   background: rgb(0,0,0);
   //background: linear-gradient(to right, #00aaff, #00ff6c);
   //background: url("../img/images.jpg");
-  width: 650px;
+  width: 700px;
   height: 750px;
 }
 
 .time {
-  width: 200px;
+  width: 150px;
   text-align: center;
 }
 
 .new-game{
-  font-size: 26px;
+  font-size: 22px;
   height: 34px;
   border: 1px solid gray;
   //background: linear-gradient(to right, #02fab0, #00ff6c);
   background: black;
   color: white;
+}
+.autoSolve{
+    font-size: 22px;
+    height: 34px;
+    border: 1px solid gray;
+    //background: linear-gradient(to right, #02fab0, #00ff6c);
+    background: black;
+    color: white;
 }
 
 .finish-modal {
@@ -109,6 +118,23 @@ body {
   background: url("../img/game-over.png") center;
   background-repeat: no-repeat;
   background-size: 100%;
+  transform: translate(100%);
+  transition: 2s all ease;
+  //transition-delay: 0.5s;
+}
+
+.top-modal{
+  display: flex; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
   transform: translate(100%);
   transition: 1s all ease;
 }
@@ -161,3 +187,49 @@ body {
   width: 30px;
   height: 30px;
 }
+
+.topTen{
+  background-image: url("../img/top.png");
+  background-position: center;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+}
+
+.top-info {
+  background-color: rgba(0,0,0,0.8);
+  //margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //flex-wrap: wrap;
+  padding: 20px;
+  overflow: auto;
+  border: 1px solid #888;
+  width: 30%;
+  height: 50%;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+}
+h3,p{
+  margin: 0 0 10px 0;
+}
+.close-modal-top {
+  color: white;
+  position: absolute;
+  top:22%;
+  left: 65%;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close-modal-top:hover,
+.close-modal-top:focus {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
