@@ -259,12 +259,20 @@ h3,p{
     font-size: 18px;
     width: 18px;
   }
+  .top-info{
+    width: 40%;
+    font-size: 18px;
+  }
+  .close-modal-top{
+    left: 69%;
+  }
 
 }
 
 @media (max-width: 530px){
   .panel-info{
     width: 320px;
+    font-size: 14px;
   }
   .main-container{
     height: 450px;
@@ -273,6 +281,13 @@ h3,p{
     font-size: 14px;
     width: 14px;
   }
+  .top-info{
+    width: 50%;
+  }
+  .close-modal-top{
+    left: 73%;
+  }
+  
 }
 
 

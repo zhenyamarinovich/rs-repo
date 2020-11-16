@@ -228,15 +228,14 @@ window.onresize = function( event ) {
     const screenWidth = window.screen.width;
     if(screenWidth < 730 && screenWidth > 530){
        widthBlock = 450;
-        clearInterval(interval);
-        puzzleWrapper.innerHTML="";
-        init();
     } else if(screenWidth < 530){
         widthBlock = 300;
-        clearInterval(interval);
-        puzzleWrapper.innerHTML="";
-        init();
+    } else{
+        widthBlock = 600;
     }
+    clearInterval(interval);
+    puzzleWrapper.innerHTML="";
+    init();
 };
 
 
