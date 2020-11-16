@@ -76,41 +76,25 @@ export default class Puzzle{
         // console.log("Количество перемещений "+ countSwap);
     }
 
-    autoSolve(reload){
-        
+    autoSolve(reload){ 
+        let delay = 40;
+        let array = this.arrayMoves.slice();
+        if(reload === "reload"){
+            delay = 0;
+            array = array.reverse();
+        }
+        let j=0;
+        for(let i = array.length-1; i > -1; i-=1){
             
-            let delay = 40;
-            let array = this.arrayMoves.slice();
-            if(reload === "reload"){
-                delay = 0;
-                array = array.reverse();
-            }
-            let j=0;
-            for(let i = array.length-1; i > -1; i-=1){
-                // setTimeout( function() {
-                // console.log(this.arrayMoves);
-                
-                const that = this;
-                const indexOne = array[i][0];
-                const indexTwo = array[i][1];
-                
-                // console.log("i: "+this.arrayMoves[i][0] + " j :" + this.arrayMoves[i][1]);
-                // setTimeout(()=> {}, 500);
-                   j+=1; 
-                    (function(t){
-                        setTimeout(function(){
-                        // this.swapFragment(this.arrayMoves[j][0],this.arrayMoves[j][1]);
-                        that.swapFragment(indexOne,indexTwo);
-                        // that.countSwap ++;
-                        // localStorage.setItem("countSwap",that.countSwap);
-                        // console.log("qwer" + that.fragments);
-                        }, t * delay);
-                        }(j));       
-                // }, i*1000);        
-            }
-            // console.log("solve");
+            const that = this;
+            const indexOne = array[i][0];
+            const indexTwo = array[i][1];
+            setTimeout(function(){
+                that.swapFragment(indexOne,indexTwo);
+            }, j * delay);
+            j+=1;   
+        }
 
-        // });
     }
     
 
@@ -127,25 +111,27 @@ export default class Puzzle{
             
             const info = document.querySelector(".info-modal");
             if(!this.autoFlag){
-                const dateBegin = new Date(parseInt(localStorage.getItem('time'),10));
-                const dateNow = new Date();
-                let min = Math.floor((dateNow - dateBegin)/1000/60);
-                min = min < 10 ? `0 ${min}` : min;
-                let sec = Math.floor((dateNow - dateBegin)/1000) - min*60;
-                sec = sec < 10 ? `0 ${sec}` : sec;
+                //const dateBegin = new Date(parseInt(localStorage.getItem('time'),10));
+                //const dateNow = new Date();
+                //let min = Math.floor((dateNow - dateBegin)/1000/60);
+                //min = min < 10 ? `0 ${min}` : min;
+                //let sec = Math.floor((dateNow - dateBegin)/1000) - min*60;
+                //sec = sec < 10 ? `0 ${sec}` : sec;
+                let min = localStorage.getItem("min");
+                let sec = localStorage.getItem("sec");
                 info.innerText = "You win!!!";
                 info.innerText += `\nMoves:  ${localStorage.getItem("countSwap")}`;
-                info.innerText += `   Time: ${min}: ${sec}`;
+                info.innerText += `  Time: ${min < 10 ? '0'+min : min} : ${sec < 10 ? '0'+sec : sec}`;
                 info.innerText += "\nClose to start new game!";
 
                 const topTen = JSON.parse(localStorage.getItem("topTen"));
-                if(topTen.length < 10){
-                    topTen.push(Math.floor((dateNow - dateBegin)/1000));
+                if(topTen.length < 3){
+                    topTen.push(Number(min)*60+Number(sec));
                     topTen.sort((a,b) => {
                         return a-b;
                     });
-                } else if(topTen[topTen.length-1] > Math.floor((dateNow - dateBegin)/1000)){
-                        topTen[topTen.length-1] = Math.floor((dateNow - dateBegin)/1000);
+                } else if(topTen[topTen.length-1] > (Number(min)*60+Number(sec))){
+                        topTen[topTen.length-1] = Number(min)*60+Number(sec);
                         topTen.sort((a,b) => {
                             return a-b;
                         });

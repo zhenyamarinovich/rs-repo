@@ -4,11 +4,10 @@ import BackgroundImg from '../img/98.jpg';
 import SoundOff from '../img/sound-off.jpg';
 import SoundOn from '../img/sound-on.jpg';
 import Puzzle from './Puzzle';
-// import soundfile from '../sound/sound.mp3'; 
-
 
 const mainContainer = document.createElement("div");
 const puzzleWrapper = document.createElement("div");
+let interval;
 
 puzzleWrapper.classList.add("puzzle-wrapper");
 mainContainer.classList.add("main-container");
@@ -26,10 +25,9 @@ function createSelectElement(panelInfo){
     selectList.classList.add("select");
     selectList.id = "mySelect";
     panelInfo.appendChild(selectList);
-
     // Create and append the options
     for (let i = 0; i < array.length; i +=1) {
-        const option = document.createElement("option"); // option change [ option ]
+        const option = document.createElement("option");
         option.value = array[i][0];
         option.text = array[i];
         selectList.appendChild(option);
@@ -37,34 +35,24 @@ function createSelectElement(panelInfo){
     
 }
 
-
-
-function getCurrentTime(dateBegin,time){
-    const dateNow = new Date();
-    let min = Math.floor((dateNow - dateBegin)/1000/60);
-    min = min < 10 ? `0 ${min}`: min;
-    let sec = Math.floor((dateNow - dateBegin)/1000) - min*60;
-    sec = sec < 10 ? `0 ${sec}`: sec;
-    time.innerHTML = `Time: ${min}: ${sec}`;
-}
-
-function setTime(time) {
-    let dateBegin;
-    const dateList = localStorage.getItem('time');
-    if(dateList == null){
-     dateBegin = new Date();
-    localStorage.setItem('time', +dateBegin);
-    } else{
-        dateBegin = new Date(parseInt(localStorage.getItem('time'),10));
+function getCurrentTime(time){
+    let min = localStorage.getItem("min");
+    let sec = localStorage.getItem("sec");
+    if(sec == null){
+        min = 0;
+        sec = 0;
+        localStorage.setItem('min', min);
+        localStorage.setItem('sec', sec);
     }
-    getCurrentTime(dateBegin,time);
-    setInterval(()=>{
-        getCurrentTime(dateBegin,time);
-    },1000); 
+    sec++;
+    if(sec === 60){
+        sec = 0;
+        min++;
+    }
+    localStorage.setItem('min', min);
+    localStorage.setItem('sec', sec);
+    time.innerHTML = `Time: ${min < 10 ? '0'+min : min} : ${sec < 10 ? '0'+sec : sec}`;
 }
-
-
-
 
 function setSound(){
     const sound = document.querySelector(".sound");
@@ -94,6 +82,7 @@ function setSound(){
 }
 
 function newGame(){
+    clearInterval(interval);
     const sizeGame = document.getElementById("mySelect").value;
     const topTen = JSON.parse(localStorage.getItem("topTen"));
     const volume = localStorage.getItem("sound");
@@ -124,13 +113,6 @@ function finishModal(){
         newGame();
 }
 
-    /* window.onclick = function(event) {
-        if (event.target == modal) {  
-            console.log(event.target);
-            modal.style.transform = "translate(100%)";
-            newGame();
-        }
-    } */
 }
 
 
@@ -164,7 +146,11 @@ function init() {
     newGameBtn.innerHTML = "New Game";
     autoSolve.innerHTML = "AutoSolve";
     newGameBtn.addEventListener("click", newGame);
-    setTime(time);
+    // localStorage.clear();
+    getCurrentTime(time);
+    interval = setInterval(()=>{
+        getCurrentTime(time);
+    },1000);
     setSound();
     setTop(topTen);
 
@@ -194,7 +180,7 @@ function setTop(topTen){
         topResult.forEach((item, index)  => {
             const min = Math.floor(item/60);
             let sec = item - min*60;
-            sec = sec < 10 ? `0 + ${sec}` : sec;
+            sec = sec < 10 ? `0${sec}` : sec;
             info.innerHTML += `\n <p>${index+1} place - ${min} min ${sec} sec </p>`;
         })
         // info.innerText = ""+JSON.parse(localStorage.getItem("topTen"));
@@ -204,14 +190,6 @@ function setTop(topTen){
         newGame();
     }
     
-
-    /* window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.transform = "translate(100%)";
-            document.querySelector(".finish-modal").style.transform = "translate(100%)";
-            newGame();
-        }
-    } */
 }
 
 function getSizeGame(){
