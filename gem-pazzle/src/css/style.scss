@@ -59,18 +59,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
   color:white;
   font-size: 26px;
   height: 60px;
   width: 100%;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 
 }
-
+.panel-info > * {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
 .main-container{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   border: 1px solid white;
   background: rgb(0,0,0);
   //background: linear-gradient(to right, #00aaff, #00ff6c);
@@ -194,6 +199,7 @@ body {
   background-size: cover;
   width: 30px;
   height: 30px;
+  margin-right: 0;
 }
 
 .top-info {
@@ -229,6 +235,44 @@ h3,p{
   color: blue;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+@media (max-width: 730px){
+  .main-container{
+    width: auto;
+    height: 600px;
+  }
+  .new-game{
+    font-size: 15px;
+  }
+  .autoSolve{
+    font-size: 15px;
+  }
+  .panel-info{
+    font-size: 18px;
+  }
+  .time{
+    width: 100px;
+  }
+  .number-block{
+    font-size: 18px;
+    width: 18px;
+  }
+
+}
+
+@media (max-width: 530px){
+  .panel-info{
+    width: 320px;
+  }
+  .main-container{
+    height: 450px;
+  }
+  .number-block{
+    font-size: 14px;
+    width: 14px;
+  }
 }
 
 
