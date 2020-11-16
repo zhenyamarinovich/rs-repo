@@ -87,7 +87,7 @@ export default class Fragment {
                     const audio = new Audio(soundfile);
                     audio.play(); 
                 };
-                document.querySelector(".countSwap").innerHTML = `Moves: ${localStorage.getItem("countSwap")}`;
+                document.querySelector(".panel-info__countSwap").innerHTML = `Moves: ${localStorage.getItem("countSwap")}`;
                 
             }
     }

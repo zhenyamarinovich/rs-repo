@@ -31,7 +31,7 @@ function createSelectElement(panelInfo){
     const selectList = document.createElement("select");
 
     panelInfo.classList.add("panel-info");
-    selectList.classList.add("select");
+    selectList.classList.add("panel-info__select");
     selectList.id = "mySelect";
     panelInfo.appendChild(selectList);
     // Create and append the options
@@ -46,7 +46,7 @@ function createSelectElement(panelInfo){
 }
 
 function getCurrentTime(){
-    const time = document.querySelector(".time");
+    const time = document.querySelector(".panel-info__time");
     let min = Number(localStorage.getItem("min"));
     let sec = Number(localStorage.getItem("sec"));
     if(sec == null){
@@ -66,7 +66,7 @@ function getCurrentTime(){
 }
 
 function setSound(){
-    const sound = document.querySelector(".sound");
+    const sound = document.querySelector(".panel-info__sound");
     let volume = false;
     sound.style.backgroundImage = `url(${SoundOff})`;
 
@@ -135,12 +135,12 @@ function init() {
     const topTen = document.createElement("div");
 
     
-    newGameBtn.classList.add("new-game");
-    time.classList.add("time");
-    countSwap.classList.add("countSwap");
-    sound.classList.add("sound");
-    topTen.classList.add("topTen");
-    autoSolve.classList.add("autoSolve");
+    newGameBtn.classList.add("panel-info__new-game");
+    time.classList.add("panel-info__time");
+    countSwap.classList.add("panel-info__countSwap");
+    sound.classList.add("panel-info__sound");
+    topTen.classList.add("panel-info__top-ten");
+    autoSolve.classList.add("panel-info__auto-solve");
 
     puzzleWrapper.appendChild(panelInfo);
     panelInfo.appendChild(newGameBtn);
