@@ -24,7 +24,6 @@ export default class Puzzle{
         this.blockContainer.classList.add("block-container");
         this.wrapper.appendChild(this.blockContainer);
         // this.autoSolve();
-
     }
 
     setup(){
@@ -159,5 +158,7 @@ export default class Puzzle{
 
         return true;
     }
+
+ 
     
 }

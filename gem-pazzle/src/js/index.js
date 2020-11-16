@@ -8,6 +8,7 @@ import Puzzle from './Puzzle';
 const mainContainer = document.createElement("div");
 const puzzleWrapper = document.createElement("div");
 let interval;
+let widthBlock = 600;
 
 puzzleWrapper.classList.add("puzzle-wrapper");
 mainContainer.classList.add("main-container");
@@ -158,7 +159,7 @@ function init() {
     setSound();
     setTop(topTen);
 
-    const puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,600 , getSizeGame());
+    const puzzle =  new Puzzle(puzzleWrapper,BackgroundImg ,widthBlock, getSizeGame());
     console.log(puzzle);
 }
 
@@ -214,6 +215,22 @@ function getSizeGame(){
     })
     return size;
 }
+
+window.onresize = function( event ) {
+    const screenWidth = window.screen.width;
+    if(screenWidth < 730 && screenWidth > 530){
+       widthBlock = 450;
+        clearInterval(interval);
+        puzzleWrapper.innerHTML="";
+        init();
+    } else if(screenWidth < 530){
+        widthBlock = 300;
+        clearInterval(interval);
+        puzzleWrapper.innerHTML="";
+        init();
+    }
+};
+
 
 init();
 
