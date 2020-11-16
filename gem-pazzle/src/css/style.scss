@@ -1,0 +1,235 @@
+body {
+  background-image: url("../img/84.jpg");
+  background-size: cover;
+  background-position:center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.puzzle-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.block-container{
+  position: relative;
+  background-color: white;
+  margin: 0 10px;
+}
+.fragment{
+  border: 1px solid white;
+  display: flex;
+  justify-content:flex-start;
+  align-items: flex-start;
+  position: absolute; 
+  cursor: all-scroll;
+ 
+}
+
+.animation{
+  transition: 0.5s all ease;
+}
+
+.number-block{
+  font-size: 22px;
+  width: 22px;
+  text-align: center;
+  font-weight: bold;
+  color: white; 
+  background-color:rgba(0,0,0,0.7);
+}
+
+.hidden {
+  display: none;
+}
+
+.hovered{
+  border:2px solid greenyellow;
+}
+
+.panel-info{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color:white;
+  font-size: 26px;
+  height: 60px;
+  width: 100%;
+  margin-bottom: 30px;
+
+}
+
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  background: rgb(0,0,0);
+  //background: linear-gradient(to right, #00aaff, #00ff6c);
+  //background: url("../img/images.jpg");
+  width: 700px;
+  height: 750px;
+}
+
+.time {
+  width: 150px;
+  text-align: center;
+}
+
+.new-game{
+  font-size: 22px;
+  height: 34px;
+  border: 1px solid gray;
+  //background: linear-gradient(to right, #02fab0, #00ff6c);
+  background: black;
+  color: white;
+}
+.autoSolve{
+    font-size: 22px;
+    height: 34px;
+    border: 1px solid gray;
+    //background: linear-gradient(to right, #02fab0, #00ff6c);
+    background: black;
+    color: white;
+}
+
+.finish-modal {
+  display: flex; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  //padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  //background-color: rgb(0,0,0); /* Fallback color */
+  //background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  background: url("../img/game-over.png") center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transform: translate(100%);
+  transition: 2s all ease;
+  //transition-delay: 0.5s;
+}
+
+.top-modal{
+  display: flex; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  transform: translate(100%);
+  transition: 1s all ease;
+}
+
+/* Modal Content */
+.info-modal {
+  background-color: rgba(0,0,0,0.8);
+  //margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  height: 20%;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}
+
+/* The Close Button */
+.close-modal {
+  color: white;
+  position: absolute;
+  top:37%;
+  left: 70%;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.select{
+  //background: linear-gradient(to right, #02fab0, #00ff6c);
+  background: black;
+  color: white;
+  width: 50px;
+  height: 34px;
+}
+
+.sound{
+  //background-image: url("../img/sound-off.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+}
+
+.topTen{
+  background-image: url("../img/top.png");
+  background-position: center;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+}
+
+.top-info {
+  background-color: rgba(0,0,0,0.8);
+  //margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //flex-wrap: wrap;
+  padding: 20px;
+  overflow: auto;
+  border: 1px solid #888;
+  width: 30%;
+  height: 50%;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+}
+h3,p{
+  margin: 0 0 10px 0;
+}
+.close-modal-top {
+  color: white;
+  position: absolute;
+  top:22%;
+  left: 65%;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close-modal-top:hover,
+.close-modal-top:focus {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
