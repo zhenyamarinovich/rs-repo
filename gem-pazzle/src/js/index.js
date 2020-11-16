@@ -8,7 +8,15 @@ import Puzzle from './Puzzle';
 const mainContainer = document.createElement("div");
 const puzzleWrapper = document.createElement("div");
 let interval;
-let widthBlock = 600;
+
+let widthBlock;
+if(window.innerWidth > 730){
+    widthBlock = 600;
+}else if(window.innerWidth < 730 && window.innerWidth > 530){
+    widthBlock = 450;
+} else {
+    widthBlock = 300;
+}
 
 puzzleWrapper.classList.add("puzzle-wrapper");
 mainContainer.classList.add("main-container");
