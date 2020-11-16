@@ -1,8 +1,8 @@
 import '../css/style.css';
 import '../css/style.scss';
-import BackgroundImg from '/img/98.jpg';
-import SoundOff from '/img/sound-off.jpg';
-import SoundOn from '/img/sound-on.jpg';
+import BackgroundImg from '../img/98.jpg';
+import SoundOff from '../img/sound-off.jpg';
+import SoundOn from '../img/sound-on.jpg';
 import Puzzle from './Puzzle';
 
 const mainContainer = document.createElement("div");
@@ -57,18 +57,23 @@ function getCurrentTime(time){
 function setSound(){
     const sound = document.querySelector(".sound");
     let volume = false;
-    sound.style.backgroundImage = `url(../${SoundOff})`;
+    //sound.style.backgroundImage = `url(../${SoundOff})`;
+    sound.style.backgroundImage = `url(${SoundOff})`;
 
     if(localStorage.getItem("sound") === "true"){
         volume = true;
-        sound.style.backgroundImage = `url(../${SoundOn})`;
+        //sound.style.backgroundImage = `url(../${SoundOn})`;
+        sound.style.backgroundImage = `url(${SoundOn})`;
     }
      
     sound.addEventListener("click", () => {
         if(!volume){
-            sound.style.backgroundImage = `url(../${SoundOn})`;
+           // sound.style.backgroundImage = `url(../${SoundOn})`;
+           sound.style.backgroundImage = `url(${SoundOn})`;
         } else {
-            sound.style.backgroundImage = `url(../${SoundOff})`;
+           // sound.style.backgroundImage = `url(../${SoundOff})`;
+           sound.style.backgroundImage = `url(${SoundOff})`;
+
            
         }
         /* let audio = new Audio(soundfile);
