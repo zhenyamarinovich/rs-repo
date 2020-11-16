@@ -96,7 +96,7 @@ export default class Fragment {
         const {x,y} = this.getXY(this.index); 
         const left = this.width * x;
         const top = this.height * y;
-        this.element.style.backgroundImage = `url(../${this.puzzle.image})`;
+        this.element.style.backgroundImage = `url(${this.puzzle.image})`;
         this.element.style.backgroundPosition = `-${left}px -${top}px`;
     }
 
