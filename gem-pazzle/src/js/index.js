@@ -63,8 +63,7 @@ function setSound(){
         volume = true;
         sound.style.backgroundImage = `url(../${SoundOn})`;
     }
-    
-   
+     
     sound.addEventListener("click", () => {
         if(!volume){
             sound.style.backgroundImage = `url(../${SoundOn})`;
