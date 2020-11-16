@@ -37,56 +37,52 @@ function createSelectElement(panelInfo){
     // Create and append the options
     for (let i = 0; i < array.length; i +=1) {
         const option = document.createElement("option");
-        option.value = array[i][0];
-        option.text = array[i];
+        [option.value, option.text] = [ array[i][0], array[i]]
+        // option.value = array[i][0];
+        // option.text = array[i];
         selectList.appendChild(option);
     }
     
 }
 
-function getCurrentTime(time){
-    let min = localStorage.getItem("min");
-    let sec = localStorage.getItem("sec");
+function getCurrentTime(){
+    const time = document.querySelector(".time");
+    let min = Number(localStorage.getItem("min"));
+    let sec = Number(localStorage.getItem("sec"));
     if(sec == null){
         min = 0;
         sec = 0;
         localStorage.setItem('min', min);
         localStorage.setItem('sec', sec);
     }
-    sec++;
+    sec += 1;
     if(sec === 60){
         sec = 0;
-        min++;
+        min += 1;
     }
     localStorage.setItem('min', min);
     localStorage.setItem('sec', sec);
-    time.innerHTML = `Time: ${min < 10 ? '0'+min : min} : ${sec < 10 ? '0'+sec : sec}`;
+    time.innerHTML = `Time: ${min < 10 ? `0${min}` : min} : ${sec < 10 ? `0${sec}` : sec}`;
 }
 
 function setSound(){
     const sound = document.querySelector(".sound");
     let volume = false;
-    //sound.style.backgroundImage = `url(../${SoundOff})`;
     sound.style.backgroundImage = `url(${SoundOff})`;
 
     if(localStorage.getItem("sound") === "true"){
         volume = true;
-        //sound.style.backgroundImage = `url(../${SoundOn})`;
         sound.style.backgroundImage = `url(${SoundOn})`;
     }
      
     sound.addEventListener("click", () => {
         if(!volume){
-           // sound.style.backgroundImage = `url(../${SoundOn})`;
            sound.style.backgroundImage = `url(${SoundOn})`;
         } else {
-           // sound.style.backgroundImage = `url(../${SoundOff})`;
            sound.style.backgroundImage = `url(${SoundOff})`;
 
            
         }
-        /* let audio = new Audio(soundfile);
-        audio.play(); */
         volume = !volume;
         localStorage.setItem("sound",volume);
     })
@@ -160,9 +156,9 @@ function init() {
     autoSolve.innerHTML = "AutoSolve";
     newGameBtn.addEventListener("click", newGame);
     // localStorage.clear();
-    getCurrentTime(time);
+    getCurrentTime();
     interval = setInterval(()=>{
-        getCurrentTime(time);
+        getCurrentTime();
     },1000);
     setSound();
     setTop(topTen);
@@ -224,7 +220,7 @@ function getSizeGame(){
     return size;
 }
 
-window.onresize = function( event ) {
+window.onresize = function() {
     const screenWidth = window.screen.width;
     if(screenWidth < 730 && screenWidth > 530){
        widthBlock = 450;

@@ -111,11 +111,11 @@ export default class Puzzle{
             const info = document.querySelector(".info-modal");
             if(!this.autoFlag){
 
-                let min = localStorage.getItem("min");
-                let sec = localStorage.getItem("sec");
+                const min = localStorage.getItem("min");
+                const sec = localStorage.getItem("sec");
                 info.innerText = "You win!!!";
                 info.innerText += `\nMoves:  ${localStorage.getItem("countSwap")}`;
-                info.innerText += `  Time: ${min < 10 ? '0'+min : min} : ${sec < 10 ? '0'+sec : sec}`;
+                info.innerText += `  Time: ${min < 10 ? `0${min}` : min} : ${sec < 10 ? `0${sec}` : sec}`;
                 info.innerText += "\nClose to start new game!";
 
                 const topTen = JSON.parse(localStorage.getItem("topTen"));
