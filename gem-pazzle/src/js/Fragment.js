@@ -81,7 +81,7 @@ export default class Fragment {
                 localStorage.arrayMoves = JSON.stringify(this.puzzle.arrayMoves); // change "arrayMoves"
                 this.puzzle.swapFragment(currentIndex,emptyIndex);
                 // this.puzzle.arrayMoves.push()
-                this.puzzle.countSwap += 1;
+                this.puzzle.countSwap = Number(this.puzzle.countSwap) + 1;
                 localStorage.setItem("countSwap",this.puzzle.countSwap);
                 if(localStorage.getItem("sound") === "true"){
                     const audio = new Audio(soundfile);
