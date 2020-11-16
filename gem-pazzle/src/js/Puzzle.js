@@ -111,12 +111,7 @@ export default class Puzzle{
             
             const info = document.querySelector(".info-modal");
             if(!this.autoFlag){
-                //const dateBegin = new Date(parseInt(localStorage.getItem('time'),10));
-                //const dateNow = new Date();
-                //let min = Math.floor((dateNow - dateBegin)/1000/60);
-                //min = min < 10 ? `0 ${min}` : min;
-                //let sec = Math.floor((dateNow - dateBegin)/1000) - min*60;
-                //sec = sec < 10 ? `0 ${sec}` : sec;
+
                 let min = localStorage.getItem("min");
                 let sec = localStorage.getItem("sec");
                 info.innerText = "You win!!!";
@@ -125,7 +120,7 @@ export default class Puzzle{
                 info.innerText += "\nClose to start new game!";
 
                 const topTen = JSON.parse(localStorage.getItem("topTen"));
-                if(topTen.length < 3){
+                if(topTen.length < 10){
                     topTen.push(Number(min)*60+Number(sec));
                     topTen.sort((a,b) => {
                         return a-b;
@@ -143,14 +138,6 @@ export default class Puzzle{
                 info.innerText += "\nClose to start new game!";
             }
 
-
-            
-// When the user clicks on <span> (x), close the modal
-           
-            // let min = Math.floor((this.endTime - this.startTime)/1000/60);
-            // let sec = Math.floor((this.endTime - this.startTime)/1000) - min*60;
-            // console.log("win : " + min +" min " + sec +" sec");
-            // console.log("countSwap: "+ this.countSwap);
         } 
     }
 
@@ -169,12 +156,7 @@ export default class Puzzle{
                 return false;
             }
         }
-        // this.endTime = new Date();
-        /* const items = document.querySelectorAll(".fragment")
-        items.forEach(item => {
-            item.style.border = "none";
-            item.removeChild(document.querySelector(".number-block"));
-        }); */
+
         return true;
     }
     
