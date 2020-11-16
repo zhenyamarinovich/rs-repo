@@ -1,3 +1,23 @@
+$background-color : rgb(0,0,0);
+$text-color: white;
+$modal-color:rgba(0,0,0,0.8);
+
+%modal {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: $modal-color; 
+  transform: translate(100%);
+  transition: 1s all ease;
+}
+
 body {
   background-image: url("../img/84.jpg");
   background-size: cover;
@@ -10,6 +30,17 @@ body {
   align-items: center;
   height: 100vh;
 }
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid $text-color;
+  background: $background-color;
+  width: 700px;
+  height: 750px;
+  margin-top: 20px;
+}
 
 .puzzle-wrapper{
   display: flex;
@@ -18,14 +49,13 @@ body {
   align-items: center;
   width: 100%;
 }
-
 .block-container{
   position: relative;
-  background-color: white;
+  background-color: $text-color;
   margin: 0 10px;
 }
 .fragment{
-  border: 1px solid white;
+  border: 1px solid $text-color;
   display: flex;
   justify-content:flex-start;
   align-items: flex-start;
@@ -33,163 +63,63 @@ body {
   cursor: all-scroll;
  
 }
-
-.animation{
-  transition: 0.5s all ease;
-}
-
 .number-block{
   font-size: 22px;
   width: 22px;
   text-align: center;
   font-weight: bold;
-  color: white; 
-  background-color:rgba(0,0,0,0.7);
+  color: $text-color; 
+  background-color: $modal-color;
 }
-
-.hidden {
-  display: none;
+.animation{
+  transition: 0.5s all ease;
 }
-
-.hovered{
-  border:2px solid greenyellow;
-}
-
 .panel-info{
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  color:white;
+  color: $text-color;
   font-size: 26px;
   height: 60px;
   width: 100%;
   padding-bottom: 30px;
-
 }
 .panel-info > * {
   margin-right: 10px;
   margin-bottom: 5px;
-}
-.main-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  border: 1px solid white;
-  background: rgb(0,0,0);
-  //background: linear-gradient(to right, #00aaff, #00ff6c);
-  //background: url("../img/images.jpg");
-  width: 700px;
-  height: 750px;
+  background: $background-color;
+  color: $text-color;
 }
 
-.time {
+.panel-info__time {
   width: 150px;
   text-align: center;
 }
 
-.new-game{
+.panel-info__new-game{
   font-size: 22px;
   height: 34px;
   border: 1px solid gray;
-  //background: linear-gradient(to right, #02fab0, #00ff6c);
-  background: black;
-  color: white;
-}
-.autoSolve{
-    font-size: 22px;
-    height: 34px;
-    border: 1px solid gray;
-    //background: linear-gradient(to right, #02fab0, #00ff6c);
-    background: black;
-    color: white;
-}
 
-.finish-modal {
-  display: flex; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  //padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
- background-color: rgba(0,0,0,0.9);
-  transform: translate(100%);
-  transition: 2s all ease;
-  //transition-delay: 0.5s;
 }
-
-.top-modal{
-  display: flex; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-  transform: translate(100%);
-  transition: 1s all ease;
+.panel-info__auto-solve{
+  font-size: 22px;
+  height: 34px;
+  border: 1px solid gray;
 }
-
-/* Modal Content */
-.info-modal {
-  background-color: rgba(0,0,0,0.8);
-  //margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 40%;
-  height: 20%;
-  font-size: 30px;
-  color: white;
-  text-align: center;
-}
-
-/* The Close Button */
-.close-modal {
-  color: white;
-  position: absolute;
-  top:37%;
-  left: 70%;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close-modal:hover,
-.close-modal:focus {
-  color: blue;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.select{
-  //background: linear-gradient(to right, #02fab0, #00ff6c);
-  background: black;
-  color: white;
+.panel-info__select{
   width: 50px;
   height: 34px;
 }
-
-.sound{
-  //background-image: url("../img/sound-off.jpg");
+.panel-info__sound{
   background-position: center;
   background-size: cover;
   width: 30px;
   height: 30px;
 }
 
-.topTen{
+.panel-info__top-ten{
   background-image: url("../img/top.png");
   background-position: center;
   background-size: cover;
@@ -198,40 +128,72 @@ body {
   margin-right: 0;
 }
 
+.finish-modal {
+  @extend %modal;
+}
+
+.info-modal {
+  background-color:$modal-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  height: 20%;
+  font-size: 30px;
+  color: $text-color;
+  text-align: center;
+}
+
+.close-modal {
+  color: $text-color;
+  position: absolute;
+  top:37%;
+  left: 70%;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus,
+.close-modal-top:hover,
+.close-modal-top:focus  {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.top-modal{
+  @extend %modal;
+}
 .top-info {
-  background-color: rgba(0,0,0,0.8);
-  //margin: auto;
+  background-color:$modal-color;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  //flex-wrap: wrap;
   padding: 20px;
   overflow: auto;
   border: 1px solid #888;
   width: 30%;
   height: 50%;
   font-size: 25px;
-  color: white;
+  color: $text-color;
   text-align: center;
 }
 h3,p{
   margin: 0 0 10px 0;
 }
 .close-modal-top {
-  color: white;
+  color: $text-color;
   position: absolute;
   top:22%;
   left: 65%;
   font-size: 28px;
   font-weight: bold;
 }
-.close-modal-top:hover,
-.close-modal-top:focus {
-  color: blue;
-  text-decoration: none;
-  cursor: pointer;
-}
+
 
 
 @media (max-width: 730px){
@@ -239,16 +201,16 @@ h3,p{
     width: auto;
     height: 600px;
   }
-  .new-game{
+  .panel_info__new-game{
     font-size: 15px;
   }
-  .autoSolve{
+  .panel_info__auto-solve{
     font-size: 15px;
   }
   .panel-info{
     font-size: 18px;
   }
-  .time{
+  .panel_info__time{
     width: 100px;
   }
   .number-block{

@@ -38,8 +38,8 @@ export default class Puzzle{
             this.arrayMoves = datalist;
             this.autoSolve("reload");
         }
-        document.querySelector(".countSwap").innerHTML = localStorage.getItem("countSwap") == null ? "Moves: 0": `Moves: ${localStorage.getItem("countSwap")}`;
-        document.querySelector(".autoSolve").addEventListener("click", ()=> {
+        document.querySelector(".panel-info__countSwap").innerHTML = localStorage.getItem("countSwap") == null ? "Moves: 0": `Moves: ${localStorage.getItem("countSwap")}`;
+        document.querySelector(".panel-info__auto-solve").addEventListener("click", ()=> {
             this.autoSolve();
             this.autoFlag = true;
         });
