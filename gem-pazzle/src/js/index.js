@@ -1,13 +1,15 @@
 import '../css/style.css';
 import '../css/style.scss';
 import BackgroundImg from '../img/98.jpg';
-import SoundOff from '../img/sound-off.jpg';
-import SoundOn from '../img/sound-on.jpg';
+// import SoundOff from '../img/sound-off.jpg';
+// import SoundOn from '../img/sound-on.jpg';
 import Puzzle from './Puzzle';
 
 const mainContainer = document.createElement("div");
 const puzzleWrapper = document.createElement("div");
 let interval;
+let min;
+let sec;
 
 let widthBlock;
 if(window.innerWidth > 730){
@@ -45,41 +47,48 @@ function createSelectElement(panelInfo){
     
 }
 
-function getCurrentTime(){
+function getCurrentTime(flag = false){
     const time = document.querySelector(".panel-info__time");
-    let min = Number(localStorage.getItem("min"));
-    let sec = Number(localStorage.getItem("sec"));
-    if(sec == null){
+    if(flag){
+        min = Number(localStorage.getItem("min"));
+        sec = Number(localStorage.getItem("sec"));
+    }
+    if(sec == null || sec === undefined){
         min = 0;
         sec = 0;
-        localStorage.setItem('min', min);
-        localStorage.setItem('sec', sec);
+        // localStorage.setItem('min', min);
+        // localStorage.setItem('sec', sec);
     }
     sec += 1;
     if(sec === 60){
         sec = 0;
         min += 1;
     }
-    localStorage.setItem('min', min);
-    localStorage.setItem('sec', sec);
     time.innerHTML = `Time: ${min < 10 ? `0${min}` : min} : ${sec < 10 ? `0${sec}` : sec}`;
 }
 
 function setSound(){
     const sound = document.querySelector(".panel-info__sound");
     let volume = false;
-    sound.style.backgroundImage = `url(${SoundOff})`;
+    // sound.style.backgroundImage = `url(${SoundOff})`;
+    sound.classList.add("panel-info__sound-imageOff");
 
     if(localStorage.getItem("sound") === "true"){
         volume = true;
-        sound.style.backgroundImage = `url(${SoundOn})`;
+        // sound.style.backgroundImage = `url(${SoundOn})`;
+        sound.classList.remove("panel-info__sound-imageOff");
+        sound.classList.add("panel-info__sound-imageOn");
     }
      
     sound.addEventListener("click", () => {
         if(!volume){
-           sound.style.backgroundImage = `url(${SoundOn})`;
+           // sound.style.backgroundImage = `url(${SoundOn})`;
+           sound.classList.remove("panel-info__sound-imageOff");
+           sound.classList.add("panel-info__sound-imageOn");
         } else {
-           sound.style.backgroundImage = `url(${SoundOff})`;
+           // sound.style.backgroundImage = `url(${SoundOff})`;
+           sound.classList.remove("panel-info__sound-imageOn");
+           sound.classList.add("panel-info__sound-imageOff");
 
            
         }
@@ -117,8 +126,10 @@ function finishModal(){
     modal.appendChild(close);
     modal.appendChild(info);
     close.onclick = function() {
-        modal.style.transitionDelay = "0s";
-        modal.style.transform = "translate(100%)"; 
+        // modal.style.transitionDelay = "0s";
+        // modal.style.transform = "translate(100%)"; 
+        modal.classList.remove("finish-modal__open")
+        modal.classList.add("finish-modal__close-click");
         newGame();
 }
 
@@ -156,7 +167,7 @@ function init() {
     autoSolve.innerHTML = "AutoSolve";
     newGameBtn.addEventListener("click", newGame);
     // localStorage.clear();
-    getCurrentTime();
+    getCurrentTime(true);
     interval = setInterval(()=>{
         getCurrentTime();
     },1000);
@@ -184,18 +195,22 @@ function setTop(topTen){
     localStorage.topTen = JSON.stringify([]);
     }
     topTen.addEventListener("click", () => {
-        modal.style.transform = "translate(0)";
+        // modal.style.transform = "translate(0)";
+        modal.classList.remove("top-modal__close-click");
+        modal.classList.add("top-modal__icon-click");
         const topResult = JSON.parse(localStorage.getItem("topTen"));
         topResult.forEach((item, index)  => {
-            const min = Math.floor(item/60);
-            let sec = item - min*60;
-            sec = sec < 10 ? `0${sec}` : sec;
-            info.innerHTML += `\n <p>${index+1} place - ${min} min ${sec} sec </p>`;
+            const minTop = Math.floor(item/60);
+            let secTop = item - minTop*60;
+            secTop  = secTop  < 10 ? `0${secTop }` : secTop ;
+            info.innerHTML += `\n <p>${index+1} place - ${minTop} min ${secTop } sec </p>`;
         })
         // info.innerText = ""+JSON.parse(localStorage.getItem("topTen"));
         });
     close.onclick = function() {
-        modal.style.transform = "translate(100%)";
+        modal.classList.remove("top-modal__icon-click");
+        modal.classList.add("top-modal__close-click");
+        // modal.style.transform = "translate(100%)";
         newGame();
     }
     
@@ -232,6 +247,11 @@ window.onresize = function() {
     clearInterval(interval);
     puzzleWrapper.innerHTML="";
     init();
+};
+
+window.onunload = function() {
+    localStorage.setItem('min', min);
+    localStorage.setItem('sec', sec);
 };
 
 
