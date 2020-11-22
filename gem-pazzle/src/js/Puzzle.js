@@ -105,14 +105,19 @@ export default class Puzzle{
             // console.log("win");
             const modal = document.querySelector(".finish-modal");
             // modal.style.display="flex";
-            modal.style.transitionDelay = "1s";
-            modal.style.transform = "translate(0)";
+            // modal.style.transitionDelay = "1s";
+            // modal.style.transform = "translate(0)";
+            modal.classList.remove("finish-modal__close-click");
+            modal.classList.add("finish-modal__open");
             
             const info = document.querySelector(".info-modal");
             if(!this.autoFlag){
 
-                const min = localStorage.getItem("min");
-                const sec = localStorage.getItem("sec");
+                // const min = localStorage.getItem("min");
+                // const sec = localStorage.getItem("sec");
+                const mass = document.querySelector(".panel-info__time").innerText.split(":");
+                const min = Number(mass[1].trim());
+                const sec = Number(mass[2].trim());
                 info.innerText = "You win!!!";
                 info.innerText += `\nMoves:  ${localStorage.getItem("countSwap")}`;
                 info.innerText += `  Time: ${min < 10 ? `0${min}` : min} : ${sec < 10 ? `0${sec}` : sec}`;

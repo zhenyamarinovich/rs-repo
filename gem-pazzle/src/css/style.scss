@@ -118,6 +118,12 @@ body {
   width: 30px;
   height: 30px;
 }
+.panel-info__sound-imageOn{
+  background-image: url("../img/sound-on.jpg");
+}
+.panel-info__sound-imageOff{
+  background-image: url("../img/sound-off.jpg");
+}
 
 .panel-info__top-ten{
   background-image: url("../img/top.png");
@@ -130,6 +136,15 @@ body {
 
 .finish-modal {
   @extend %modal;
+}
+
+.finish-modal__close-click {
+  transition-delay: 0s;
+  transform: translate(100%);
+}
+.finish-modal__open {
+  transition-delay: 1s;
+  transform: translate(0);
 }
 
 .info-modal {
@@ -166,6 +181,12 @@ body {
 
 .top-modal{
   @extend %modal;
+}
+.top-modal__icon-click {
+  transform: translate(0);
+}
+.top-modal__close-click {
+  transform: translate(100%);
 }
 .top-info {
   background-color:$modal-color;
