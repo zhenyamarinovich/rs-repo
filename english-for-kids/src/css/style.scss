@@ -1,0 +1,177 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+header {
+  height: 120px;
+  background-color: black;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+.menu-btn__burger {
+  width: 50px;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+  transition: all .5s ease-in-out;
+}
+.menu-btn__burger::before, .menu-btn__burger::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+  transition: all .5s ease-in-out;
+}
+.menu-btn__burger::before {
+  transform: translateY(-16px);
+}
+.menu-btn__burger::after {
+  transform: translateY(16px);
+}
+
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(50px);
+  background: transparent;
+  box-shadow: none;
+  z-index: 3;
+  position: fixed;
+  top: 50px;
+  left: 150px;
+  transition: 2s all  ease;
+}
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+
+:root {
+  --colorGreyLight:white;
+  --colorGreyDark: #999;
+  --colorOn: green;
+}
+
+
+.c-toggle {
+  display: inline-block;
+  position: relative;
+  text-indent: 4em;
+}
+
+.c-toggle input[type="checkbox"] {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+/* ui element */
+.c-toggle::before {
+  content: '';
+  display: block;
+  width: 4em;
+  height: 2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--colorGreyLight);
+  border: 0.1em solid var(--colorGreyDark);
+  border-radius: 1em;
+  box-sizing: border-box;
+}
+
+/* moving button */
+.c-toggle label::after,
+.c-toggle label::before {
+  content: '';
+  display: block;
+  height: 2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+} 
+
+.c-toggle label::after {
+  width: 4em;
+  background: transparent;
+}
+
+.c-toggle label::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: 0em;
+  background: var(--colorGreyDark);
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+} 
+
+.c-toggle input[type="checkbox"]:checked + label::before {
+  transform: translateX(2em);
+  background: var(--colorOn);
+}
+
+.menu-btn__navigation{
+  width: 320px;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  left:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background-color: rgb(0,122,0);
+  transform: translate(0);
+  transition: 0.5s all ease;
+}
+
+.menu-btn__navigation-visible{
+  transform: translate(0);
+}
+.menu-btn__navigation-unvisible{
+  transform: translate(-100%);
+}
+.navigation__menu-list {
+  li{
+    list-style-type: none;
+
+    .menu-list__link{
+      color:white;
+      text-decoration: none;
+      font-size: 30px;
+    }
+  }
+}
