@@ -1,8 +1,14 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   color: white;
+  background-color: grey;
 }
 
 header {
@@ -174,4 +180,22 @@ header {
       font-size: 30px;
     }
   }
+}
+
+.card-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.card-list__card{
+  margin-bottom: 30px;
+  border: 2px solid red;
+  list-style-type: none;
+}
+
+.card__image{
+  width: 280px;
+  margin-bottom: 10px;
 }

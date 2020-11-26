@@ -1,7 +1,7 @@
-import cardsInfo from './CardsInfo';
+import cardsInfo from '../Data/CardsInfo';
 
 export default class Header {
-    constructor(){
+    constructor(model){
         this.init();
     }
 
@@ -27,24 +27,22 @@ export default class Header {
     createBurgerMenu(){
         const menuBtn = document.createElement("div");
         const menuBtnBurger = document.createElement("div");
-        const navigation = document.createElement("nav");
-
+        this.navigation = document.createElement("nav");
         menuBtn.classList.add("menu-btn");
         menuBtnBurger.classList.add("menu-btn__burger");
-        navigation.classList.add("menu-btn__navigation", "menu-btn__navigation-unvisible");
-        navigation.appendChild(this.fillNavigation());
+        this.navigation.classList.add("menu-btn__navigation", "menu-btn__navigation-unvisible");
         menuBtn.appendChild(menuBtnBurger);
-        this.wrapper.appendChild(navigation);
+        this.wrapper.appendChild(this.navigation);
         this.wrapper.appendChild(menuBtn);        
     }
 
-    fillNavigation() {
+    renderMenu(model) {
         const ul = document.createElement("ul");
         ul.classList.add("navigation__menu-list");
-        for (let i=0; i < cardsInfo[0].length; i++){
+        for (let i=0; i < model.length; i++){
             const li = document.createElement("li");
             let linkMenu = document.createElement("a");
-            linkMenu.appendChild(document.createTextNode("Ссылка на сайт"));
+            linkMenu.appendChild(document.createTextNode(model[i]));
             linkMenu.href = "#";
             linkMenu.classList.add("menu-list__link");
 
@@ -52,7 +50,7 @@ export default class Header {
 
             ul.appendChild(li);
         } 
-        return ul; 
+        this.navigation.appendChild(ul); 
     }
 
     createTitle(){

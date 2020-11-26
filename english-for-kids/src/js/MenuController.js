@@ -6,7 +6,7 @@
  перерисовка поля из файла по клику на нужную категорию,
  добавление каттегорий в меню*/
 
-import cardsInfo from './CardsInfo';
+import cardsInfo from './Data/CardsInfo';
 export default class MenuController{
     constructor() {
         this.addClick();

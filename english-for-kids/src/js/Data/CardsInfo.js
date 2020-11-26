@@ -1,5 +1,39 @@
 const cards = [ 
-    ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions'],
+    [
+      {
+       name: 'Action (set A)',
+       image: './assets/images/action(A).jpg'
+      },
+      {
+        name: 'Action (set B)',
+        image: './assets/images/action(B).jpg'
+       },
+       {
+        name: 'Animal (set A)',
+        image: './assets/images/animal(A).jpg'
+       },
+       {
+        name: 'Animal (set B)',
+        image: './assets/images/animal(B).jpg'
+       },
+       {
+        name:   'Clothes',
+        image: './assets/images/clothes.jpg'
+       },
+       {
+        name:  'Emotions',
+        image: './assets/images/emotions.jpg'
+       },
+       {
+        name:   'House',
+        image: './assets/images/house.jpg'
+       },
+       {
+        name:    'Food',
+        image: './assets/images/food.jpg'
+       },
+        
+    ],
     [
       {
         word: 'cry',
@@ -299,7 +333,108 @@ const cards = [
         image: 'img/laugh.jpg',
         audioSrc: 'audio/laugh.mp3'
       }
+    ],
+    [
+      {
+        word: 'bed',
+        translation: 'кровать',
+        image: 'images/body/bed.jpg',
+        audioSrc: 'audio/body/bed.mp3'
+      },
+      {
+        word: 'cup',
+        translation: 'кружка',
+        image: 'images/body/cup.jpg',
+        audioSrc: 'audio/body/cup.mp3'
+      },
+      {
+        word: 'mirror',
+        translation: 'зеркало',
+        image: 'images/body/mirror.jpg',
+        audioSrc: 'audio/body/mirror.mp3'
+      },
+      {
+        word: 'chair',
+        translation: 'стул',
+        image: 'images/body/chair.jpg',
+        audioSrc: 'audio/body/chair.mp3'
+      },
+      {
+        word: 'table',
+        translation: 'стол',
+        image: 'images/body/table.jpg',
+        audioSrc: 'audio/body/table.mp3'
+      },
+      {
+        word: 'bedroom',
+        translation: 'спальня',
+        image: 'images/body/bedroom.jpg',
+        audioSrc: 'audio/body/bedroom.mp3'
+      },
+      {
+        word: 'kitchen',
+        translation: 'кухня',
+        image: 'images/body/kitchen.jpg',
+        audioSrc: 'audio/body/kitchen.mp3'
+      },
+      {
+        word: 'clock',
+        translation: 'часы',
+        image: 'images/body/clock.jpg',
+        audioSrc: 'audio/body/clock.mp3'
+      },
+    ],
+    [
+      {
+        word: 'water',
+        translation: 'вода',
+        image: 'images/body/water.jpg',
+        audioSrc: 'audio/body/water.mp3'
+      },
+      {
+        word: 'meat',
+        translation: 'мясо',
+        image: 'images/body/meat.jpg',
+        audioSrc: 'audio/body/meat.mp3'
+      },
+      {
+        word: 'bread',
+        translation: 'хлеб',
+        image: 'images/body/bread.jpg',
+        audioSrc: 'audio/body/bread.mp3'
+      },
+      {
+        word: 'cheese',
+        translation: 'сыр',
+        image: 'images/body/cheese.jpg',
+        audioSrc: 'audio/body/cheese.mp3'
+      },
+      {
+        word: 'eggs',
+        translation: 'яйца',
+        image: 'images/body/eggs.jpg',
+        audioSrc: 'audio/body/eggs.mp3'
+      },
+      {
+        word: 'chocolate',
+        translation: 'шоколад',
+        image: 'images/body/chocolate.jpg',
+        audioSrc: 'audio/body/chocolate.mp3'
+      },
+      {
+        word: 'milk',
+        translation: 'молоко',
+        image: 'images/body/milk.jpg',
+        audioSrc: 'audio/body/milk.mp3'
+      },
+      {
+        word: 'tea',
+        translation: 'чай',
+        image: 'images/body/tea.jpg',
+        audioSrc: 'audio/body/tea.mp3'
+      },
     ]
+
   ]
   
   
