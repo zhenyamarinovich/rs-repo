@@ -10,27 +10,27 @@ const cards = [
        },
        {
         name: 'Animal (set A)',
-        image: './assets/images/animal(A).jpg'
+        image: 'assets/images/animal(A).jpg'
        },
        {
         name: 'Animal (set B)',
-        image: './assets/images/animal(B).jpg'
+        image: 'assets/images/animal(B).jpg'
        },
        {
         name:   'Clothes',
-        image: './assets/images/clothes.jpg'
+        image: 'assets/images/clothes.jpg'
        },
        {
         name:  'Emotions',
-        image: './assets/images/emotions.jpg'
+        image: 'assets/images/emotions.jpg'
        },
        {
         name:   'House',
-        image: './assets/images/house.jpg'
+        image: 'assets/images/house.jpg'
        },
        {
         name:    'Food',
-        image: './assets/images/food.jpg'
+        image: 'assets/images/food.jpg'
        },
         
     ],

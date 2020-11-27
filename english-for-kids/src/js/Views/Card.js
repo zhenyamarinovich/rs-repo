@@ -1,4 +1,5 @@
 
+
 export default class Fragment {
     constructor(cardList, model, index){
         this.cardList = cardList;
@@ -14,9 +15,6 @@ export default class Fragment {
         let image = document.createElement("img");
         image.setAttribute("src", this.model.image);
         image.classList.add("card__image")
-        //?убрать
-        // image.setAttribute("width", "300");
-        // image.setAttribute("height", "260");
         image.setAttribute("alt", this.model.name);
         element.appendChild(image);
         title.innerText = this.model.name;

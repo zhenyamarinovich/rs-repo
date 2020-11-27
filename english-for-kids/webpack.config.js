@@ -88,42 +88,15 @@ const config = {
         ]
       },
       {
-        test: /\.(jpe?g|png|svg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: 'assets/images',
-              name: '[name].[ext]'
-            }},
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              bypassOnDebug : true,
-              mozjpeg: {
-                progressive: true,
-                quality: 75
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false,
-                optimizationLevel: 1
-              },
-              // the webp option will enable WEBP
-              webp: {
-                quality: 75
-              }
-            }
-          }
-        ]
-      },
+        test: /\.(jpe?g|png|svg|mp3|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: file => {
+            let dirNameInsideAssets = path.relative(path.join(__dirname, 'src'), path.dirname(file));
+            return `${dirNameInsideAssets}/[name].[ext]`;
+          },
+        },
+      },          
       {
         test: /\.(woff|woff2|ttf|otf|eot)$/,
         use: [{
