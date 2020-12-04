@@ -187,15 +187,34 @@ header {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0;
+ 
 }
 
 .card-list__card{
   margin-bottom: 30px;
   border: 2px solid red;
   list-style-type: none;
+  transition: 0.4s all ease;
+
 }
 
 .card__image{
   width: 280px;
   margin-bottom: 10px;
+}
+
+.card__imageTurn{
+  width: 40px;
+  height: 25px;
+}
+
+.rotate{
+  transform: rotateY(90deg);
+}
+.card_title-hidden{
+  display: none;
+}
+.card-list__container{
+  display: flex;
+  justify-content:space-evenly;
 }

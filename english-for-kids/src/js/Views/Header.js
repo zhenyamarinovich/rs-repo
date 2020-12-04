@@ -39,17 +39,26 @@ export default class Header {
     renderMenu(model) {
         const ul = document.createElement("ul");
         ul.classList.add("navigation__menu-list");
+        //add link to menu
+        const li = document.createElement("li");
+        let linkMenu = document.createElement("a");
+        linkMenu.appendChild(document.createTextNode("Menu"));
+        linkMenu.href = `#Menu`;
+        linkMenu.classList.add("menu-list__link");
+        li.appendChild(linkMenu);
+        ul.appendChild(li);
+        // add all category links
         for (let i=0; i < model.length; i++){
             const li = document.createElement("li");
             let linkMenu = document.createElement("a");
-            linkMenu.appendChild(document.createTextNode(model[i]));
-            linkMenu.href = "#";
+            linkMenu.appendChild(document.createTextNode(model[i].name));
+            linkMenu.href = `#${model[i].name}`.replace(/set|[\s()]/g, '');
             linkMenu.classList.add("menu-list__link");
 
             li.appendChild(linkMenu);
 
             ul.appendChild(li);
-        } 
+        }
         this.navigation.appendChild(ul); 
     }
 

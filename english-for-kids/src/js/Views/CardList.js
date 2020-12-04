@@ -3,6 +3,7 @@ import Card from './Card';
 export default class CardList {
     constructor(){
         this.cards = [];
+        this.element;
         this.createWrapper();
         this.createCardBlock();
     }
@@ -23,7 +24,12 @@ export default class CardList {
     }
 
     render(model) {
+        if(this.cards.length !==0){
+            this.cards = [];
+        }
+        document.querySelector(".card-list").innerHTML = "";
         for (let i=0; i < model.length; i++){
+            //console.log(this);
             this.cards.push(new Card(this,model[i],i));
         } 
     }
