@@ -69,18 +69,13 @@ export default class Header {
     }
 
     createSwitcher(){
-        const switcher = document.createElement("span");
-        const input = document.createElement("input");
-        const label = document.createElement("label");
-
-        switcher.classList.add("c-toggle");
-        input.setAttribute("type", "checkbox");
-        input.id = "toggle";
-        label.setAttribute("for","toggle");
-
-        switcher.appendChild(input);
-        switcher.appendChild(label);
-        this.wrapper.appendChild(switcher);
+        const switcherBlock = document.createElement("div");
+        const switcher = document.createElement("div");
+        switcherBlock.classList.add("switcher-block");
+        switcher.classList.add("switcher");
+        switcher.classList.add("switcher__off");
+        switcherBlock.appendChild(switcher);
+        this.wrapper.appendChild(switcherBlock);
     }
 
     getHeaderBLock() {

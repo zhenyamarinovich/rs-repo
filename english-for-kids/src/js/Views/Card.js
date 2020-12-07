@@ -22,6 +22,7 @@ export default class Fragment {
     createMenu() {
         const element = document.createElement("li");
         element.classList.add("card-list__card");
+        element.classList.add("card__train-mode")
         let linkMenu = document.createElement("a");
         linkMenu.href = `#${this.model.name}`.replace(/set|[\s()]/g, '');
         linkMenu.classList.add("card__link");
@@ -42,8 +43,9 @@ export default class Fragment {
     createWords(){
         const element = document.createElement("li");
         element.classList.add("card-list__card");
+        element.classList.add("card__train-mode");
         const container = document.createElement("div");
-        container.classList.add("card-list__container")
+        container.classList.add("card-list__container-flex")
         const title = document.createElement("span");
         const imageTurn = document.createElement("img");
         const russianTitle = document.createElement("span"); 

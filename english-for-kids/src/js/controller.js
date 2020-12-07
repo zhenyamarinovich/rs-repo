@@ -14,50 +14,49 @@ export default {
         const actionsA = Model.getActionA();
         console.log("ActionsA",actionsA);
         cardList.render(actionsA);
-        gameController.playSoundCard();
-        gameController.rotateCard();
+        gameController.init();
     },
     ActionBRoute(){
         const actionsB = Model.getActionB();
         console.log("ActionsB",actionsB);
         cardList.render(actionsB);
-        gameController.playSoundCard();
+        gameController.init();
     },
     AnimalARoute(){
         const animalsA = Model.getAnimalA();
         console.log("AnimalA",animalsA);
         cardList.render(animalsA);
-        gameController.playSoundCard();
+        gameController.init();
     },
     AnimalBRoute(){
         const animalsB = Model.getAnimalB();
         console.log("AnimalB", animalsB);
         cardList.render(animalsB);
-        gameController.playSoundCard();
+        gameController.init();
     },
     ClothesRoute(){
         const clothers = Model.getClothes();
         console.log("Clothers", clothers);
         cardList.render(clothers);
-        gameController.playSoundCard();
+        gameController.init();
     },
     EmotionsRoute(){
         const emotions = Model.getEmotions();
         console.log("Emotions", emotions);
         cardList.render(emotions);
-        gameController.playSoundCard();
+        gameController.init();
     },
     FoodRoute(){
         const food = Model.getFood();
         console.log("Food", food);
         cardList.render(food);
-        gameController.playSoundCard();
+        gameController.init();
     },
     HouseRoute(){
         const house = Model.getHouse();
         console.log("House", house);
         cardList.render(house);
-        gameController.playSoundCard();
+        gameController.init();
     },    
 
 }
