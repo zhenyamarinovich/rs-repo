@@ -12,6 +12,7 @@ export default class CardList {
         this.createAudio();
         this.createSuccessModal();
         this.createErrorModal();
+        
     }
 
     createWrapper() {
@@ -114,15 +115,18 @@ export default class CardList {
         const div = document.createElement("div");
         div.classList.add("table-container");
         let table = document.createElement('table');
+        table.classList.add("table_sort");
         let th, tr, td, row, cell;
-
+        let thead = document.createElement("thead");
+        let tbody = document.createElement("tbody");
         tr = document.createElement('tr');
         for (let i = 0; i < Object.keys(model).length; i++) {
             th =  document.createElement('th');
             tr.appendChild(th);
             th.innerText = Object.keys(model)[i];
         }
-        table.appendChild(tr);
+        thead.appendChild(tr);
+        table.appendChild(thead);
         
 
         for (row = 0; row < model["word"].length; row++) {
@@ -132,10 +136,35 @@ export default class CardList {
             tr.appendChild(td);
             td.innerText = model[Object.keys(model)[cell]][row];
             }
-        table.appendChild(tr);
+            tbody.appendChild(tr);
         }
+        table.appendChild(tbody);
         div.appendChild(table);
         document.querySelector(".wrapper__card-list").appendChild(div);
+        this.sortTable();
+    }
+
+    sortTable(){
+        document.addEventListener('DOMContentLoaded', () => {
+            const getSort = ({ target }) => {
+                const order = (target.dataset.order = -(target.dataset.order || -1));
+                const index = [...target.parentNode.cells].indexOf(target);
+                const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
+                const comparator = (index, order) => (a, b) => order * collator.compare(
+                    a.children[index].innerHTML,
+                    b.children[index].innerHTML
+                );
+                
+                for(const tBody of target.closest('table').tBodies)
+                    tBody.append(...[...tBody.rows].sort(comparator(index, order)));
+        
+                for(const cell of target.parentNode.cells)
+                    cell.classList.toggle('sorted', cell === target);
+            };
+            
+            document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
+            
+        });
     }
 }
 

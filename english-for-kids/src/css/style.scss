@@ -321,6 +321,13 @@ table {
   th:first-child{
   text-align: left;
   }
+  th.sorted[data-order="-1"]::after {
+    content: "▼"
+  }
+  
+  th.sorted[data-order="1"]::after {
+    content: "▲"
+  }
   .table-container{
     display: flex;
     justify-content: center;
