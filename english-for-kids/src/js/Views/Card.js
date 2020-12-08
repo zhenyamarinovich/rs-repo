@@ -1,5 +1,3 @@
-
-
 export default class Fragment {
     constructor(cardList, model, index){
         this.cardList = cardList;
