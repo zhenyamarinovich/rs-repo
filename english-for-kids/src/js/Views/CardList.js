@@ -12,6 +12,7 @@ export default class CardList {
         this.createAudio();
         this.createSuccessModal();
         this.createErrorModal();
+        
     }
 
     createWrapper() {
@@ -33,7 +34,15 @@ export default class CardList {
         if(this.cards.length !==0){
             this.cards = [];
         }
+        const table =  document.querySelector(".table-container");
+        console.log(table);
+        if(table !== null){
+            document.querySelector(".wrapper__card-list").removeChild(document.querySelector(".wrapper__card-list").lastChild);
+        };
         document.querySelector(".card-list").innerHTML = "";
+        const switcher = document.querySelector(".switcher");
+        switcher.classList.remove("switcher__on");
+        switcher.classList.add("switcher__off");
         for (let i=0; i < model.length; i++){
             //console.log(this);
             this.cards.push(new Card(this,model[i],i));
@@ -96,6 +105,64 @@ export default class CardList {
         document.querySelector("body").appendChild(modal);
         modal.appendChild(img);
         modal.classList.add("finish-modal__close");
+    }
+
+    renderStatistic(model){
+        document.querySelector(".card-list").innerHTML = "";
+        if(document.querySelector(".table-container") !== null){
+            document.querySelector(".table-container").innerHTML="";
+        };
+        const div = document.createElement("div");
+        div.classList.add("table-container");
+        let table = document.createElement('table');
+        table.classList.add("table_sort");
+        let th, tr, td, row, cell;
+        let thead = document.createElement("thead");
+        let tbody = document.createElement("tbody");
+        tr = document.createElement('tr');
+        for (let i = 0; i < Object.keys(model).length; i++) {
+            th =  document.createElement('th');
+            tr.appendChild(th);
+            th.innerText = Object.keys(model)[i];
+        }
+        thead.appendChild(tr);
+        table.appendChild(thead);
+        
+
+        for (row = 0; row < model["word"].length; row++) {
+            tr = document.createElement('tr');
+            for (cell = 0; cell < Object.keys(model).length; cell++) {
+            td = document.createElement('td');
+            tr.appendChild(td);
+            td.innerText = model[Object.keys(model)[cell]][row];
+            }
+            tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        div.appendChild(table);
+        document.querySelector(".wrapper__card-list").appendChild(div);
+        this.sortTable();
+    }
+
+    sortTable(){
+            const getSort = ({ target }) => {
+                const order = (target.dataset.order = -(target.dataset.order || -1));
+                const index = [...target.parentNode.cells].indexOf(target);
+                const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
+                const comparator = (index, order) => (a, b) => order * collator.compare(
+                    a.children[index].innerHTML,
+                    b.children[index].innerHTML
+                );
+                
+                for(const tBody of target.closest('table').tBodies)
+                    tBody.append(...[...tBody.rows].sort(comparator(index, order)));
+        
+                for(const cell of target.parentNode.cells)
+                    cell.classList.toggle('sorted', cell === target);
+            };
+            
+            document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
+            
     }
 }
 

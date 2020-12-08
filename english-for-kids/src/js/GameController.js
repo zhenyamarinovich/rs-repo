@@ -1,12 +1,9 @@
-/*Отслеживание состояния  тренировки и игры,
- логика игры и тренировки,
- затемнее карточек после нажатия*/
-
+const audioWord = new Audio();
 
 export default class GameController{
     construct(){
         this.isGame;
-        this.init();
+        this.init();   
     }
 
     init(){
@@ -22,7 +19,16 @@ export default class GameController{
        allCards.forEach(element => {
            element.onclick = function(){
                 element.childNodes[2].play();
+                let statistic = JSON.parse(localStorage.getItem("statistic"));
+                for(let i=0; i< statistic["word"].length;i++){
+                    if(element.childNodes[1].innerText === statistic["word"][i]){
+                        statistic["click"][i] +=1;
+                    }
+                }
+                localStorage.setItem("statistic", JSON.stringify(statistic));
            }
+           
+          
        })
     }
     rotateCard(){
@@ -58,12 +64,23 @@ export default class GameController{
           
     }
     changeGameMode(){
+        const repeatButton = document.querySelector(".repeat-button");
+        const panelAnswer = document.querySelector(".panel-answer");
+
+        repeatButton.classList.add("game-button__off");
+        repeatButton.classList.remove("game-button__on");
+        panelAnswer.classList.add("game-button__off");
+        panelAnswer.classList.remove("panel-answer__on");
+
         const switcherBlock = document.querySelector(".switcher-block");
         const switcher = document.querySelector(".switcher");
         const allCards = document.querySelectorAll(".card-list__card");
         const gameButton = document.querySelector(".game-button");
-        switcherBlock.addEventListener("click", () => {
-            if(!this.isGame){
+        switcher.classList.remove("switcher__on");
+        switcher.classList.add("switcher__off");
+        switcherBlock.onclick = function () {
+            if(location.hash === "#Menu") return;
+            if(switcher.classList.contains("switcher__off")){
                 switcher.classList.remove("switcher__off");
                 switcher.classList.add("switcher__on");
                 gameButton.classList.add("game-button__on");
@@ -95,7 +112,7 @@ export default class GameController{
             }
             this.isGame = !this.isGame;
            
-        })
+        }
     }
 
     startGame(){
@@ -110,10 +127,6 @@ export default class GameController{
             });
             this.shuffle(audioArray);
             this.repeateWord(audioArray);
-            /*var audio = new Audio();
-            audio.preload = 'auto';
-            audio.src = audioArray[0];
-            audio.play();*/
         });
     }
 
@@ -134,13 +147,10 @@ export default class GameController{
 
         let currentNumberOfSound = 0;
         let isError = false;
-        let audioWord = new Audio();
         audioWord.preload = 'auto';
         audioWord.src = audioArray[currentNumberOfSound];
         audioWord.play();
-   
- 
-
+      
 
         repeatButton.onclick = function () {
             audioWord.play();
@@ -155,13 +165,20 @@ export default class GameController{
                     currentNumberOfSound ++;
                     audioWord.src = audioArray[currentNumberOfSound];
                     audioCorrect.play();
-                    setTimeout( () => {
-                            if(currentNumberOfSound < audioArray.length){
+                    if(currentNumberOfSound < audioArray.length){
+                        setTimeout( () => {
                             audioWord.play();
-                            }
-                  
-                    },500);
+                        },500);
+                    }
                     panelAnswer.appendChild(imgCorrect);
+                    let statistic = JSON.parse(localStorage.getItem("statistic"));
+                    for(let i=0; i< statistic["word"].length;i++){
+                        if(element.childNodes[1].firstChild.innerText === statistic["word"][i]){
+                            statistic["correct"][i] +=1;
+                            statistic["errors"][i] = (statistic["correct"][i]/(statistic["correct"][i] + statistic["wrong"][i])*100).toFixed(1);
+                        }
+                    }
+                    localStorage.setItem("statistic", JSON.stringify(statistic));
                    
                 }
                 else{
@@ -170,7 +187,17 @@ export default class GameController{
                     imgError.src = 'assets/images/star.svg';
                     audioError.play();
                     panelAnswer.appendChild(imgError);
+                    let statistic = JSON.parse(localStorage.getItem("statistic"));
+                    for(let i=0; i< statistic["word"].length;i++){
+                        if(element.childNodes[1].firstChild.innerText === statistic["word"][i]){
+                            statistic["wrong"][i] +=1;
+                            statistic["errors"][i] = (statistic["correct"][i]/(statistic["correct"][i] + statistic["wrong"][i])*100).toFixed(3);
+                            
+                        }
+                    }
+                    localStorage.setItem("statistic", JSON.stringify(statistic));
                 }
+
 
                 if(currentNumberOfSound === allCards.length){
                     let modal;
@@ -179,8 +206,20 @@ export default class GameController{
                     } else{
                         modal = document.querySelector(".error-modal");
                     }
+                    repeatButton.onclick = null;
                     modal.classList.remove("finish-modal__close");
-                    modal.classList.add("finish-modal__open");  
+                    modal.classList.add("finish-modal__open");
+                    setTimeout(()=>{
+                        modal.classList.add("finish-modal__close");  
+                        repeatButton.classList.add("game-button__off");
+                        repeatButton.classList.remove("game-button__on");
+                        panelAnswer.classList.add("game-button__off");
+                        panelAnswer.classList.remove("panel-answer__on");
+                        panelAnswer.innerHTML = "";
+                        modal.classList.remove("finish-modal__open");  
+                    },2000)
+                    setTimeout('window.location="#Menu"',2000);
+                    this.isGame = !this.isGame;
                 }
 
          
