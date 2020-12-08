@@ -145,7 +145,6 @@ export default class CardList {
     }
 
     sortTable(){
-        document.addEventListener('DOMContentLoaded', () => {
             const getSort = ({ target }) => {
                 const order = (target.dataset.order = -(target.dataset.order || -1));
                 const index = [...target.parentNode.cells].indexOf(target);
@@ -164,7 +163,6 @@ export default class CardList {
             
             document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
             
-        });
     }
 }
 
