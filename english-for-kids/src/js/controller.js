@@ -57,6 +57,11 @@ export default {
         console.log("House", house);
         cardList.render(house);
         gameController.init();
-    },    
+    },
+    StatisticRoute(){
+        const statistic = JSON.parse(localStorage.getItem("statistic"));
+        console.log(statistic);
+        cardList.renderStatistic(statistic);
+    }    
 
 }

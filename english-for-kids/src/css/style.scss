@@ -7,13 +7,31 @@ html {
 body {
   margin: 0;
   padding: 0;
-  color: white;
-  background-color: grey;
+  color: black;
+  background-color:white;
 }
 
-header {
+header{
   height: 120px;
-  background-color: black;
+  background-color: blue;
+}
+
+footer{
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  color: black;
+}
+
+a{
+  text-decoration: none;
+  color:black;
+}
+
+a:hover{
+  color: gray;
 }
 
 .wrapper {
@@ -82,6 +100,14 @@ header {
 .menu-btn.open .menu-btn__burger::before {
   transform: rotate(45deg) translate(35px, -35px);
 }
+.menu-btn.open .menu-btn__burger:hover::before {
+  width: 60px;
+  height: 10px;
+}
+.menu-btn.open .menu-btn__burger:hover::after{
+  width: 60px;
+  height: 10px;
+} 
 .menu-btn.open .menu-btn__burger::after {
   transform: rotate(-45deg) translate(35px, 35px);
 }
@@ -91,6 +117,11 @@ header {
   height: 25px;
   background-color: #fff;
   position: relative;
+  margin-right: 10px;
+}
+
+.switcher-block:hover{
+  box-shadow: 2px 2px 2px 2px black;
 }
 
 .switcher{
@@ -118,7 +149,8 @@ header {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  background-color: rgb(0,122,0);
+  background-color: blue;
+  border: 3px solid black;
   transform: translate(0);
   transition: 0.5s all ease;
 }
@@ -138,6 +170,9 @@ header {
       text-decoration: none;
       font-size: 30px;
     }
+    .menu-list__link:hover{
+      color: black;
+    }
   }
 }
 
@@ -155,6 +190,9 @@ header {
   list-style-type: none;
   transition: 0.1s all ease;
 }
+.card-list__card:hover{
+  box-shadow: 5px 5px 0 blue;
+}
 .card-list__container-flex {
   display: flex;
   justify-content:space-evenly;
@@ -164,7 +202,7 @@ header {
 }
 
 .card__train-mode{
-  border: 2px solid red;
+  border: 2px solid black;
 }
 .card__game-mode{
   border: 2px solid green;
@@ -184,6 +222,9 @@ header {
   width: 40px;
   height: 25px;
 }
+.card__imageTurn:hover{
+  opacity: 0.5;
+}
 
 .rotate{
   transform: rotateY(90deg);
@@ -191,12 +232,19 @@ header {
 .card_title-hidden{
   display: none;
 }
+.russianTitle{
+  pointer-events: none;
+}
 
 .game-button, .repeat-button{
-  border: 1px solid white;
+  color: white;
   background-color: black;
   width: 100px;
   height: 50px;
+  margin-bottom: 10px;
+}
+.game-button:hover,.repeat-button:hover{
+  background-color: blue;
 }
 
 .game-button__on{
@@ -214,7 +262,7 @@ header {
 .panel-answer{
   width: 320px;
   height: 40px;
-  background-color: white;
+  background-color: black;
   margin: 10px;
   overflow: hidden;
 }
@@ -248,3 +296,34 @@ header {
   transition-delay: 1s;
   transform: translate(0);
 }
+.footer > a,span{
+  margin: 5px;
+}
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14px;
+  border-collapse: collapse;
+  text-align: center;
+  }
+  th{
+  background: #AFCDE7;
+  color: white;
+  padding: 10px 20px;
+  }
+  th, td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: white;
+  }
+  td {
+  background: #D8E6F3;
+  }
+  th:first-child{
+  text-align: left;
+  }
+  .table-container{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    overflow: scroll;
+  }

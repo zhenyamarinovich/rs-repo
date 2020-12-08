@@ -115,7 +115,8 @@ const config = {
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: './index.html'
+      filename: './index.html',
+      favicon: "./src/assets/images/favicon.ico"
     }),
     new CopyWebpackPlugin([
       // {from: './src/static', to: './'},

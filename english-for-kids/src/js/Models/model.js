@@ -26,5 +26,8 @@ export default {
     },
     getFood(){
         return cardsInfo[8];
+    },
+    getFullInformation(){
+        return cardsInfo;
     }
 };

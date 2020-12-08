@@ -33,7 +33,15 @@ export default class CardList {
         if(this.cards.length !==0){
             this.cards = [];
         }
+        const table =  document.querySelector(".table-container");
+        console.log(table);
+        if(table !== null){
+            document.querySelector(".wrapper__card-list").removeChild(document.querySelector(".wrapper__card-list").lastChild);
+        };
         document.querySelector(".card-list").innerHTML = "";
+        const switcher = document.querySelector(".switcher");
+        switcher.classList.remove("switcher__on");
+        switcher.classList.add("switcher__off");
         for (let i=0; i < model.length; i++){
             //console.log(this);
             this.cards.push(new Card(this,model[i],i));
@@ -96,6 +104,38 @@ export default class CardList {
         document.querySelector("body").appendChild(modal);
         modal.appendChild(img);
         modal.classList.add("finish-modal__close");
+    }
+
+    renderStatistic(model){
+        document.querySelector(".card-list").innerHTML = "";
+        if(document.querySelector(".table-container") !== null){
+            document.querySelector(".table-container").innerHTML="";
+        };
+        const div = document.createElement("div");
+        div.classList.add("table-container");
+        let table = document.createElement('table');
+        let th, tr, td, row, cell;
+
+        tr = document.createElement('tr');
+        for (let i = 0; i < Object.keys(model).length; i++) {
+            th =  document.createElement('th');
+            tr.appendChild(th);
+            th.innerText = Object.keys(model)[i];
+        }
+        table.appendChild(tr);
+        
+
+        for (row = 0; row < model["word"].length; row++) {
+            tr = document.createElement('tr');
+            for (cell = 0; cell < Object.keys(model).length; cell++) {
+            td = document.createElement('td');
+            tr.appendChild(td);
+            td.innerText = model[Object.keys(model)[cell]][row];
+            }
+        table.appendChild(tr);
+        }
+        div.appendChild(table);
+        document.querySelector(".wrapper__card-list").appendChild(div);
     }
 }
 

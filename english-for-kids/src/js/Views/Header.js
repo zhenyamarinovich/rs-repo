@@ -1,5 +1,3 @@
-import cardsInfo from '../Data/CardsInfo';
-
 export default class Header {
     constructor(model){
         this.init();
@@ -47,6 +45,7 @@ export default class Header {
         linkMenu.classList.add("menu-list__link");
         li.appendChild(linkMenu);
         ul.appendChild(li);
+
         // add all category links
         for (let i=0; i < model.length; i++){
             const li = document.createElement("li");
@@ -59,6 +58,14 @@ export default class Header {
 
             ul.appendChild(li);
         }
+        const liStatistic = document.createElement("li");
+        let linkStatistic = document.createElement("a");
+        linkStatistic.href = `#Statistic`;
+        linkStatistic.innerText="Statistic";
+        linkStatistic.classList.add("menu-list__link");
+        liStatistic.appendChild(linkStatistic);
+        ul.appendChild(liStatistic);
+
         this.navigation.appendChild(ul); 
     }
 
