@@ -1,4 +1,5 @@
 import Card from './Card';
+import cardsInfo from '../Data/CardsInfo';
 
 export default class CardList {
     constructor(){
@@ -35,7 +36,7 @@ export default class CardList {
             this.cards = [];
         }
         const table =  document.querySelector(".table-container");
-        console.log(table);
+        // console.log(table);
         if(table !== null){
             document.querySelector(".wrapper__card-list").removeChild(document.querySelector(".wrapper__card-list").lastChild);
         };
@@ -46,7 +47,8 @@ export default class CardList {
         for (let i=0; i < model.length; i++){
             //console.log(this);
             this.cards.push(new Card(this,model[i],i));
-        } 
+        }
+
     }
 
     createStarGameButton(){
@@ -112,8 +114,29 @@ export default class CardList {
         if(document.querySelector(".table-container") !== null){
             document.querySelector(".table-container").innerHTML="";
         };
+
         const div = document.createElement("div");
+        const containerButton = document.createElement("div");
+        const resetButton = document.createElement("div");
+        const repeatButton = document.createElement("div");
+        let link = document.createElement("a");
+        link.href = `#Repeat`;
+
+        containerButton.classList.add("button-container");
+        resetButton.classList.add("reset-button");
+        repeatButton.classList.add("repeatWord-button");
         div.classList.add("table-container");
+
+        resetButton.innerText = "Reset";
+        repeatButton.innerText = "Repeat Word";
+
+        div.appendChild(containerButton);
+        containerButton.appendChild(link);
+        link.appendChild(repeatButton);
+        containerButton.appendChild(resetButton);
+        
+
+
         let table = document.createElement('table');
         table.classList.add("table_sort");
         let th, tr, td, row, cell;
@@ -142,6 +165,8 @@ export default class CardList {
         div.appendChild(table);
         document.querySelector(".wrapper__card-list").appendChild(div);
         this.sortTable();
+        this.createStatistic();
+        // this.repeatWords();
     }
 
     sortTable(){
@@ -164,5 +189,46 @@ export default class CardList {
             document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
             
     }
+    createStatistic(){
+        let that = this;
+        document.querySelector(".reset-button").onclick = function (){
+        localStorage.clear();
+        let information = cardsInfo;
+        let statistic = {
+          word: [],
+          translation: [],
+          category: [],
+          click: [],
+          correct: [],
+          wrong: [],
+          errors: []
+        };
+        for(let i=1; i< information.length; i++){
+          for(let j=0; j<information[i].length;j++){
+            statistic["word"].push(information[i][j].word);
+            statistic["translation"].push(information[i][j].translation);
+            statistic["category"].push(information[0][i-1].name);
+            statistic["click"].push(0); 
+            statistic["correct"].push(0); 
+            statistic["wrong"].push(0); 
+            statistic["errors"].push(0); 
+          }
+        }
+        localStorage.setItem("statistic", JSON.stringify(statistic));
+        const wrapper = document.querySelector(".wrapper__card-list")
+        const container = document.querySelector(".table-container");
+        wrapper.removeChild(container);
+        that.renderStatistic(JSON.parse(localStorage.getItem("statistic")));
+      }
+    }
+
+    /*repeatWords(){
+        let that = this;
+        document.querySelector(".repeatWord-button").onclick = function (){
+
+        }
+    }*/
+    
 }
+
 

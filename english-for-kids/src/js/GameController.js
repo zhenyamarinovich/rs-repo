@@ -175,7 +175,12 @@ export default class GameController{
                     for(let i=0; i< statistic["word"].length;i++){
                         if(element.childNodes[1].firstChild.innerText === statistic["word"][i]){
                             statistic["correct"][i] +=1;
-                            statistic["errors"][i] = (statistic["correct"][i]/(statistic["correct"][i] + statistic["wrong"][i])*100).toFixed(1);
+                            if( statistic["wrong"][i] == 0){
+                                statistic["errors"][i] = 0;
+                            }else{
+                                statistic["errors"][i] = (statistic["wrong"][i]/(statistic["correct"][i] + statistic["wrong"][i])*100).toFixed(1);
+                            }
+                            
                         }
                     }
                     localStorage.setItem("statistic", JSON.stringify(statistic));
@@ -191,7 +196,7 @@ export default class GameController{
                     for(let i=0; i< statistic["word"].length;i++){
                         if(element.childNodes[1].firstChild.innerText === statistic["word"][i]){
                             statistic["wrong"][i] +=1;
-                            statistic["errors"][i] = (statistic["correct"][i]/(statistic["correct"][i] + statistic["wrong"][i])*100).toFixed(3);
+                            statistic["errors"][i] = (statistic["wrong"][i]/(statistic["correct"][i] + statistic["wrong"][i])*100).toFixed(3);
                             
                         }
                     }
@@ -218,7 +223,7 @@ export default class GameController{
                         panelAnswer.innerHTML = "";
                         modal.classList.remove("finish-modal__open");  
                     },2000)
-                    setTimeout('window.location="#Menu"',2000);
+                    setTimeout('window.location=""',2000);
                     this.isGame = !this.isGame;
                 }
 

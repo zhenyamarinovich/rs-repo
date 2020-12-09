@@ -45,6 +45,7 @@ a:hover{
 
 .wrapper__card-list{
   max-width: 1200px;
+  min-height: calc(100vh - 240px);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -189,9 +190,11 @@ a:hover{
   margin-bottom: 30px;
   list-style-type: none;
   transition: 0.1s all ease;
+  margin: 5px;
 }
 .card-list__card:hover{
   box-shadow: 5px 5px 0 blue;
+  cursor: pointer;
 }
 .card-list__container-flex {
   display: flex;
@@ -236,15 +239,21 @@ a:hover{
   pointer-events: none;
 }
 
-.game-button, .repeat-button{
+.game-button, .repeat-button, .reset-button, .repeatWord-button{
   color: white;
   background-color: black;
   width: 100px;
   height: 50px;
   margin-bottom: 10px;
 }
-.game-button:hover,.repeat-button:hover{
+.game-button:hover,.repeat-button:hover, .reset-button:hover, .repeatWord-button:hover{
   background-color: blue;
+  cursor: pointer;
+}
+.reset-button, .repeatWord-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .game-button__on{
@@ -331,6 +340,19 @@ table {
   .table-container{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  .button-container{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+  }
+  @media(max-width:625px){
+    .table-container{
+      align-items: flex-start;
+    }
   }
