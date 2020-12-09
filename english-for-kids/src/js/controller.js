@@ -62,6 +62,11 @@ export default {
         const statistic = JSON.parse(localStorage.getItem("statistic"));
         console.log(statistic);
         cardList.renderStatistic(statistic);
+    },
+    RepeatRoute(){
+        const repeatWord = Model.getRepeatWords();
+        cardList.render(repeatWord);
+        gameController.init();
     }    
 
 }
