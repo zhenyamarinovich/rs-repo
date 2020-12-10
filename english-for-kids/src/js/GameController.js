@@ -146,6 +146,7 @@ export default class GameController{
 
 
         let currentNumberOfSound = 0;
+        let mistake = 0;
         let isError = false;
         audioWord.preload = 'auto';
         audioWord.src = audioArray[currentNumberOfSound];
@@ -190,6 +191,7 @@ export default class GameController{
                 }
                 else{
                     isError = true;
+                    mistake ++;
                     let imgError = new Image(40,40);
                     imgError.src = 'assets/images/star.svg';
                     setTimeout(() => {
@@ -210,6 +212,11 @@ export default class GameController{
 
                 if(currentNumberOfSound === allCards.length){
                     let modal;
+                    const mistakes = document.querySelectorAll(".mistakes-modal"); 
+                    mistakes.forEach(item => {
+                        console.log(item);
+                        item.innerText = `${mistake} mistakes`;
+                    })
                     if(!isError){
                         const audioSuccess = document.querySelector(".audio-success");
                         audioSuccess.play();
