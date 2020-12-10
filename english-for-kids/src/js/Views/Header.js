@@ -42,6 +42,7 @@ export default class Header {
         let linkMenu = document.createElement("a");
         linkMenu.appendChild(document.createTextNode("Menu"));
         linkMenu.href = `#Menu`;
+        linkMenu.classList.add("active");
         linkMenu.classList.add("menu-list__link");
         li.appendChild(linkMenu);
         ul.appendChild(li);
