@@ -2,6 +2,14 @@ import Controller from './controller.js'
 
 function getRouteInfo() {
     const hash = location.hash ? location.hash.slice(1) : "";
+    const links = document.querySelectorAll(".menu-list__link");
+    links.forEach(item => {
+        if(item.getAttribute("href") === location.hash){
+            item.classList.add("active");
+        } else{
+            item.classList.remove("active");
+        };
+    })
     const name = hash;
     return name;
 }

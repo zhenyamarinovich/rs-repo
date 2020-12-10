@@ -74,12 +74,23 @@ export default class CardList {
     createAudio(){
         const audioCorrect = document.createElement('audio');
         const audioError = document.createElement('audio');
+        const audioSuccess = document.createElement('audio');
+        const audioFailure = document.createElement('audio');
+
         audioCorrect.classList.add("audio-correct");
         audioError.classList.add("audio-error");
+        audioSuccess.classList.add("audio-success");
+        audioFailure.classList.add("audio-failure");
+
         audioCorrect.innerHTML = `<source src="./assets/audio/correct.mp3" type=\"audio/mpeg\">`;
         audioError.innerHTML = `<source src="./assets/audio/error.mp3" type=\"audio/mpeg\">`;
+        audioSuccess.innerHTML = `<source src="./assets/audio/success.mp3" type=\"audio/mpeg\">`;
+        audioFailure.innerHTML = `<source src="./assets/audio/failure.mp3" type=\"audio/mpeg\">`;
+
         this.wrapper.appendChild(audioCorrect);
         this.wrapper.appendChild(audioError);
+        this.wrapper.appendChild(audioSuccess);
+        this.wrapper.appendChild(audioFailure);
     }
 
     createPanelAnswer(){

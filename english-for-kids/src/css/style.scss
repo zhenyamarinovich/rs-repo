@@ -351,8 +351,12 @@ table {
     justify-content: space-between;
     width: 300px;
   }
+  .active{
+    border-bottom: 3px solid white;
+  }
   @media(max-width:625px){
     .table-container{
       align-items: flex-start;
     }
   }
+  
