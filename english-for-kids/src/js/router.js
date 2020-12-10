@@ -29,6 +29,7 @@ function handleHash(){
 
 export default {
     init(){
+        location.hash = "#Menu";
         addEventListener('hashchange', handleHash);
         handleHash();
     }
