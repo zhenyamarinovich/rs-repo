@@ -164,7 +164,9 @@ export default class GameController{
                     imgCorrect.src = 'assets/images/star-win.svg';
                     currentNumberOfSound ++;
                     audioWord.src = audioArray[currentNumberOfSound];
-                    audioCorrect.play();
+                    setTimeout(() => {
+                        audioCorrect.play();
+                    },200);
                     if(currentNumberOfSound < audioArray.length){
                         setTimeout( () => {
                             audioWord.play();
@@ -190,7 +192,9 @@ export default class GameController{
                     isError = true;
                     let imgError = new Image(40,40);
                     imgError.src = 'assets/images/star.svg';
-                    audioError.play();
+                    setTimeout(() => {
+                        audioError.play();
+                    },200);
                     panelAnswer.appendChild(imgError);
                     let statistic = JSON.parse(localStorage.getItem("statistic"));
                     for(let i=0; i< statistic["word"].length;i++){
@@ -207,8 +211,12 @@ export default class GameController{
                 if(currentNumberOfSound === allCards.length){
                     let modal;
                     if(!isError){
+                        const audioSuccess = document.querySelector(".audio-success");
+                        audioSuccess.play();
                         modal = document.querySelector(".success-modal");
                     } else{
+                        const audioFailure = document.querySelector(".audio-failure");
+                        audioFailure.play();
                         modal = document.querySelector(".error-modal");
                     }
                     repeatButton.onclick = null;
