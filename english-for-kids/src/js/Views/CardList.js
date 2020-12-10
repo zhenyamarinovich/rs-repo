@@ -101,6 +101,9 @@ export default class CardList {
     }
 
     createSuccessModal(){
+        if(document.querySelector(".success-modal") != null){
+            return;
+        }
         const modal = document.createElement("div");
         modal.classList.add("finish-modal__close");
         modal.classList.add("success-modal");
@@ -108,9 +111,15 @@ export default class CardList {
         img.src = 'assets/images/success.jpg';
         document.querySelector("body").appendChild(modal);
         modal.appendChild(img);
+        const text = document.createElement("div");
+        text.classList.add("mistakes-modal");
+        modal.appendChild(text);
         
     }
     createErrorModal(){
+        if(document.querySelector(".error-modal") != null){
+            return;
+        }
         const modal = document.createElement("div");
         modal.classList.add("error-modal");
         let img = new Image();
@@ -118,6 +127,9 @@ export default class CardList {
         document.querySelector("body").appendChild(modal);
         modal.appendChild(img);
         modal.classList.add("finish-modal__close");
+        const text = document.createElement("div");
+        text.classList.add("mistakes-modal");
+        modal.appendChild(text);
     }
 
     renderStatistic(model){
