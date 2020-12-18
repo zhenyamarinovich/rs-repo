@@ -2,7 +2,7 @@ import '../css/style.css';
 import '../css/style.scss';
 import Header from './Views/Header';
 import CardList from './Views/CardList';
-import MenuController from './BurgerController';
+import MenuController from './Controllers/BurgerController';
 import Model from './Models/model';
 import Router from './router';
 import Footer from './Views/Footer';
@@ -67,6 +67,8 @@ function createStatistic(){
   }
   localStorage.setItem("statistic", JSON.stringify(statistic));
 }
+
+
 
 
 

@@ -1,34 +1,20 @@
 import cardsInfo from '../Data/CardsInfo';
 export default {
+    getPage(value){
+        switch(value) {
+            case 'ActionA': return cardsInfo[1];
+            case 'ActionB': return cardsInfo[2];
+            case 'AnimalA': return cardsInfo[3];
+            case 'AnimalB': return cardsInfo[4];
+            case 'Clothes': return cardsInfo[5];
+            case 'Emotions': return cardsInfo[6];
+            case 'House': return cardsInfo[7];
+            case 'Food': return cardsInfo[8];
+            case 'Repeat': return this.getRepeatWords();
+        }
+    },
     getСategories(){
         return cardsInfo[0];
-    },
-    getActionA(){
-        return cardsInfo[1];
-    },
-    getActionB(){
-        return cardsInfo[2];
-    },
-    getAnimalA(){
-        return cardsInfo[3];
-    },
-    getAnimalB(){
-        return cardsInfo[4];
-    },
-    getClothes(){
-        return cardsInfo[5];
-    },
-    getEmotions(){
-        return cardsInfo[6];
-    },
-    getHouse(){
-        return cardsInfo[7];
-    },
-    getFood(){
-        return cardsInfo[8];
-    },
-    getFullInformation(){
-        return cardsInfo;
     },
     getRepeatWords(){
         let repeatArray = [];

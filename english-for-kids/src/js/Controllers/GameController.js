@@ -8,6 +8,20 @@ export default class GameController{
 
     init(){
         this.isGame = false;
+        this.allCards = document.querySelectorAll(".card-list__card");
+        this.allImageTurn = document.querySelectorAll(".card__imageTurn");
+        this.repeatButton = document.querySelector(".repeat-button");
+        this.panelAnswer = document.querySelector(".panel-answer");
+        this.switcherBlock = document.querySelector(".switcher-block");
+        this.switcher = document.querySelector(".switcher");
+        this.allCards = document.querySelectorAll(".card-list__card");
+        this.gameButton = document.querySelector(".game-button");
+        this.audioCorrect = document.querySelector(".audio-correct");
+        this.audioError = document.querySelector(".audio-error");
+        this.mistakes = document.querySelectorAll(".mistakes-modal"); 
+        this.audioSuccess = document.querySelector(".audio-success");
+        this.audioFailure = document.querySelector(".audio-failure");
+        
         this.playSoundCard();
         this.rotateCard();
         this.changeGameMode();
@@ -15,8 +29,8 @@ export default class GameController{
     }
 
     playSoundCard(){
-       const allCards = document.querySelectorAll(".card-list__card");
-       allCards.forEach(element => {
+       // const allCards = document.querySelectorAll(".card-list__card");
+       this.allCards.forEach(element => {
            element.onclick = function(){
                 element.childNodes[2].play();
                 let statistic = JSON.parse(localStorage.getItem("statistic"));
@@ -32,8 +46,7 @@ export default class GameController{
        })
     }
     rotateCard(){
-        const allImageTurn = document.querySelectorAll(".card__imageTurn");
-            allImageTurn.forEach(element => {
+            this.allImageTurn.forEach(element => {
                 element.addEventListener('click', (event) => {
                     event.path[2].classList.add('rotate');
                     setTimeout(() => {
@@ -45,8 +58,8 @@ export default class GameController{
                         event.path[1].childNodes[0].classList.add("russianTitle");
                     },150);
                   });
-        const allCards = document.querySelectorAll(".card-list__card");
-            allCards.forEach(element => {
+        // const allCards = document.querySelectorAll(".card-list__card");
+            this.allCards.forEach(element => {
                 element.addEventListener("mouseleave", () => {
                     if(element.childNodes[1].childNodes[0].classList.contains("russianTitle")){
                         element.classList.add('rotate');
@@ -64,28 +77,21 @@ export default class GameController{
           
     }
     changeGameMode(){
-        const repeatButton = document.querySelector(".repeat-button");
-        const panelAnswer = document.querySelector(".panel-answer");
+        this.repeatButton.classList.add("game-button__off");
+        this.repeatButton.classList.remove("game-button__on");
+        this.panelAnswer.classList.add("game-button__off");
+        this.panelAnswer.classList.remove("panel-answer__on");
 
-        repeatButton.classList.add("game-button__off");
-        repeatButton.classList.remove("game-button__on");
-        panelAnswer.classList.add("game-button__off");
-        panelAnswer.classList.remove("panel-answer__on");
-
-        const switcherBlock = document.querySelector(".switcher-block");
-        const switcher = document.querySelector(".switcher");
-        const allCards = document.querySelectorAll(".card-list__card");
-        const gameButton = document.querySelector(".game-button");
-        switcher.classList.remove("switcher__on");
-        switcher.classList.add("switcher__off");
-        switcherBlock.onclick = function () {
+        this.switcher.classList.remove("switcher__on");
+        this.switcher.classList.add("switcher__off");
+        this.switcherBlock.onclick = () => {
             if(location.hash === "#Menu") return;
-            if(switcher.classList.contains("switcher__off")){
-                switcher.classList.remove("switcher__off");
-                switcher.classList.add("switcher__on");
-                gameButton.classList.add("game-button__on");
-                gameButton.classList.remove("game-button__off");
-                allCards.forEach(element => {
+            if(this.switcher.classList.contains("switcher__off")){
+                this.switcher.classList.remove("switcher__off");
+                this.switcher.classList.add("switcher__on");
+                this.gameButton.classList.add("game-button__on");
+                this.gameButton.classList.remove("game-button__off");
+                this.allCards.forEach(element => {
                     element.onclick = null;
                     element.classList.add("card__game-mode");
                     element.classList.remove("card__train-mode");
@@ -94,12 +100,12 @@ export default class GameController{
                     element.childNodes[0].classList.add("card_image-game");
                 })
             } else {
-                switcher.classList.add("switcher__off");
-                switcher.classList.remove("switcher__on");
-                gameButton.classList.remove("game-button__on");
-                gameButton.classList.add("game-button__off");
-                allCards.forEach(element => {
-                    element.onclick = function(){
+                this.switcher.classList.add("switcher__off");
+                this.switcher.classList.remove("switcher__on");
+                this.gameButton.classList.remove("game-button__on");
+                this.gameButton.classList.add("game-button__off");
+                this.allCards.forEach(element => {
+                    element.onclick = () => {
                         element.childNodes[2].play();
                     }
                     element.classList.add("card__train-mode");
@@ -116,13 +122,11 @@ export default class GameController{
     }
 
     startGame(){
-        const gameButton = document.querySelector(".game-button");
-        const allCards = document.querySelectorAll(".card-list__card");
-        gameButton.addEventListener("click", () => {
-            gameButton.classList.remove("game-button__on");
-            gameButton.classList.add("game-button__off");
+        this.gameButton.addEventListener("click", () => {
+            this.gameButton.classList.remove("game-button__on");
+            this.gameButton.classList.add("game-button__off");
             let audioArray = [];
-            allCards.forEach(element => {
+            this.allCards.forEach(element => {
                 audioArray.push(element.childNodes[2].firstElementChild.attributes[0].nodeValue);
             });
             this.shuffle(audioArray);
@@ -131,18 +135,10 @@ export default class GameController{
     }
 
     repeateWord(audioArray){
-        const repeatButton = document.querySelector(".repeat-button");
-        const allCards = document.querySelectorAll(".card-list__card");
-        const audioCorrect = document.querySelector(".audio-correct");
-        const audioError = document.querySelector(".audio-error");
-        const panelAnswer = document.querySelector(".panel-answer");
-
-
-
-        repeatButton.classList.remove("game-button__off");
-        repeatButton.classList.add("game-button__on");
-        panelAnswer.classList.remove("game-button__off");
-        panelAnswer.classList.add("panel-answer__on");
+        this.repeatButton.classList.remove("game-button__off");
+        this.repeatButton.classList.add("game-button__on");
+        this.panelAnswer.classList.remove("game-button__off");
+        this.panelAnswer.classList.add("panel-answer__on");
 
 
         let currentNumberOfSound = 0;
@@ -153,12 +149,12 @@ export default class GameController{
         audioWord.play();
       
 
-        repeatButton.onclick = function () {
+        this.repeatButton.onclick = () => {
             audioWord.play();
         }
 
-        allCards.forEach(element => {
-            element.onclick = function () {
+        this.allCards.forEach(element => {
+            element.onclick = () => {
                 if(element.childNodes[2].firstElementChild.attributes[0].nodeValue === audioArray[currentNumberOfSound]){
                     element.classList.add("card__correct");
                     let imgCorrect = new Image(40,40);
@@ -166,14 +162,14 @@ export default class GameController{
                     currentNumberOfSound ++;
                     audioWord.src = audioArray[currentNumberOfSound];
                     setTimeout(() => {
-                        audioCorrect.play();
+                        this.audioCorrect.play();
                     },200);
                     if(currentNumberOfSound < audioArray.length){
                         setTimeout( () => {
                             audioWord.play();
                         },500);
                     }
-                    panelAnswer.appendChild(imgCorrect);
+                    this.panelAnswer.appendChild(imgCorrect);
                     let statistic = JSON.parse(localStorage.getItem("statistic"));
                     for(let i=0; i< statistic["word"].length;i++){
                         if(element.childNodes[1].firstChild.innerText === statistic["word"][i]){
@@ -195,9 +191,9 @@ export default class GameController{
                     let imgError = new Image(40,40);
                     imgError.src = 'assets/images/star.svg';
                     setTimeout(() => {
-                        audioError.play();
+                        this.audioError.play();
                     },200);
-                    panelAnswer.appendChild(imgError);
+                    this.panelAnswer.appendChild(imgError);
                     let statistic = JSON.parse(localStorage.getItem("statistic"));
                     for(let i=0; i< statistic["word"].length;i++){
                         if(element.childNodes[1].firstChild.innerText === statistic["word"][i]){
@@ -210,32 +206,31 @@ export default class GameController{
                 }
 
 
-                if(currentNumberOfSound === allCards.length){
+                if(currentNumberOfSound === this.allCards.length){
                     let modal;
-                    const mistakes = document.querySelectorAll(".mistakes-modal"); 
-                    mistakes.forEach(item => {
+                    this.mistakes.forEach(item => {
                         console.log(item);
                         item.innerText = `${mistake} mistakes`;
                     })
                     if(!isError){
-                        const audioSuccess = document.querySelector(".audio-success");
-                        audioSuccess.play();
+                        // const audioSuccess = document.querySelector(".audio-success");
+                        this.audioSuccess.play();
                         modal = document.querySelector(".success-modal");
                     } else{
-                        const audioFailure = document.querySelector(".audio-failure");
-                        audioFailure.play();
+                        // const audioFailure = document.querySelector(".audio-failure");
+                        this.audioFailure.play();
                         modal = document.querySelector(".error-modal");
                     }
-                    repeatButton.onclick = null;
+                    this.repeatButton.onclick = null;
                     modal.classList.remove("finish-modal__close");
                     modal.classList.add("finish-modal__open");
                     setTimeout(()=>{
                         modal.classList.add("finish-modal__close");  
-                        repeatButton.classList.add("game-button__off");
-                        repeatButton.classList.remove("game-button__on");
-                        panelAnswer.classList.add("game-button__off");
-                        panelAnswer.classList.remove("panel-answer__on");
-                        panelAnswer.innerHTML = "";
+                        this.repeatButton.classList.add("game-button__off");
+                        this.repeatButton.classList.remove("game-button__on");
+                        this.panelAnswer.classList.add("game-button__off");
+                        this.panelAnswer.classList.remove("panel-answer__on");
+                        this.panelAnswer.innerHTML = "";
                         modal.classList.remove("finish-modal__open");  
                     },2000)
                     setTimeout('window.location=""',2000);
