@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<a href = 'https://www.typescriptlang.org/'><img class="r-frame" src='assets/images/ts.jpg'></a>
+					<p>Create by Zhenya Marinovich</p>
+				</section>
+				<section>
+					<h2>JS and WebAssembly</h2>
+					<img src='assets/images/js-wa.png'>
+				</section>
+				<section>
+					<h2 id = "title-color">What developers can do ???</h2>
+					<p class="fragment">- Use JS with all its shortcomings</p>
+					<p class="fragment">- Write code in another language and compile it to JS</p>
+				</section>
+				<section>
+					<h2>JavaScript alternatives</h2>
+					<div class = 'block-logo'>
+						<a href = 'https://dart.dev/'><img class="block-logo__dart " src='assets/images/dart.png'></a>
+						<a href = 'https://coffeescript.org/'><img class="block-logo__image" src='assets/images/coffeescript.png'></a>
+						<a href = https://clojurescript.org/'><img class="block-logo__image" src='assets/images/cl-js.png'></a>
+						<a href = 'https://www.typescriptlang.org/'><img class="block-logo__image" src='assets/images/ts-logo.png'></a>
+					</div>
+				</section>
+				<section>
+					<h2>PYPL Rating 2021 </h2>
+					<a href = 'https://pypl.github.io/PYPL.html'><img src='assets/images/PYPL.png'></a>
+				</section>
+				<section>
+					<section><h2 id = "title-color">What is TypeScript ???</h2></section>
+					<section><img src="assets/images/js-ts.jpg" class = "ts-image"></section>
+				</section>
+				<section>
+					<h2 id = "title-color">Advantages of TypeScript over JavaScript</h2>
+					<p class="fragment">- Strong Typing</p>
+					<p class="fragment">- Improved OOP</p>
+				</section>
+				<section>
+					<div class = "typing-block">
+						<h2>Strong typing</h2>
+						<img src="assets/images/strong-typing.png" class = "typing-image">
+					</div>
+				</section>
+				<section>
+					<h2>Basic Types</h2>
+					<ul>
+						<li>Number</li>
+						<li>String</li>
+						<li>Boolean</li>
+						<li>Enum</li>
+						<li>Void</li>
+						<li>Null</li>
+						<li>Undefined</li>
+						<li>Any</li>
+						<li>Never</li>
+						<li>Array</li>
+						<li>Tuple</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Example</h2>
+					<pre><code data-trim data-line-numbers>
+						enum Color
+						{
+							Red,
+							Green,
+							Blue,
+							White,
+							Black
+						}
+						let car : Color = Color.Green;
+					</code></pre>
+				</section>
+				<section>
+					<div class = "typing-block">
+						<h2>OOP</h2>
+						<img src="assets/images/oop.png">
+					</div>
+				</section>
+				<section>
+					<h2>Example interfaces</h2>
+					<pre><code data-trim data-line-numbers>
+						interface IPost
+						{
+						id: number;
+						text: string;
+						}
+						
+						class Message implements IPost
+						{
+						id: number;
+						text: string;
+						senderId: number;
+						recieverId: number;
+						}
+					</code></pre>
+				</section>
+				<section>
+					<h2>Access modifiers example</h2>
+					<pre><code data-trim data-line-numbers>
+						class User
+						{
+						private id: number;
+						private login: number;
+						constructor(id: number, login: number)
+						{
+							this.id = id;
+							this.login = login;
+						}
+
+						public get Login(): number
+						{
+							return this.login;
+						}
+						}
+					</code></pre>
+				</section>
+				<section>
+					<h2>TypeScript cons: what problems it creates</h2>
+					<ul>
+						<li class="fragment">Bloated code</li>
+						<li class="fragment">Adding extra step — transpiling</li>
+						<li class="fragment">One more JavaScript to learn</li>
+						<li class="fragment">Not true static typing</li>
+					</ul>
+				</section>
+				<section>
+					<h2 id = "title-color">Installation TypeScript</h2>
+					<p class="fragment">Install: npm install -g typescript</p>
+					<p class="fragment">Compilation: tsc app.ts</p>
+					</code></pre>
+				</section>
+				<section>
+					<h2>tsconfig.json</h2>
+					<pre><code data-trim data-line-numbers>
+						{
+							"compilerOptions": {
+								"target": "es5",
+								"removeComments": true,
+								"outFile": "app.js"
+							}
+						 }
+					</code></pre>
+				</section>
+				<section>
+					<h2 id = "title-color">Conclusion</h2>
+					<p>TypeScript is a great wrapper that can greatly improve the productivity of your development team while maintaining compatibility with existing code. While JavaScript is not strongly typed, TypeScript is a great alternative that doesn't take a lot of time to learn.</p>
+				</section>
+				<section>
+					<h2>Thanks for attention</h2>
+					<img src="assets/images/TypeScript-meme.jpg">
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
